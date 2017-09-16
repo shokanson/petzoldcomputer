@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{029D0974-5F70-4729-B748-2B6D87533BD3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MSTest.PetzoldComputer</RootNamespace>
+    <AssemblyName>MSTest.PetzoldComputer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddAndSub8Test.cs" />
+    <Compile Include="ANDTest.cs" />
+    <Compile Include="CounterSynchronous16Test.cs" />
+    <Compile Include="DFlipFlopEdgeWithPresetAndClearTest.cs" />
+    <Compile Include="FullAdderTest.cs" />
+    <Compile Include="HalfAdderTest.cs" />
+    <Compile Include="InvertedRelayTest.cs" />
+    <Compile Include="LatchEdge8Test.cs" />
+    <Compile Include="NANDTest.cs" />
+    <Compile Include="NOR3Test.cs" />
+    <Compile Include="NORTest.cs" />
+    <Compile Include="NOTTest.cs" />
+    <Compile Include="OnesComplementTest.cs" />
+    <Compile Include="ORTest.cs" />
+    <Compile Include="Phase1Test.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RAM64KBTest.cs" />
+    <Compile Include="RelayTest.cs" />
+    <Compile Include="RippleAdder8Test.cs" />
+    <Compile Include="TestEventsHelper.cs" />
+    <Compile Include="XORTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="Test References\PetzoldComputer.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PetzoldComputer.csproj">
+      <Project>{19909F7C-0F98-47FF-B380-00A2BC7011ED}</Project>
+      <Name>PetzoldComputer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
