@@ -1,4 +1,5 @@
 using System;
+
 namespace PetzoldComputer
 {
 	public class AddAndSub8 : IAddAndSub8, ISum, IOverUnderFlow
@@ -31,15 +32,15 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _adder.Voltage; }
+			get => _adder.Voltage;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
 				byte oldSum = _sum;
 
-				_adder.Voltage = value;
-				_ones.Voltage = value;
-				_xorOverUnder.Voltage = value;
+				_adder.Voltage = 
+					_ones.Voltage = 
+					_xorOverUnder.Voltage = value;
 
 				HandleSum(oldSum);
 				HandleCarry(oldCarry);
@@ -48,7 +49,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A0
 		{
-			get { return _adder.A0; }
+			get => _adder.A0;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -63,7 +64,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A1
 		{
-			get { return _adder.A1; }
+			get => _adder.A1;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -78,7 +79,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A2
 		{
-			get { return _adder.A2; }
+			get => _adder.A2;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -93,7 +94,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A3
 		{
-			get { return _adder.A3; }
+			get => _adder.A3;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -108,7 +109,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A4
 		{
-			get { return _adder.A4; }
+			get => _adder.A4;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -123,7 +124,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A5
 		{
-			get { return _adder.A5; }
+			get => _adder.A5;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -138,7 +139,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A6
 		{
-			get { return _adder.A6; }
+			get => _adder.A6;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -153,7 +154,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A7
 		{
-			get { return _adder.A7; }
+			get => _adder.A7;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -168,7 +169,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal B0
 		{
-			get { return _ones.I0; }
+			get => _ones.I0;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -183,7 +184,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal B1
 		{
-			get { return _ones.I1; }
+			get => _ones.I1;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -198,7 +199,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal B2
 		{
-			get { return _ones.I2; }
+			get => _ones.I2;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -213,7 +214,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal B3
 		{
-			get { return _ones.I3; }
+			get => _ones.I3;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -228,7 +229,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal B4
 		{
-			get { return _ones.I4; }
+			get => _ones.I4;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -243,7 +244,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal B5
 		{
-			get { return _ones.I5; }
+			get => _ones.I5;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -258,7 +259,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal B6
 		{
-			get { return _ones.I6; }
+			get => _ones.I6;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -273,7 +274,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal B7
 		{
-			get { return _ones.I7; }
+			get => _ones.I7;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
@@ -288,91 +289,49 @@ namespace PetzoldComputer
 
 		public VoltageSignal Sub
 		{
-			get { return _ones.Invert; }
+			get => _ones.Invert;
 			set
 			{
 				VoltageSignal oldCarry = _xorOverUnder.O;
 				byte oldSum = _sum;
 
-				_ones.Invert = value;
-				_adder.CarryIn = value;
-				_xorOverUnder.B = value;
+				_ones.Invert = 
+					_adder.CarryIn = 
+					_xorOverUnder.B = value;
 
 				HandleSum(oldSum);
 				HandleCarry(oldCarry);
 			}
 		}
 
-		public VoltageSignal S0
-		{
-			get { return _adder.S0; }
-		}
+		public VoltageSignal S0 => _adder.S0;
+		public VoltageSignal S1 => _adder.S1;
+		public VoltageSignal S2 => _adder.S2;
+		public VoltageSignal S3 => _adder.S3;
+		public VoltageSignal S4 => _adder.S4;
+		public VoltageSignal S5 => _adder.S5;
+		public VoltageSignal S6 => _adder.S6;
+		public VoltageSignal S7 => _adder.S7;
 
-		public VoltageSignal S1
-		{
-			get { return _adder.S1; }
-		}
-
-		public VoltageSignal S2
-		{
-			get { return _adder.S2; }
-		}
-
-		public VoltageSignal S3
-		{
-			get { return _adder.S3; }
-		}
-
-		public VoltageSignal S4
-		{
-			get { return _adder.S4; }
-		}
-
-		public VoltageSignal S5
-		{
-			get { return _adder.S5; }
-		}
-
-		public VoltageSignal S6
-		{
-			get { return _adder.S6; }
-		}
-
-		public VoltageSignal S7
-		{
-			get { return _adder.S7; }
-		}
-
-		public VoltageSignal OverUnderFlow
-		{
-			get { return _xorOverUnder.O; }
-		}
+		public VoltageSignal OverUnderFlow => _xorOverUnder.O;
 
 		#endregion
 
 		#region ISumEvent Members
 
-		public void AddSumHandler(Action<object> handler)
-		{
-			SumEvent += handler;
-		}
+		public void AddSumHandler(Action<object> handler) => SumEvent += handler;
 
 		#endregion
 
 		#region IOverUnderFlowEvent Members
 
-		public void AddOverUnderFlowHandler(Action<object> handler)
-		{
-			OverUnderFlowEvent += handler;
-		}
+		public void AddOverUnderFlowHandler(Action<object> handler) => OverUnderFlowEvent += handler;
 
 		#endregion
 
 		#region Object Override Methods
-		public override string ToString()
-		{
-			return
-				string.Format(
+		// this is a case where string.Format is clearer than an interpolated string
+		public override string ToString() => string.Format(
 					"{0}:{1}{2}{3}{4}{5}{6}{7}{8}",
 					_xorOverUnder.O == VoltageSignal.HIGH ? 1 : 0,
 					_adder.S7 == VoltageSignal.HIGH ? 1 : 0,
@@ -383,7 +342,6 @@ namespace PetzoldComputer
 					_adder.S2 == VoltageSignal.HIGH ? 1 : 0,
 					_adder.S1 == VoltageSignal.HIGH ? 1 : 0,
 					_adder.S0 == VoltageSignal.HIGH ? 1 : 0);
-		}
 		#endregion
 
 		#region Private Methods
@@ -412,10 +370,7 @@ namespace PetzoldComputer
 
 			if (oldSum != _sum)
 			{
-				if (SumEvent != null)
-				{
-					SumEvent(this);
-				}
+				SumEvent?.Invoke(this);
 			}
 		}
 
@@ -437,19 +392,9 @@ namespace PetzoldComputer
 		{
 			if (oldCarry != _xorOverUnder.O)
 			{
-				if (OverUnderFlowEvent != null)
-				{
-					OverUnderFlowEvent(this);
-				}
+				OverUnderFlowEvent?.Invoke(this);
 			}
 		}
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/AddAndSub8.cs $ $NoKeyWords:$
- * 
- * 3     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

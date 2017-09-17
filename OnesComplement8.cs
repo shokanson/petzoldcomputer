@@ -1,4 +1,5 @@
 using System;
+
 namespace PetzoldComputer
 {
 	public class OnesComplement8 : IOnesComplement8, IOutput
@@ -38,19 +39,19 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _xor0.Voltage; }
+			get => _xor0.Voltage;
 			set
 			{
 				byte oldOutput = _out;
 
-				_xor0.Voltage = value;
-				_xor1.Voltage = value;
-				_xor2.Voltage = value;
-				_xor3.Voltage = value;
-				_xor4.Voltage = value;
-				_xor5.Voltage = value;
-				_xor6.Voltage = value;
-				_xor7.Voltage = value;
+				_xor0.Voltage = 
+					_xor1.Voltage = 
+					_xor2.Voltage = 
+					_xor3.Voltage = 
+					_xor4.Voltage = 
+					_xor5.Voltage = 
+					_xor6.Voltage =
+					_xor7.Voltage = value;
 
 				SetOutput();
 				FireEvent(oldOutput);
@@ -59,19 +60,19 @@ namespace PetzoldComputer
 
 		public VoltageSignal Invert
 		{
-			get { return _xor0.A; }
+			get => _xor0.A;
 			set
 			{
 				byte oldOutput = _out;
 
-				_xor0.A = value;
-				_xor1.A = value;
-				_xor2.A = value;
-				_xor3.A = value;
-				_xor4.A = value;
-				_xor5.A = value;
-				_xor6.A = value;
-				_xor7.A = value;
+				_xor0.A = 
+					_xor1.A = 
+					_xor2.A = 
+					_xor3.A = 
+					_xor4.A =
+					_xor5.A = 
+					_xor6.A = 
+					_xor7.A = value;
 
 				SetOutput();
 				FireEvent(oldOutput);
@@ -80,7 +81,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal I0
 		{
-			get { return _xor0.B; }
+			get => _xor0.B;
 			set
 			{
 				byte oldOutput = _out;
@@ -94,7 +95,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal I1
 		{
-			get { return _xor1.B; }
+			get => _xor1.B;
 			set
 			{
 				byte oldOutput = _out;
@@ -108,7 +109,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal I2
 		{
-			get { return _xor2.B; }
+			get => _xor2.B;
 			set
 			{
 				byte oldOutput = _out;
@@ -122,7 +123,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal I3
 		{
-			get { return _xor3.B; }
+			get => _xor3.B;
 			set
 			{
 				byte oldOutput = _out;
@@ -136,7 +137,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal I4
 		{
-			get { return _xor4.B; }
+			get => _xor4.B;
 			set
 			{
 				byte oldOutput = _out;
@@ -150,7 +151,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal I5
 		{
-			get { return _xor5.B; }
+			get => _xor5.B;
 			set
 			{
 				byte oldOutput = _out;
@@ -164,7 +165,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal I6
 		{
-			get { return _xor6.B; }
+			get => _xor6.B;
 			set
 			{
 				byte oldOutput = _out;
@@ -178,7 +179,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal I7
 		{
-			get { return _xor7.B; }
+			get => _xor7.B;
 			set
 			{
 				byte oldOutput = _out;
@@ -190,62 +191,26 @@ namespace PetzoldComputer
 			}
 		}
 
-		public VoltageSignal O0
-		{
-			get { return _xor0.O; }
-		}
-
-		public VoltageSignal O1
-		{
-			get { return _xor1.O; }
-		}
-
-		public VoltageSignal O2
-		{
-			get { return _xor2.O; }
-		}
-
-		public VoltageSignal O3
-		{
-			get { return _xor3.O; }
-		}
-
-		public VoltageSignal O4
-		{
-			get { return _xor4.O; }
-		}
-
-		public VoltageSignal O5
-		{
-			get { return _xor5.O; }
-		}
-
-		public VoltageSignal O6
-		{
-			get { return _xor6.O; }
-		}
-
-		public VoltageSignal O7
-		{
-			get { return _xor7.O; }
-		}
+		public VoltageSignal O0 => _xor0.O;
+		public VoltageSignal O1 => _xor1.O;
+		public VoltageSignal O2 => _xor2.O;
+		public VoltageSignal O3 => _xor3.O;
+		public VoltageSignal O4 => _xor4.O;
+		public VoltageSignal O5 => _xor5.O;
+		public VoltageSignal O6 => _xor6.O;
+		public VoltageSignal O7 => _xor7.O;
 
 		#endregion
 
 		#region IOutputEvent Members
 
-		public void AddOutputHandler(Action<object> handler)
-		{
-			OutEvent += handler;
-		}
+		public void AddOutputHandler(Action<object> handler) => OutEvent += handler;
 
 		#endregion
 
 		#region Object Override Methods
-		public override string ToString()
-		{
-			return
-				string.Format(
+		// this is a case where string.Format is clearer than an interpolated string
+		public override string ToString() => string.Format(
 					"{0}{1}{2}{3}{4}{5}{6}{7}",
 					_xor7.O == VoltageSignal.HIGH ? 1 : 0,
 					_xor6.O == VoltageSignal.HIGH ? 1 : 0,
@@ -255,7 +220,6 @@ namespace PetzoldComputer
 					_xor2.O == VoltageSignal.HIGH ? 1 : 0,
 					_xor1.O == VoltageSignal.HIGH ? 1 : 0,
 					_xor0.O == VoltageSignal.HIGH ? 1 : 0);
-		}
 		#endregion
 
 		#region Private Members
@@ -277,19 +241,9 @@ namespace PetzoldComputer
 		{
 			if (oldOutput != _out)
 			{
-				if (OutEvent != null)
-				{
-					OutEvent(this);
-				}
+				OutEvent?.Invoke(this);
 			}
 		}
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/OnesComplement8.cs $ $NoKeyWords:$
- * 
- * 3     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

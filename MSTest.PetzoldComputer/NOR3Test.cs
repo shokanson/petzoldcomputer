@@ -23,9 +23,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestOutput()
 		{
-			INor3 nor3 = new NOR3();
-
-			nor3.Voltage = VoltageSignal.HIGH;
+			INor3 nor3 = new NOR3 { Voltage = VoltageSignal.HIGH };
 			Assert.AreEqual(nor3.O, VoltageSignal.HIGH, "Gate on -- A: L; B: L; C: L; O: H");
 			nor3.A = VoltageSignal.HIGH;
 			Assert.AreEqual(nor3.O, VoltageSignal.LOW, "Gate on -- A: H; B: L; C: L; O: L");

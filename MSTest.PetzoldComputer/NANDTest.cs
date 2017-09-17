@@ -25,9 +25,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestOutput()
 		{
-			INand nand = new NAND();
-
-			nand.Voltage = VoltageSignal.HIGH;
+			INand nand = new NAND { Voltage = VoltageSignal.HIGH };
 			Assert.AreEqual(nand.O, VoltageSignal.HIGH, "Gate on -- A: L; B: L; O: H");
 			nand.A = VoltageSignal.HIGH;
 			Assert.AreEqual(nand.O, VoltageSignal.HIGH, "Gate on -- A: H; B: L; O: H");

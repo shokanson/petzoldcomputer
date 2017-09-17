@@ -21,11 +21,12 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestOutput()
 		{
-			IRelay relay = new Relay();
-
-			// if Input is LOW, Output should be LOW
-			relay.Input = VoltageSignal.LOW;
-			relay.Voltage = VoltageSignal.HIGH;
+			IRelay relay = new Relay
+			{
+				// if Input is LOW, Output should be LOW
+				Input = VoltageSignal.LOW,
+				Voltage = VoltageSignal.HIGH
+			};
 			Assert.AreEqual(relay.Output, VoltageSignal.LOW, "Input LOW, Voltage HIGH, Output LOW");
 			relay.Voltage = VoltageSignal.LOW;
 			Assert.AreEqual(relay.Output, VoltageSignal.LOW, "Input LOW, Voltage LOW, Output LOW");

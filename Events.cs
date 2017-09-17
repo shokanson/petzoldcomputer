@@ -1,4 +1,5 @@
 using System;
+
 namespace PetzoldComputer
 {
 	public interface IOutput
@@ -21,10 +22,3 @@ namespace PetzoldComputer
 		void AddOverUnderFlowHandler(Action<object> handler);
 	}
 }
-
-/*
-$Log: /PetzoldComputer/Events.cs $ $NoKeyWords:$
- * 
- * 3     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

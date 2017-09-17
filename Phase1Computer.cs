@@ -29,29 +29,22 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _counter.Voltage; }
-			set
-			{
-				_counter.Voltage = value;
-				_ram.Voltage = value;
-				_adder.Voltage = value;
-				_latch.Voltage = value;
-			}
+			get => _counter.Voltage;
+			set => _counter.Voltage =
+					 _ram.Voltage =
+					 _adder.Voltage =
+					 _latch.Voltage = value;
 		}
 
 		public VoltageSignal Clr
 		{
-			get { return _counter.Clr; }
-			set
-			{
-				_counter.Clr = value;
-				((IPresetAndClear)_latch).Clr = value;
-			}
+			get => _counter.Clr;
+			set => _counter.Clr = ((IPresetAndClear)_latch).Clr = value;
 		}
 
 		public VoltageSignal Clk
 		{
-			get { return _counter.Clk; }
+			get => _counter.Clk;
 			set
 			{
 				// These are actually done in this order on purpose; otherwise, the latch input
@@ -61,45 +54,14 @@ namespace PetzoldComputer
 			}
 		}
 
-		public VoltageSignal D0
-		{
-			get { return _latch.Q0; }
-		}
-
-		public VoltageSignal D1
-		{
-			get { return _latch.Q1; }
-		}
-
-		public VoltageSignal D2
-		{
-			get { return _latch.Q2; }
-		}
-
-		public VoltageSignal D3
-		{
-			get { return _latch.Q3; }
-		}
-
-		public VoltageSignal D4
-		{
-			get { return _latch.Q4; }
-		}
-
-		public VoltageSignal D5
-		{
-			get { return _latch.Q5; }
-		}
-
-		public VoltageSignal D6
-		{
-			get { return _latch.Q6; }
-		}
-
-		public VoltageSignal D7
-		{
-			get { return _latch.Q7; }
-		}
+		public VoltageSignal D0 => _latch.Q0;
+		public VoltageSignal D1 => _latch.Q1;
+		public VoltageSignal D2 => _latch.Q2;
+		public VoltageSignal D3 => _latch.Q3;
+		public VoltageSignal D4 => _latch.Q4;
+		public VoltageSignal D5 => _latch.Q5;
+		public VoltageSignal D6 => _latch.Q6;
+		public VoltageSignal D7 => _latch.Q7;
 
 		public void WriteByte(ushort address, byte data)
 		{
@@ -140,18 +102,13 @@ namespace PetzoldComputer
 
 		#region IOutput Members
 
-		public void AddOutputHandler(Action<object> handler)
-		{
-			throw new Exception("The method or operation is not implemented.");
-		}
+		public void AddOutputHandler(Action<object> handler) => throw new NotImplementedException();
 
 		#endregion
 
 		#region Object Override Members
-		public override string ToString()
-		{
-			return
-				string.Format(
+		// this is a case where string.Format is clearer than an interpolated string
+		public override string ToString() => string.Format(
 					"{0}{1}{2}{3}{4}{5}{6}{7}",
 					D7 == VoltageSignal.HIGH ? 1 : 0,
 					D6 == VoltageSignal.HIGH ? 1 : 0,
@@ -161,7 +118,6 @@ namespace PetzoldComputer
 					D2 == VoltageSignal.HIGH ? 1 : 0,
 					D1 == VoltageSignal.HIGH ? 1 : 0,
 					D0 == VoltageSignal.HIGH ? 1 : 0);
-		}
 		#endregion
 
 		#region Private Members
@@ -231,10 +187,3 @@ namespace PetzoldComputer
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/Phase1Computer.cs $ $NoKeyWords:$
- * 
- * 3     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

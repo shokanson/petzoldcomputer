@@ -45,9 +45,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestAddAndSub()
 		{
-			IAddAndSub8 aas = new AddAndSub8();
-
-			aas.Voltage = VoltageSignal.HIGH;
+			IAddAndSub8 aas = new AddAndSub8 { Voltage = VoltageSignal.HIGH };
 			for (ushort a = 0; a < 0x100; ++a)
 			{
 				for (ushort b = 0; b < 0x100; ++b)

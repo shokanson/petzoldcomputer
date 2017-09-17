@@ -1,4 +1,5 @@
 using System;
+
 namespace PetzoldComputer
 {
 	public class RippleAdder8 : IRippleAdder8 , ISum, ICarry
@@ -43,20 +44,20 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _adder0.Voltage; }
+			get => _adder0.Voltage;
 			set
 			{
 				VoltageSignal oldCarry = _carry;
 				byte oldSum = _sum;
 
-				_adder0.Voltage = value;
-				_adder1.Voltage = value;
-				_adder2.Voltage = value;
-				_adder3.Voltage = value;
-				_adder4.Voltage = value;
-				_adder5.Voltage = value;
-				_adder6.Voltage = value;
-				_adder7.Voltage = value;
+				_adder0.Voltage = 
+					_adder1.Voltage = 
+					_adder2.Voltage = 
+					_adder3.Voltage = 
+					_adder4.Voltage = 
+					_adder5.Voltage = 
+					_adder6.Voltage = 
+					_adder7.Voltage = value;
 
 				HandleSum(oldSum);
 				HandleCarry(oldCarry);
@@ -367,27 +368,19 @@ namespace PetzoldComputer
 
 		#region ISumEvent Members
 
-		public void AddSumHandler(Action<object> handler)
-		{
-			SumEvent += handler;
-		}
+		public void AddSumHandler(Action<object> handler) => SumEvent += handler;
 
 		#endregion
 
 		#region ICarryEvent Members
 
-		public void AddCarryHandler(Action<object> handler)
-		{
-			CarryEvent += handler;
-		}
+		public void AddCarryHandler(Action<object> handler) => CarryEvent += handler;
 
 		#endregion
 
 		#region Object Override Methods
-		public override string ToString()
-		{
-			return
-				string.Format(
+		// this is a case where string.Format is clearer than an interpolated string
+		public override string ToString() => string.Format(
 					"{0}:{1}{2}{3}{4}{5}{6}{7}{8}",
 					_adder7.Carry == VoltageSignal.HIGH ? 1 : 0,
 					_adder7.Sum == VoltageSignal.HIGH ? 1 : 0,
@@ -398,7 +391,6 @@ namespace PetzoldComputer
 					_adder2.Sum == VoltageSignal.HIGH ? 1 : 0,
 					_adder1.Sum == VoltageSignal.HIGH ? 1 : 0,
 					_adder0.Sum == VoltageSignal.HIGH ? 1 : 0);
-		}
 		#endregion
 
 		#region Private Members
@@ -430,10 +422,7 @@ namespace PetzoldComputer
 
 			if (oldCarry != _carry)
 			{
-				if (CarryEvent != null)
-				{
-					CarryEvent(this);
-				}
+				CarryEvent?.Invoke(this);
 			}
 		}
 
@@ -443,10 +432,7 @@ namespace PetzoldComputer
 
 			if (oldSum != _sum)
 			{
-				if (SumEvent != null)
-				{
-					SumEvent(this);
-				}
+				SumEvent?.Invoke(this);
 			}
 		}
 
@@ -466,10 +452,3 @@ namespace PetzoldComputer
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/RippleAdder8.cs $ $NoKeyWords:$
- * 
- * 3     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

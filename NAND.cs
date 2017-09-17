@@ -1,4 +1,5 @@
 using System;
+
 namespace PetzoldComputer
 {
 	public class NAND : INand, IOutput
@@ -24,7 +25,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _relay1.Voltage; }
+			get => _relay1.Voltage;
 			set
 			{
 				VoltageSignal oldOutput = _output;
@@ -38,7 +39,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A
 		{
-			get { return _relay1.Input; }
+			get => _relay1.Input;
 			set {
 				VoltageSignal oldOutput = _output;
 
@@ -50,7 +51,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal B
 		{
-			get { return _relay2.Input; }
+			get => _relay2.Input;
 			set {
 				VoltageSignal oldOutput = _output;
 
@@ -60,59 +61,33 @@ namespace PetzoldComputer
 			}
 		}
 
-		public VoltageSignal O
-		{
-			get { return _output; }
-		}
+		public VoltageSignal O => _output;
 
 		#endregion
 
 		#region IOutput Members
 
-		public void AddOutputHandler(Action<object> handler)
-		{
-			OutputChanged += handler;
-		}
+		public void AddOutputHandler(Action<object> handler) => OutputChanged += handler;
 
 		#endregion
 
 		#region Object Override Members
-		public override string ToString()
-		{
-			return _output.ToString();
-		}
+		public override string ToString() => _output.ToString();
 		#endregion
 
 		#region Private Members
-		private void SetOutput()
-		{
-			if (_relay1.Output == VoltageSignal.HIGH || _relay2.Output == VoltageSignal.HIGH)
-			{
-				_output = VoltageSignal.HIGH;
-			}
-			else
-			{
-				_output = VoltageSignal.LOW;
-			}
-		}
+		private void SetOutput() =>
+			_output = (_relay1.Output == VoltageSignal.HIGH || _relay2.Output == VoltageSignal.HIGH)
+				? VoltageSignal.HIGH
+				: VoltageSignal.LOW;
 
 		private void FireEvent(VoltageSignal oldOutput)
 		{
 			if (_output != oldOutput)
 			{
-				if (OutputChanged != null)
-				{
-					OutputChanged(this);
-				}
+				OutputChanged?.Invoke(this);
 			}
 		}
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/NAND.cs $ $NoKeyWords:$
- * 
- * 3     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

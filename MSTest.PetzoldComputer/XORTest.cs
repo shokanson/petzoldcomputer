@@ -22,9 +22,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestOutput()
 		{
-			IXor xor = new XOR();
-
-			xor.Voltage = VoltageSignal.HIGH;
+			IXor xor = new XOR { Voltage = VoltageSignal.HIGH };
 			Assert.AreEqual(xor.O, VoltageSignal.LOW, "Gate on -- A: L; B: L; O: L");
 			xor.A = VoltageSignal.HIGH;
 			Assert.AreEqual(xor.O, VoltageSignal.HIGH, "Gate on -- A: H; B: L; O: H");

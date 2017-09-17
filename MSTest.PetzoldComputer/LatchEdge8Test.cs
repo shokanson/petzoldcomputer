@@ -36,9 +36,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestDataAndClock()
 		{
-			ILatchEdge8 latch = new LatchEdge8();
-
-			latch.Voltage = VoltageSignal.HIGH;
+			ILatchEdge8 latch = new LatchEdge8 { Voltage = VoltageSignal.HIGH };
 
 			ushort oldData = 0;
 			for (ushort data = 0; data < 0x100; ++data)
@@ -68,9 +66,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestPreset()
 		{
-			ILatchEdge8 latch = new LatchEdge8();
-
-			latch.Voltage = VoltageSignal.HIGH;
+			ILatchEdge8 latch = new LatchEdge8 { Voltage = VoltageSignal.HIGH };
 			((IPresetAndClear)latch).Pre = VoltageSignal.HIGH;
 
 			SetData(latch, 0xAA);
@@ -82,9 +78,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestClear()
 		{
-			ILatchEdge8 latch = new LatchEdge8();
-
-			latch.Voltage = VoltageSignal.HIGH;
+			ILatchEdge8 latch = new LatchEdge8 { Voltage = VoltageSignal.HIGH };
 			((IPresetAndClear)latch).Clr = VoltageSignal.HIGH;
 
 			SetData(latch, 0xAA);

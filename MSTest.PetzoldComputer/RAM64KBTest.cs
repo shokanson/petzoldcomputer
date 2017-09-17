@@ -51,9 +51,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestRAM()
 		{
-			IRam64KB ram = new RAM64KB();
-
-			ram.Voltage = VoltageSignal.HIGH;
+			IRam64KB ram = new RAM64KB { Voltage = VoltageSignal.HIGH };
 			int address;
 			byte data;
 			for (address = 0, data = 0; address < 65536; ++address, ++data)

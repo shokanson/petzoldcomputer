@@ -1,4 +1,5 @@
 using System;
+
 namespace PetzoldComputer
 {
 	public class RAM64KB : IRam64KB, IOutput
@@ -54,7 +55,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _voltage; }
+			get => _voltage;
 			set
 			{
 				if (_voltage == VoltageSignal.HIGH && value == VoltageSignal.LOW)
@@ -67,7 +68,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal Write
 		{
-			get { return _clk; }
+			get => _clk;
 			set
 			{
 				if (_voltage == VoltageSignal.HIGH)
@@ -83,7 +84,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A0
 		{
-			get { return _a0; }
+			get => _a0;
 			set
 			{
 				_a0 = value;
@@ -96,7 +97,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A1
 		{
-			get { return _a1; }
+			get => _a1;
 			set
 			{
 				_a1 = value;
@@ -109,7 +110,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A2
 		{
-			get { return _a2; }
+			get => _a2;
 			set
 			{
 				_a2 = value;
@@ -122,7 +123,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A3
 		{
-			get { return _a3; }
+			get => _a3;
 			set
 			{
 				_a3 = value;
@@ -135,7 +136,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A4
 		{
-			get { return _a4; }
+			get => _a4;
 			set
 			{
 				_a4 = value;
@@ -148,7 +149,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A5
 		{
-			get { return _a5; }
+			get => _a5;
 			set
 			{
 				_a5 = value;
@@ -161,7 +162,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A6
 		{
-			get { return _a6; }
+			get => _a6;
 			set
 			{
 				_a6 = value;
@@ -174,7 +175,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A7
 		{
-			get { return _a7; }
+			get => _a7;
 			set
 			{
 				_a7 = value;
@@ -187,7 +188,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A8
 		{
-			get { return _a8; }
+			get => _a8;
 			set
 			{
 				_a8 = value;
@@ -200,7 +201,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A9
 		{
-			get { return _a9; }
+			get => _a9;
 			set
 			{
 				_a9 = value;
@@ -213,7 +214,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A10
 		{
-			get { return _a10; }
+			get => _a10;
 			set
 			{
 				_a10 = value;
@@ -226,7 +227,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A11
 		{
-			get { return _a11; }
+			get => _a11;
 			set
 			{
 				_a11 = value;
@@ -239,7 +240,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A12
 		{
-			get { return _a12; }
+			get => _a12;
 			set
 			{
 				_a12 = value;
@@ -252,7 +253,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A13
 		{
-			get { return _a13; }
+			get => _a13;
 			set
 			{
 				_a13 = value;
@@ -265,7 +266,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A14
 		{
-			get { return _a14; }
+			get => _a14;
 			set
 			{
 				_a14 = value;
@@ -278,7 +279,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal A15
 		{
-			get { return _a15; }
+			get => _a15;
 			set
 			{
 				_a15 = value;
@@ -291,100 +292,66 @@ namespace PetzoldComputer
 
 		public VoltageSignal Din0
 		{
-			get { return _din0; }
-			set { _din0 = value; }
+			get => _din0;
+			set => _din0 = value;
 		}
 
 		public VoltageSignal Din1
 		{
-			get { return _din1; }
-			set { _din1 = value; }
+			get => _din1;
+			set => _din1 = value;
 		}
 
 		public VoltageSignal Din2
 		{
-			get { return _din2; }
-			set { _din2 = value; }
+			get => _din2;
+			set => _din2 = value;
 		}
 
 		public VoltageSignal Din3
 		{
-			get { return _din3; }
-			set { _din3 = value; }
+			get => _din3;
+			set => _din3 = value;
 		}
 
 		public VoltageSignal Din4
 		{
-			get { return _din4; }
-			set { _din4 = value; }
+			get => _din4;
+			set => _din4 = value;
 		}
 
 		public VoltageSignal Din5
 		{
-			get { return _din5; }
-			set { _din5 = value; }
+			get => _din5;
+			set => _din5 = value;
 		}
 
 		public VoltageSignal Din6
 		{
-			get { return _din6; }
-			set { _din6 = value; }
+			get => _din6;
+			set => _din6 = value;
 		}
 
 		public VoltageSignal Din7
 		{
-			get { return _din7; }
-			set { _din7 = value; }
+			get => _din7;
+			set => _din7 = value;
 		}
 
-		public VoltageSignal Dout0
-		{
-			get { return _dout0; }
-		}
-
-		public VoltageSignal Dout1
-		{
-			get { return _dout1; }
-		}
-
-		public VoltageSignal Dout2
-		{
-			get { return _dout2; }
-		}
-
-		public VoltageSignal Dout3
-		{
-			get { return _dout3; }
-		}
-
-		public VoltageSignal Dout4
-		{
-			get { return _dout4; }
-		}
-
-		public VoltageSignal Dout5
-		{
-			get { return _dout5; }
-		}
-
-		public VoltageSignal Dout6
-		{
-			get { return _dout6; }
-		}
-
-		public VoltageSignal Dout7
-		{
-			get { return _dout7; }
-		}
+		public VoltageSignal Dout0 => _dout0;
+		public VoltageSignal Dout1 => _dout1;
+		public VoltageSignal Dout2 => _dout2;
+		public VoltageSignal Dout3 => _dout3;
+		public VoltageSignal Dout4 => _dout4;
+		public VoltageSignal Dout5 => _dout5;
+		public VoltageSignal Dout6 => _dout6;
+		public VoltageSignal Dout7 => _dout7;
 
 		#endregion
 
 		#region IOutput Members
 
-		public void AddOutputHandler(Action<object> handler)
-		{
-			OutEvent += handler;
-		}
+		public void AddOutputHandler(Action<object> handler) => OutEvent += handler;
 
 		#endregion
 
@@ -604,13 +571,3 @@ namespace PetzoldComputer
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/RAM64KB.cs $ $NoKeyWords:$
- * 
- * 3     1/26/07 6:54a Sean
- * results of ReSharper analysis
- * 
- * 2     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

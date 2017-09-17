@@ -23,9 +23,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestSum()
 		{
-			IHalfAdder halfAdder = new HalfAdder();
-
-			halfAdder.Voltage = VoltageSignal.HIGH;
+			IHalfAdder halfAdder = new HalfAdder { Voltage = VoltageSignal.HIGH };
 			Assert.AreEqual(halfAdder.Sum, VoltageSignal.LOW, "Sum -- A: L; B: L; Sum: L");
 			halfAdder.A = VoltageSignal.HIGH;
 			Assert.AreEqual(halfAdder.Sum, VoltageSignal.HIGH, "Sum -- A: H; B: L; Sum: H");
@@ -38,9 +36,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestCarry()
 		{
-			IHalfAdder halfAdder = new HalfAdder();
-
-			halfAdder.Voltage = VoltageSignal.HIGH;
+			IHalfAdder halfAdder = new HalfAdder { Voltage = VoltageSignal.HIGH };
 			Assert.AreEqual(halfAdder.Carry, VoltageSignal.LOW, "Carry -- A: L; B: L; Carry: L");
 			halfAdder.A = VoltageSignal.HIGH;
 			Assert.AreEqual(halfAdder.Carry, VoltageSignal.LOW, "Carry -- A: H; B: L; Carry: L");

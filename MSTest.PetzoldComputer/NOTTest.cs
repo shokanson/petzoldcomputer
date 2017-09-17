@@ -21,11 +21,12 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestOutput()
 		{
-			INot not = new NOT();
-
-			// if Input is LOW, Output should follow Voltage
-			not.Input = VoltageSignal.LOW;
-			not.Voltage = VoltageSignal.HIGH;
+			INot not = new NOT
+			{
+				// if Input is LOW, Output should follow Voltage
+				Input = VoltageSignal.LOW,
+				Voltage = VoltageSignal.HIGH
+			};
 			Assert.AreEqual(not.Output, VoltageSignal.HIGH, "Input LOW, Voltage HIGH, Output HIGH");
 			not.Voltage = VoltageSignal.LOW;
 			Assert.AreEqual(not.Output, VoltageSignal.LOW, "Input LOW, Voltage LOW, Output LOW");

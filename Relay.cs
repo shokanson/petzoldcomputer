@@ -23,7 +23,7 @@ namespace PetzoldComputer
 		#region IRelay Members
 		public VoltageSignal Input
 		{
-			get { return _input; }
+			get => _input;
 			set
 			{
 				VoltageSignal oldOutput = _output;
@@ -36,7 +36,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _voltage; }
+			get => _voltage;
 			set
 			{
 				VoltageSignal oldOutput = _output;
@@ -47,24 +47,15 @@ namespace PetzoldComputer
 			}
 		}
 
-		public VoltageSignal Output
-		{
-			get { return _output; }
-		}
+		public VoltageSignal Output => _output;
 		#endregion
 
 		#region IOutputEvent Methods
-		public void AddOutputHandler(Action<object> handler)
-		{
-			OutputChanged += handler;
-		}
+		public void AddOutputHandler(Action<object> handler) => OutputChanged += handler;
 		#endregion
 
 		#region Object Override Members
-		public override string ToString()
-		{
-			return _output.ToString();
-		}
+		public override string ToString() => _output.ToString();
 		#endregion
 
 		#region Protected Members
@@ -77,10 +68,7 @@ namespace PetzoldComputer
 		{
 			if (_output != oldOutput)
 			{
-				if (OutputChanged != null)
-				{
-					OutputChanged(this);
-				}
+				OutputChanged?.Invoke(this);
 			}
 		}
 		#endregion
@@ -89,41 +77,20 @@ namespace PetzoldComputer
 	public class Relay : RelayBase
 	{
 		#region RelayBase Override Members
-		protected override void SetOutput()
-		{
-			if (_input == VoltageSignal.LOW)
-			{
-				_output = VoltageSignal.LOW;
-			}
-			else
-			{
-				_output = _voltage;
-			}
-		}
+		protected override void SetOutput() =>
+			_output = _input == VoltageSignal.LOW
+				? VoltageSignal.LOW
+				: _voltage;
 		#endregion
 	}
 
 	public class InvertedRelay : RelayBase
 	{
 		#region RelayBase Override Members
-		protected override void SetOutput()
-		{
-			if (_input == VoltageSignal.HIGH)
-			{
-				_output = VoltageSignal.LOW;
-			}
-			else
-			{
-				_output = _voltage;
-			}
-		}
+		protected override void SetOutput() =>
+			_output = _input == VoltageSignal.HIGH
+				? VoltageSignal.LOW
+				: _voltage;
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/Relay.cs $ $NoKeyWords:$
- * 
- * 6     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

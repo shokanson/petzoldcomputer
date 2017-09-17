@@ -37,9 +37,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestCounter()
 		{
-			ICounterSynchronous16 counter = new CounterSynchronous16();
-
-			counter.Voltage = VoltageSignal.HIGH;
+			ICounterSynchronous16 counter = new CounterSynchronous16 { Voltage = VoltageSignal.HIGH };
 			for (uint i = 0; i < 0x10000; ++i)
 			{
 				TestCount(counter, (ushort)i);
@@ -52,9 +50,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestClear()
 		{
-			ICounterSynchronous16 counter = new CounterSynchronous16();
-
-			counter.Voltage = VoltageSignal.HIGH;
+			ICounterSynchronous16 counter = new CounterSynchronous16 { Voltage = VoltageSignal.HIGH };
 			Assert.AreEqual(0x0000, GetCount(counter), "Counter on; count all 0's");
 
 			counter.Clr = VoltageSignal.HIGH;

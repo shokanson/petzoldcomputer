@@ -1,4 +1,5 @@
 using System;
+
 namespace PetzoldComputer
 {
 	public class DFlipFlopEdgeWithPresetAndClear : IDFlipFlop, IPresetAndClear, IOutput
@@ -32,17 +33,14 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _not.Voltage; }
-			set
-			{
-				_not.Voltage =
+			get => _not.Voltage;
+			set => _not.Voltage =
 					_nor3Clr.Voltage =
 					_nor3Pre.Voltage =
 					_nor3Clk.Voltage =
 					_nor3D.Voltage =
 					_nor3Q.Voltage =
 					_nor3Qnot.Voltage = value;
-			}
 		}
 
 		public VoltageSignal D
@@ -73,32 +71,26 @@ namespace PetzoldComputer
 
 		public VoltageSignal Pre
 		{
-			get { return _nor3Pre.B; }
-			set { _nor3Pre.B = _nor3D.B = _nor3Qnot.B = value; }
+			get => _nor3Pre.B;
+			set => _nor3Pre.B = _nor3D.B = _nor3Qnot.B = value;
 		}
 
 		public VoltageSignal Clr
 		{
-			get { return _nor3Clr.A; }
-			set { _nor3Clr.A = _nor3Q.A = value; }
+			get => _nor3Clr.A;
+			set => _nor3Clr.A = _nor3Q.A = value;
 		}
 
 		#endregion
 
 		#region IOutput Members
 
-		public void AddOutputHandler(Action<object> handler)
-		{
-			((IOutput)_nor3Q).AddOutputHandler(handler);
-		}
+		public void AddOutputHandler(Action<object> handler) => ((IOutput)_nor3Q).AddOutputHandler(handler);
 
 		#endregion
 
 		#region Object Override Methods
-		public override string ToString()
-		{
-			return string.Format("Q: {0}; Qnot: {1}", Q, Qnot);
-		}
+		public override string ToString() => $"Q: {Q}; Qnot: {Qnot}";
 		#endregion
 
 		#region Private Members
@@ -144,13 +136,3 @@ namespace PetzoldComputer
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/DFlipFlopEdgeWithPresetAndClear.cs $ $NoKeyWords:$
- * 
- * 4     1/26/07 6:54a Sean
- * results of ReSharper analysis
- * 
- * 3     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

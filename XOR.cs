@@ -1,4 +1,5 @@
 using System;
+
 namespace PetzoldComputer
 {
 	public class XOR : IXor, IOutput
@@ -24,56 +25,34 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _or.Voltage; }
-			set
-			{
-				_or.Voltage = value;
-				_nand.Voltage = value;
-				_and.Voltage = value;
-			}
+			get => _or.Voltage;
+			set => _or.Voltage = _nand.Voltage = _and.Voltage = value;
 		}
 
 		public VoltageSignal A
 		{
-			get { return _or.A; }
-			set
-			{
-				_or.A = value;
-				_nand.A = value;
-			}
+			get => _or.A;
+			set => _or.A = _nand.A = value;
 		}
 
 		public VoltageSignal B
 		{
-			get { return _or.B; }
-			set
-			{
-				_or.B = value;
-				_nand.B = value;
-			}
+			get => _or.B;
+			set => _or.B = _nand.B = value;
 		}
 
-		public VoltageSignal O
-		{
-			get { return _and.O; }
-		}
+		public VoltageSignal O => _and.O;
 
 		#endregion
 
 		#region IOutput Members
 
-		public void AddOutputHandler(Action<object> handler)
-		{
-			((IOutput)_and).AddOutputHandler(handler);
-		}
+		public void AddOutputHandler(Action<object> handler) => ((IOutput)_and).AddOutputHandler(handler);
 
 		#endregion
 
 		#region Object Override Methods
-		public override string ToString()
-		{
-			return O.ToString();
-		}
+		public override string ToString() => O.ToString();
 		#endregion
 
 		#region Private Methods
@@ -91,10 +70,3 @@ namespace PetzoldComputer
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/XOR.cs $ $NoKeyWords:$
- * 
- * 3     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

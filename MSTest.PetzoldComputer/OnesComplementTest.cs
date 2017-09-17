@@ -36,9 +36,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestNoInversion()
 		{
-			IOnesComplement8 ones = new OnesComplement8();
-
-			ones.Voltage = VoltageSignal.HIGH;
+			IOnesComplement8 ones = new OnesComplement8 { Voltage = VoltageSignal.HIGH };
 			for (ushort input = 0; input < 0x100; ++input)
 			{
 				TestOnesComplementHelper(ones, (byte)input, false);

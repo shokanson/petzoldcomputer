@@ -1,4 +1,5 @@
 using System;
+
 namespace PetzoldComputer
 {
 	// This class is implemented internally as a ripple counter, but since I only fire
@@ -58,7 +59,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _flop0.Voltage; }
+			get => _flop0.Voltage;
 			set
 			{
 				ushort oldOutput = _output;
@@ -93,7 +94,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal Clk
 		{
-			get { return _flop0.Clk; }
+			get => _flop0.Clk;
 			set
 			{
 				ushort oldOutput = _output;
@@ -107,7 +108,7 @@ namespace PetzoldComputer
 
 		public VoltageSignal Clr
 		{
-			get { return ((IPresetAndClear)_flop0).Clr; }
+			get => ((IPresetAndClear)_flop0).Clr;
 			set
 			{
 				ushort oldOutput = _output;
@@ -134,102 +135,34 @@ namespace PetzoldComputer
 			}
 		}
 
-		public VoltageSignal Q0
-		{
-			get { return _flop0.Q; }
-		}
-
-		public VoltageSignal Q1
-		{
-			get { return _flop1.Q; }
-		}
-
-		public VoltageSignal Q2
-		{
-			get { return _flop2.Q; }
-		}
-
-		public VoltageSignal Q3
-		{
-			get { return _flop3.Q; }
-		}
-
-		public VoltageSignal Q4
-		{
-			get { return _flop4.Q; }
-		}
-
-		public VoltageSignal Q5
-		{
-			get { return _flop5.Q; }
-		}
-
-		public VoltageSignal Q6
-		{
-			get { return _flop6.Q; }
-		}
-
-		public VoltageSignal Q7
-		{
-			get { return _flop7.Q; }
-		}
-
-		public VoltageSignal Q8
-		{
-			get { return _flop8.Q; }
-		}
-
-		public VoltageSignal Q9
-		{
-			get { return _flop9.Q; }
-		}
-
-		public VoltageSignal Q10
-		{
-			get { return _flop10.Q; }
-		}
-
-		public VoltageSignal Q11
-		{
-			get { return _flop11.Q; }
-		}
-
-		public VoltageSignal Q12
-		{
-			get { return _flop12.Q; }
-		}
-
-		public VoltageSignal Q13
-		{
-			get { return _flop13.Q; }
-		}
-
-		public VoltageSignal Q14
-		{
-			get { return _flop14.Q; }
-		}
-
-		public VoltageSignal Q15
-		{
-			get { return _flop15.Q; }
-		}
+		public VoltageSignal Q0 => _flop0.Q;
+		public VoltageSignal Q1 => _flop1.Q;
+		public VoltageSignal Q2 => _flop2.Q;
+		public VoltageSignal Q3 => _flop3.Q;
+		public VoltageSignal Q4 => _flop4.Q;
+		public VoltageSignal Q5 => _flop5.Q;
+		public VoltageSignal Q6 => _flop6.Q;
+		public VoltageSignal Q7 => _flop7.Q;
+		public VoltageSignal Q8 => _flop8.Q;
+		public VoltageSignal Q9 => _flop9.Q;
+		public VoltageSignal Q10 => _flop10.Q;
+		public VoltageSignal Q11 => _flop11.Q;
+		public VoltageSignal Q12 => _flop12.Q;
+		public VoltageSignal Q13 => _flop13.Q;
+		public VoltageSignal Q14 => _flop14.Q;
+		public VoltageSignal Q15 => _flop15.Q;
 
 		#endregion
 
 		#region IOutput Members
 
-		public void AddOutputHandler(Action<object> handler)
-		{
-			OutEvent += handler;
-		}
+		public void AddOutputHandler(Action<object> handler) => OutEvent += handler;
 
 		#endregion
 
 		#region Object Override Methods
-		public override string ToString()
-		{
-			return
-				string.Format(
+		// this is a case where string.Format is clearer than an interpolated string
+		public override string ToString() => string.Format(
 					"{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}{12}{13}{14}{15}",
 					_flop15.Q == VoltageSignal.HIGH ? 1 : 0,
 					_flop14.Q == VoltageSignal.HIGH ? 1 : 0,
@@ -247,7 +180,6 @@ namespace PetzoldComputer
 					_flop2.Q == VoltageSignal.HIGH ? 1 : 0,
 					_flop1.Q == VoltageSignal.HIGH ? 1 : 0,
 					_flop0.Q == VoltageSignal.HIGH ? 1 : 0);
-		}
 		#endregion
 
 		#region Private Methods
@@ -332,19 +264,9 @@ namespace PetzoldComputer
 		{
 			if (oldOutput != _output)
 			{
-				if (OutEvent != null)
-				{
-					OutEvent(this);
-				}
+				OutEvent?.Invoke(this);
 			}
 		}
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/CounterSynchronous16.cs $ $NoKeyWords:$
- * 
- * 2     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

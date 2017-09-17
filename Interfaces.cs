@@ -274,10 +274,3 @@ namespace PetzoldComputer
 		VoltageSignal O { get; }
 	}
 }
-
-/*
-$Log: /PetzoldComputer/Interfaces.cs $ $NoKeyWords:$
- * 
- * 4     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/

@@ -30,10 +30,11 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestComputer()
 		{
-			IPhase1Computer computer = new Phase1Computer();
-
-			computer.Clr = VoltageSignal.HIGH;
-			computer.Voltage = VoltageSignal.HIGH;
+			IPhase1Computer computer = new Phase1Computer
+			{
+				Clr = VoltageSignal.HIGH,
+				Voltage = VoltageSignal.HIGH
+			};
 
 			int nBytes = 0x10000;	// do not set higher than 0x10000 (64KB)
 

@@ -45,9 +45,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestSumAndCarry()
 		{
-			IRippleAdder8 adder = new RippleAdder8();
-
-			adder.Voltage = VoltageSignal.HIGH;
+			IRippleAdder8 adder = new RippleAdder8 { Voltage = VoltageSignal.HIGH };
 			for (ushort a = 0; a < 0x100; ++a)
 			{
 				for (ushort b = 0; b < 0x100; ++b)

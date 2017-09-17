@@ -22,9 +22,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestOutput()
 		{
-			IOr or2 = new OR();
-
-			or2.Voltage = VoltageSignal.HIGH;
+			IOr or2 = new OR { Voltage = VoltageSignal.HIGH };
 			Assert.AreEqual(or2.O, VoltageSignal.LOW, "Gate on -- A: L; B: L; O: L");
 			or2.A = VoltageSignal.HIGH;
 			Assert.AreEqual(or2.O, VoltageSignal.HIGH, "Gate on -- A: H; B: L; O: H");

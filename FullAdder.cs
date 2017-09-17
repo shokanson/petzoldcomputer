@@ -1,4 +1,5 @@
 using System;
+
 namespace PetzoldComputer
 {
 	public class FullAdder : IFullAdder, ISum, ICarry
@@ -32,12 +33,10 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get { return _sumHalfAdder.Voltage; }
+			get => _sumHalfAdder.Voltage;
 			set
 			{
-				_sumHalfAdder.Voltage = value;
-				_carryHalfAdder.Voltage = value;
-				_carryOr.Voltage = value;
+				_sumHalfAdder.Voltage = _carryHalfAdder.Voltage = _carryOr.Voltage = value;
 
 				HandleOutputsAndEvents();
 			}
@@ -90,27 +89,18 @@ namespace PetzoldComputer
 
 		#region ISumEvent Members
 
-		public void AddSumHandler(Action<object> handler)
-		{
-			SumEvent += handler;
-		}
+		public void AddSumHandler(Action<object> handler) => SumEvent += handler;
 
 		#endregion
 
 		#region ICarryEvent Members
 
-		public void AddCarryHandler(Action<object> handler)
-		{
-			CarryEvent += handler;
-		}
+		public void AddCarryHandler(Action<object> handler) => CarryEvent += handler;
 
 		#endregion
 
 		#region Object Override Methods
-		public override string ToString()
-		{
-			return string.Format("Sum: {0}; Carry: {1}", Sum, Carry);
-		}
+		public override string ToString() => $"Sum: {Sum}; Carry: {Carry}";
 		#endregion
 
 		#region Private Methods
@@ -128,24 +118,15 @@ namespace PetzoldComputer
 			_carryOr.B = _sumHalfAdder.Carry;
 		}
 
-		private void SetSum()
-		{
-			_sum = _carryHalfAdder.Sum;
-		}
+		private void SetSum() => _sum = _carryHalfAdder.Sum;
 
-		private void SetCarry()
-		{
-			_carry = _carryOr.O;
-		}
+		private void SetCarry() => _carry = _carryOr.O;
 
 		private void FireSumEvent(VoltageSignal oldSum)
 		{
 			if (oldSum != _sum)
 			{
-				if (SumEvent != null)
-				{
-					SumEvent(this);
-				}
+				SumEvent?.Invoke(this);
 			}
 		}
 
@@ -153,10 +134,7 @@ namespace PetzoldComputer
 		{
 			if (oldCarry != _carry)
 			{
-				if (CarryEvent != null)
-				{
-					CarryEvent(this);
-				}
+				CarryEvent?.Invoke(this);
 			}
 		}
 
@@ -173,13 +151,3 @@ namespace PetzoldComputer
 		#endregion
 	}
 }
-
-/*
-$Log: /PetzoldComputer/FullAdder.cs $ $NoKeyWords:$
- * 
- * 4     1/26/07 6:54a Sean
- * results of ReSharper analysis
- * 
- * 3     1/21/07 11:58p Sean
- * results of ReSharper analysis
-*/
