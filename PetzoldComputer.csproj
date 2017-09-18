@@ -61,7 +61,9 @@
     <Compile Include="NOR.cs" />
     <Compile Include="NOT.cs" />
     <Compile Include="OR.cs" />
+    <Compile Include="Oscillator.cs" />
     <Compile Include="Phase1Computer.cs" />
+    <Compile Include="Phase2Computer.cs" />
     <Compile Include="RAM64KB.cs" />
     <Compile Include="Relay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

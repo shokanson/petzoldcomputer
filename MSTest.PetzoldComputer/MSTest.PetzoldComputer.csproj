@@ -70,6 +70,7 @@
     <Compile Include="RelayTest.cs" />
     <Compile Include="RippleAdder8Test.cs" />
     <Compile Include="TestEventsHelper.cs" />
+    <Compile Include="Phase2ComputerTest.cs" />
     <Compile Include="XORTest.cs" />
   </ItemGroup>
   <ItemGroup>

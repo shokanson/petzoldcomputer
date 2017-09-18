@@ -29,6 +29,8 @@ namespace PetzoldComputer
 		private ILatchEdge8 _latch;
 		#endregion
 
+		public string PC => _counter.ToString();
+
 		#region IPhase1Computer Members
 
 		public VoltageSignal Voltage
@@ -55,6 +57,9 @@ namespace PetzoldComputer
 				// gets changed before it's done its job.
 				_latch.Clk = value;
 				_counter.Clk = value;
+
+				// nothing interesting happens when the clock goes low, so don't bother invoking the handler in that case
+				if (value == VoltageSignal.HIGH) _handler?.Invoke(this);
 			}
 		}
 
@@ -106,7 +111,8 @@ namespace PetzoldComputer
 
 		#region IOutput Members
 
-		public void AddOutputHandler(Action<object> handler) => throw new NotImplementedException();
+		private Action<object> _handler;
+		public void AddOutputHandler(Action<object> handler) => _handler = handler;
 
 		#endregion
 
