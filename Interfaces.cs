@@ -1,5 +1,14 @@
 namespace PetzoldComputer
 {
+	public interface ISelector2to1
+	{
+		VoltageSignal Voltage { get; set; }
+		VoltageSignal A { get; set; }
+		VoltageSignal B { get; set; }
+		VoltageSignal Select { get; set; }
+		VoltageSignal O { get; }
+	}
+
 	public interface IAddAndSub8
 	{
 		VoltageSignal Voltage { get; set; }
