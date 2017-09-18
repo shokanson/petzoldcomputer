@@ -13,14 +13,14 @@ namespace MSTest.PetzoldComputer
 			IDFlipFlop flip = new DFlipFlopEdgeWithPresetAndClear();
 			IPresetAndClear flipPC = (IPresetAndClear)flip;
 
-			Assert.AreEqual(flip.Voltage, VoltageSignal.LOW, "Constructor: Voltage");
-			Assert.AreEqual(flip.D, VoltageSignal.LOW, "Constructor: D");
-			Assert.AreEqual(flip.Clk, VoltageSignal.LOW, "Constructor: Clk");
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Constructor: Q");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.LOW, "Constructor: Qnot");
-			Assert.AreEqual(flipPC.Pre, VoltageSignal.LOW, "Constructor: Pre");
-			Assert.AreEqual(flipPC.Clr, VoltageSignal.LOW, "Constructor: Clr");
-			Assert.AreEqual(flip.ToString(), "Q: LOW; Qnot: LOW", "Constructor: ToString()");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Voltage, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, flip.D, "Constructor: D");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Clk, "Constructor: Clk");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Constructor: Q");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Qnot, "Constructor: Qnot");
+			Assert.AreEqual(VoltageSignal.LOW, flipPC.Pre, "Constructor: Pre");
+			Assert.AreEqual(VoltageSignal.LOW, flipPC.Clr, "Constructor: Clr");
+			Assert.AreEqual("Q: LOW; Qnot: LOW", flip.ToString(), "Constructor: ToString()");
 		}
 
 		[TestMethod]
@@ -29,43 +29,43 @@ namespace MSTest.PetzoldComputer
 			IDFlipFlop flip = new DFlipFlopEdgeWithPresetAndClear();
 
 			flip.Voltage = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: Qnot H");
 
 			flip.Clk = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: D: L; Clk: ^: Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: D: L; Clk: ^: Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: D: L; Clk: ^: Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: D: L; Clk: ^: Qnot H");
 
 			flip.Clk = VoltageSignal.LOW;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: D: L; Clk: v: Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: D: L; Clk: v: Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: D: L; Clk: v: Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: D: L; Clk: v: Qnot H");
 
 			flip.D = VoltageSignal.HIGH;
 			VoltageSignal oldQ = flip.Q, oldQnot = flip.Qnot;
-			Assert.AreEqual(flip.Q, oldQ, "Gate on: D: ^; Clk: L: Q Q");
-			Assert.AreEqual(flip.Qnot, oldQnot, "Gate on: D: ^; Clk: L: Qnot Qnot");
+			Assert.AreEqual(oldQ, flip.Q, "Gate on: D: ^; Clk: L: Q Q");
+			Assert.AreEqual(oldQnot, flip.Qnot, "Gate on: D: ^; Clk: L: Qnot Qnot");
 
 			flip.Clk = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.HIGH, "Gate on: D: H; Clk: ^: Q H");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.LOW, "Gate on: D: H; Clk: ^: Qnot L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Q, "Gate on: D: H; Clk: ^: Q H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Qnot, "Gate on: D: H; Clk: ^: Qnot L");
 
 			flip.Clk = VoltageSignal.LOW;
 			oldQ = flip.Q;
 			oldQnot = flip.Qnot;
-			Assert.AreEqual(flip.Q, oldQ, "Gate on: D: H; Clk: v: Q Q");
-			Assert.AreEqual(flip.Qnot, oldQnot, "Gate on: D: H; Clk: v: Qnot Qnot");
+			Assert.AreEqual(oldQ, flip.Q, "Gate on: D: H; Clk: v: Q Q");
+			Assert.AreEqual(oldQnot, flip.Qnot, "Gate on: D: H; Clk: v: Qnot Qnot");
 
 			flip.D = VoltageSignal.LOW;
 			flip.Clk = VoltageSignal.HIGH;
 			flip.D = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: D: L; Clk: ^: D: ^: Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: D: L; Clk: ^: D: ^: Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: D: L; Clk: ^: D: ^: Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: D: L; Clk: ^: D: ^: Qnot H");
 
 			flip.Clk = VoltageSignal.LOW;
 			flip.Clk = VoltageSignal.HIGH;
 			flip.D = VoltageSignal.LOW;
-			Assert.AreEqual(flip.Q, VoltageSignal.HIGH, "Gate on: D: H; Clk: ^: D: v; Q H");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.LOW, "Gate on: D: H; Clk: ^: D: v; Qnot L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Q, "Gate on: D: H; Clk: ^: D: v; Q H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Qnot, "Gate on: D: H; Clk: ^: D: v; Qnot L");
 		}
 
 		[TestMethod]
@@ -80,36 +80,36 @@ namespace MSTest.PetzoldComputer
 			// at this point, nothing we do should change Q or Qnot			
 
 			flip.Clk = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.HIGH, "Gate on: Pre: H; D: L; Clk: ^: Q H");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.LOW, "Gate on: Pre: H; D: L; Clk: ^: Qnot L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Q, "Gate on: Pre: H; D: L; Clk: ^: Q H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Qnot, "Gate on: Pre: H; D: L; Clk: ^: Qnot L");
 
 			flip.Clk = VoltageSignal.LOW;
-			Assert.AreEqual(flip.Q, VoltageSignal.HIGH, "Gate on: Pre: H; D: L; Clk: v: Q H");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.LOW, "Gate on: Pre: H; D: L; Clk: v: Qnot L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Q, "Gate on: Pre: H; D: L; Clk: v: Q H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Qnot, "Gate on: Pre: H; D: L; Clk: v: Qnot L");
 
 			flip.D = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.HIGH, "Gate on: Pre: H; D: ^; Clk: L: Q H");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.LOW, "Gate on: Pre: H; D: ^; Clk: L: Qnot L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Q, "Gate on: Pre: H; D: ^; Clk: L: Q H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Qnot, "Gate on: Pre: H; D: ^; Clk: L: Qnot L");
 
 			flip.Clk = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.HIGH, "Gate on: Pre: H; D: H; Clk: ^: Q H");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.LOW, "Gate on: Pre: H; D: H; Clk: ^: Qnot L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Q, "Gate on: Pre: H; D: H; Clk: ^: Q H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Qnot, "Gate on: Pre: H; D: H; Clk: ^: Qnot L");
 
 			flip.Clk = VoltageSignal.LOW;
-			Assert.AreEqual(flip.Q, VoltageSignal.HIGH, "Gate on: Pre: H; D: H; Clk: v: Q H");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.LOW, "Gate on: Pre: H; D: H; Clk: v: Qnot L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Q, "Gate on: Pre: H; D: H; Clk: v: Q H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Qnot, "Gate on: Pre: H; D: H; Clk: v: Qnot L");
 
 			flip.D = VoltageSignal.LOW;
 			flip.Clk = VoltageSignal.HIGH;
 			flip.D = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.HIGH, "Gate on: Pre: H; D: L; Clk: ^: D: ^: Q H");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.LOW, "Gate on: Pre: H; D: L; Clk: ^: D: ^: Qnot L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Q, "Gate on: Pre: H; D: L; Clk: ^: D: ^: Q H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Qnot, "Gate on: Pre: H; D: L; Clk: ^: D: ^: Qnot L");
 
 			flip.Clk = VoltageSignal.LOW;
 			flip.Clk = VoltageSignal.HIGH;
 			flip.D = VoltageSignal.LOW;
-			Assert.AreEqual(flip.Q, VoltageSignal.HIGH, "Gate on: Pre: H; D: H; Clk: ^: D: v; Q H");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.LOW, "Gate on: Pre: H; D: H; Clk: ^: D: v; Qnot L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Q, "Gate on: Pre: H; D: H; Clk: ^: D: v; Q H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Qnot, "Gate on: Pre: H; D: H; Clk: ^: D: v; Qnot L");
 		}
 
 		[TestMethod]
@@ -124,36 +124,36 @@ namespace MSTest.PetzoldComputer
 			// at this point, nothing we do should change Q or Qnot			
 
 			flip.Clk = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: Clr: H; D: L; Clk: ^: Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: Clr: H; D: L; Clk: ^: Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: Clr: H; D: L; Clk: ^: Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: Clr: H; D: L; Clk: ^: Qnot H");
 
 			flip.Clk = VoltageSignal.LOW;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: Clr: H; D: L; Clk: v: Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: Clr: H; D: L; Clk: v: Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: Clr: H; D: L; Clk: v: Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: Clr: H; D: L; Clk: v: Qnot H");
 
 			flip.D = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: Clr: H; D: ^; Clk: L: Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: Clr: H; D: ^; Clk: L: Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: Clr: H; D: ^; Clk: L: Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: Clr: H; D: ^; Clk: L: Qnot H");
 
 			flip.Clk = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: Clr: H; D: H; Clk: ^: Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: Clr: H; D: H; Clk: ^: Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: Clr: H; D: H; Clk: ^: Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: Clr: H; D: H; Clk: ^: Qnot H");
 
 			flip.Clk = VoltageSignal.LOW;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: Clr: H; D: H; Clk: v: Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: Clr: H; D: H; Clk: v: Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: Clr: H; D: H; Clk: v: Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: Clr: H; D: H; Clk: v: Qnot H");
 
 			flip.D = VoltageSignal.LOW;
 			flip.Clk = VoltageSignal.HIGH;
 			flip.D = VoltageSignal.HIGH;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: Clr: H; D: L; Clk: ^: D: ^: Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: Clr: H; D: L; Clk: ^: D: ^: Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: Clr: H; D: L; Clk: ^: D: ^: Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: Clr: H; D: L; Clk: ^: D: ^: Qnot H");
 
 			flip.Clk = VoltageSignal.LOW;
 			flip.Clk = VoltageSignal.HIGH;
 			flip.D = VoltageSignal.LOW;
-			Assert.AreEqual(flip.Q, VoltageSignal.LOW, "Gate on: Clr: H; D: H; Clk: ^: D: v; Q L");
-			Assert.AreEqual(flip.Qnot, VoltageSignal.HIGH, "Gate on: Clr: H; D: H; Clk: ^: D: v; Qnot H");
+			Assert.AreEqual(VoltageSignal.LOW, flip.Q, "Gate on: Clr: H; D: H; Clk: ^: D: v; Q L");
+			Assert.AreEqual(VoltageSignal.HIGH, flip.Qnot, "Gate on: Clr: H; D: H; Clk: ^: D: v; Qnot H");
 		}
 	}
 }

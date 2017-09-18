@@ -12,34 +12,34 @@ namespace MSTest.PetzoldComputer
 		{
 			IAddAndSub8 aas = new AddAndSub8();
 
-			Assert.AreEqual(aas.Voltage, VoltageSignal.LOW, "Constructor: Voltage");
-			Assert.AreEqual(aas.A0, VoltageSignal.LOW, "Constructor: A0");
-			Assert.AreEqual(aas.A1, VoltageSignal.LOW, "Constructor: A1");
-			Assert.AreEqual(aas.A2, VoltageSignal.LOW, "Constructor: A2");
-			Assert.AreEqual(aas.A3, VoltageSignal.LOW, "Constructor: A3");
-			Assert.AreEqual(aas.A4, VoltageSignal.LOW, "Constructor: A4");
-			Assert.AreEqual(aas.A5, VoltageSignal.LOW, "Constructor: A5");
-			Assert.AreEqual(aas.A6, VoltageSignal.LOW, "Constructor: A6");
-			Assert.AreEqual(aas.A7, VoltageSignal.LOW, "Constructor: A7");
-			Assert.AreEqual(aas.B0, VoltageSignal.LOW, "Constructor: B0");
-			Assert.AreEqual(aas.B1, VoltageSignal.LOW, "Constructor: B1");
-			Assert.AreEqual(aas.B2, VoltageSignal.LOW, "Constructor: B2");
-			Assert.AreEqual(aas.B3, VoltageSignal.LOW, "Constructor: B3");
-			Assert.AreEqual(aas.B4, VoltageSignal.LOW, "Constructor: B4");
-			Assert.AreEqual(aas.B5, VoltageSignal.LOW, "Constructor: B5");
-			Assert.AreEqual(aas.B6, VoltageSignal.LOW, "Constructor: B6");
-			Assert.AreEqual(aas.B7, VoltageSignal.LOW, "Constructor: B7");
-			Assert.AreEqual(aas.S0, VoltageSignal.LOW, "Constructor: S0");
-			Assert.AreEqual(aas.S1, VoltageSignal.LOW, "Constructor: S1");
-			Assert.AreEqual(aas.S2, VoltageSignal.LOW, "Constructor: S2");
-			Assert.AreEqual(aas.S3, VoltageSignal.LOW, "Constructor: S3");
-			Assert.AreEqual(aas.S4, VoltageSignal.LOW, "Constructor: S4");
-			Assert.AreEqual(aas.S5, VoltageSignal.LOW, "Constructor: S5");
-			Assert.AreEqual(aas.S6, VoltageSignal.LOW, "Constructor: S6");
-			Assert.AreEqual(aas.S7, VoltageSignal.LOW, "Constructor: S7");
-			Assert.AreEqual(aas.Sub, VoltageSignal.LOW, "Constructor: Sub");
-			Assert.AreEqual(aas.OverUnderFlow, VoltageSignal.LOW, "Constructor: OverUnderFlow");
-			Assert.AreEqual(aas.ToString(), "0:00000000", "Constructor: ToString()");
+			Assert.AreEqual(VoltageSignal.LOW, aas.Voltage, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, aas.A0, "Constructor: A0");
+			Assert.AreEqual(VoltageSignal.LOW, aas.A1, "Constructor: A1");
+			Assert.AreEqual(VoltageSignal.LOW, aas.A2, "Constructor: A2");
+			Assert.AreEqual(VoltageSignal.LOW, aas.A3, "Constructor: A3");
+			Assert.AreEqual(VoltageSignal.LOW, aas.A4, "Constructor: A4");
+			Assert.AreEqual(VoltageSignal.LOW, aas.A5, "Constructor: A5");
+			Assert.AreEqual(VoltageSignal.LOW, aas.A6, "Constructor: A6");
+			Assert.AreEqual(VoltageSignal.LOW, aas.A7, "Constructor: A7");
+			Assert.AreEqual(VoltageSignal.LOW, aas.B0, "Constructor: B0");
+			Assert.AreEqual(VoltageSignal.LOW, aas.B1, "Constructor: B1");
+			Assert.AreEqual(VoltageSignal.LOW, aas.B2, "Constructor: B2");
+			Assert.AreEqual(VoltageSignal.LOW, aas.B3, "Constructor: B3");
+			Assert.AreEqual(VoltageSignal.LOW, aas.B4, "Constructor: B4");
+			Assert.AreEqual(VoltageSignal.LOW, aas.B5, "Constructor: B5");
+			Assert.AreEqual(VoltageSignal.LOW, aas.B6, "Constructor: B6");
+			Assert.AreEqual(VoltageSignal.LOW, aas.B7, "Constructor: B7");
+			Assert.AreEqual(VoltageSignal.LOW, aas.S0, "Constructor: S0");
+			Assert.AreEqual(VoltageSignal.LOW, aas.S1, "Constructor: S1");
+			Assert.AreEqual(VoltageSignal.LOW, aas.S2, "Constructor: S2");
+			Assert.AreEqual(VoltageSignal.LOW, aas.S3, "Constructor: S3");
+			Assert.AreEqual(VoltageSignal.LOW, aas.S4, "Constructor: S4");
+			Assert.AreEqual(VoltageSignal.LOW, aas.S5, "Constructor: S5");
+			Assert.AreEqual(VoltageSignal.LOW, aas.S6, "Constructor: S6");
+			Assert.AreEqual(VoltageSignal.LOW, aas.S7, "Constructor: S7");
+			Assert.AreEqual(VoltageSignal.LOW, aas.Sub, "Constructor: Sub");
+			Assert.AreEqual(VoltageSignal.LOW, aas.OverUnderFlow, "Constructor: OverUnderFlow");
+			Assert.AreEqual("0:00000000", aas.ToString(), "Constructor: ToString()");
 		}
 
 		[TestMethod]

@@ -12,34 +12,34 @@ namespace MSTest.PetzoldComputer
 		{
 			IRippleAdder8 adder = new RippleAdder8();
 
-			Assert.AreEqual(adder.Voltage, VoltageSignal.LOW, "Constructor: Voltage");
-			Assert.AreEqual(adder.A0, VoltageSignal.LOW, "Constructor: A0");
-			Assert.AreEqual(adder.A1, VoltageSignal.LOW, "Constructor: A1");
-			Assert.AreEqual(adder.A2, VoltageSignal.LOW, "Constructor: A2");
-			Assert.AreEqual(adder.A3, VoltageSignal.LOW, "Constructor: A3");
-			Assert.AreEqual(adder.A4, VoltageSignal.LOW, "Constructor: A4");
-			Assert.AreEqual(adder.A5, VoltageSignal.LOW, "Constructor: A5");
-			Assert.AreEqual(adder.A6, VoltageSignal.LOW, "Constructor: A6");
-			Assert.AreEqual(adder.A7, VoltageSignal.LOW, "Constructor: A7");
-			Assert.AreEqual(adder.B0, VoltageSignal.LOW, "Constructor: B0");
-			Assert.AreEqual(adder.B1, VoltageSignal.LOW, "Constructor: B1");
-			Assert.AreEqual(adder.B2, VoltageSignal.LOW, "Constructor: B2");
-			Assert.AreEqual(adder.B3, VoltageSignal.LOW, "Constructor: B3");
-			Assert.AreEqual(adder.B4, VoltageSignal.LOW, "Constructor: B4");
-			Assert.AreEqual(adder.B5, VoltageSignal.LOW, "Constructor: B5");
-			Assert.AreEqual(adder.B6, VoltageSignal.LOW, "Constructor: B6");
-			Assert.AreEqual(adder.B7, VoltageSignal.LOW, "Constructor: B7");
-			Assert.AreEqual(adder.S0, VoltageSignal.LOW, "Constructor: S0");
-			Assert.AreEqual(adder.S1, VoltageSignal.LOW, "Constructor: S1");
-			Assert.AreEqual(adder.S2, VoltageSignal.LOW, "Constructor: S2");
-			Assert.AreEqual(adder.S3, VoltageSignal.LOW, "Constructor: S3");
-			Assert.AreEqual(adder.S4, VoltageSignal.LOW, "Constructor: S4");
-			Assert.AreEqual(adder.S5, VoltageSignal.LOW, "Constructor: S5");
-			Assert.AreEqual(adder.S6, VoltageSignal.LOW, "Constructor: S6");
-			Assert.AreEqual(adder.S7, VoltageSignal.LOW, "Constructor: S7");
-			Assert.AreEqual(adder.CarryIn, VoltageSignal.LOW, "Constructor: CarryIn");
-			Assert.AreEqual(adder.Carry, VoltageSignal.LOW, "Constructor: Carry");
-			Assert.AreEqual(adder.ToString(), "0:00000000", "Constructor: ToString()");
+			Assert.AreEqual(VoltageSignal.LOW, adder.Voltage, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, adder.A0, "Constructor: A0");
+			Assert.AreEqual(VoltageSignal.LOW, adder.A1, "Constructor: A1");
+			Assert.AreEqual(VoltageSignal.LOW, adder.A2, "Constructor: A2");
+			Assert.AreEqual(VoltageSignal.LOW, adder.A3, "Constructor: A3");
+			Assert.AreEqual(VoltageSignal.LOW, adder.A4, "Constructor: A4");
+			Assert.AreEqual(VoltageSignal.LOW, adder.A5, "Constructor: A5");
+			Assert.AreEqual(VoltageSignal.LOW, adder.A6, "Constructor: A6");
+			Assert.AreEqual(VoltageSignal.LOW, adder.A7, "Constructor: A7");
+			Assert.AreEqual(VoltageSignal.LOW, adder.B0, "Constructor: B0");
+			Assert.AreEqual(VoltageSignal.LOW, adder.B1, "Constructor: B1");
+			Assert.AreEqual(VoltageSignal.LOW, adder.B2, "Constructor: B2");
+			Assert.AreEqual(VoltageSignal.LOW, adder.B3, "Constructor: B3");
+			Assert.AreEqual(VoltageSignal.LOW, adder.B4, "Constructor: B4");
+			Assert.AreEqual(VoltageSignal.LOW, adder.B5, "Constructor: B5");
+			Assert.AreEqual(VoltageSignal.LOW, adder.B6, "Constructor: B6");
+			Assert.AreEqual(VoltageSignal.LOW, adder.B7, "Constructor: B7");
+			Assert.AreEqual(VoltageSignal.LOW, adder.S0, "Constructor: S0");
+			Assert.AreEqual(VoltageSignal.LOW, adder.S1, "Constructor: S1");
+			Assert.AreEqual(VoltageSignal.LOW, adder.S2, "Constructor: S2");
+			Assert.AreEqual(VoltageSignal.LOW, adder.S3, "Constructor: S3");
+			Assert.AreEqual(VoltageSignal.LOW, adder.S4, "Constructor: S4");
+			Assert.AreEqual(VoltageSignal.LOW, adder.S5, "Constructor: S5");
+			Assert.AreEqual(VoltageSignal.LOW, adder.S6, "Constructor: S6");
+			Assert.AreEqual(VoltageSignal.LOW, adder.S7, "Constructor: S7");
+			Assert.AreEqual(VoltageSignal.LOW, adder.CarryIn, "Constructor: CarryIn");
+			Assert.AreEqual(VoltageSignal.LOW, adder.Carry, "Constructor: Carry");
+			Assert.AreEqual("0:00000000", adder.ToString(), "Constructor: ToString()");
 		}
 
 		[TestMethod]

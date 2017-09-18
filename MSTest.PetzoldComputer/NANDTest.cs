@@ -15,34 +15,34 @@ namespace MSTest.PetzoldComputer
 		{
 			INand nand = new NAND();
 
-			Assert.AreEqual(nand.Voltage, VoltageSignal.LOW, "NAND Constructor: Voltage");
-			Assert.AreEqual(nand.A, VoltageSignal.LOW, "NAND Constructor: A");
-			Assert.AreEqual(nand.B, VoltageSignal.LOW, "NAND Constructor: B");
-			Assert.AreEqual(nand.O, VoltageSignal.LOW, "NAND Constructor: O");
-			Assert.AreEqual(nand.ToString(), "LOW", "NAND Constructor: ToString()");
+			Assert.AreEqual(VoltageSignal.LOW, nand.Voltage, "NAND Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, nand.A, "NAND Constructor: A");
+			Assert.AreEqual(VoltageSignal.LOW, nand.B, "NAND Constructor: B");
+			Assert.AreEqual(VoltageSignal.LOW, nand.O, "NAND Constructor: O");
+			Assert.AreEqual("LOW", nand.ToString(), "NAND Constructor: ToString()");
 		}
 
 		[TestMethod]
 		public void TestOutput()
 		{
 			INand nand = new NAND { Voltage = VoltageSignal.HIGH };
-			Assert.AreEqual(nand.O, VoltageSignal.HIGH, "Gate on -- A: L; B: L; O: H");
+			Assert.AreEqual(VoltageSignal.HIGH, nand.O, "Gate on -- A: L; B: L; O: H");
 			nand.A = VoltageSignal.HIGH;
-			Assert.AreEqual(nand.O, VoltageSignal.HIGH, "Gate on -- A: H; B: L; O: H");
+			Assert.AreEqual(VoltageSignal.HIGH, nand.O, "Gate on -- A: H; B: L; O: H");
 			nand.B = VoltageSignal.HIGH;
-			Assert.AreEqual(nand.O, VoltageSignal.LOW, "Gate on -- A: H; B: H; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, nand.O, "Gate on -- A: H; B: H; O: L");
 			nand.A = VoltageSignal.LOW;
-			Assert.AreEqual(nand.O, VoltageSignal.HIGH, "Gate on -- A: L; B: H; O: H");
+			Assert.AreEqual(VoltageSignal.HIGH, nand.O, "Gate on -- A: L; B: H; O: H");
 
 			nand.Voltage = VoltageSignal.LOW;
 			nand.B = VoltageSignal.LOW;
-			Assert.AreEqual(nand.O, VoltageSignal.LOW, "Gate off -- A: L; B: L; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, nand.O, "Gate off -- A: L; B: L; O: L");
 			nand.A = VoltageSignal.HIGH;
-			Assert.AreEqual(nand.O, VoltageSignal.LOW, "Gate off -- A: H; B: L; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, nand.O, "Gate off -- A: H; B: L; O: L");
 			nand.B = VoltageSignal.HIGH;
-			Assert.AreEqual(nand.O, VoltageSignal.LOW, "Gate off -- A: H; B: H; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, nand.O, "Gate off -- A: H; B: H; O: L");
 			nand.A = VoltageSignal.LOW;
-			Assert.AreEqual(nand.O, VoltageSignal.LOW, "Gate off -- A: L; B: H; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, nand.O, "Gate off -- A: L; B: H; O: L");
 		}
 
 		[TestMethod]
@@ -57,21 +57,21 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nand.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: L; B: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: ^; no event");
 			nand.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: L; B: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->H; no event");
 			nand.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: L; B: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: v; no event");
 			nand.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: L; B: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->L; no event");
 			nand.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: L; A: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: ^; no event");
 			nand.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: L; A: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->H; no event");
 			nand.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: L; A: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: v; no event");
 			nand.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: L; A: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->L; no event");
 
 			// setup
 			nand.A = VoltageSignal.HIGH;
@@ -79,15 +79,15 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nand.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "fired", "Gate on -- A: H; B: ^; event");
+			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: H; B: ^; event");
 			helper.ResetStatus();
 			nand.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: H; B: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->H; no event");
 			nand.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "fired", "Gate on -- A: H; B: v; event");
+			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: H; B: v; event");
 			helper.ResetStatus();
 			nand.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: H; B: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->L; no event");
 
 			// setup
 			nand.A = VoltageSignal.LOW;
@@ -95,15 +95,15 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nand.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "fired", "Gate on -- B: H; A: ^; event");
+			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: H; A: ^; event");
 			helper.ResetStatus();
 			nand.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: H; A: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->H; no event");
 			nand.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "fired", "Gate on -- B: H; A: v; event");
+			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: H; A: v; event");
 			helper.ResetStatus();
 			nand.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: H; A: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->L; no event");
 		}
 
 		[TestMethod]
@@ -114,21 +114,21 @@ namespace MSTest.PetzoldComputer
 			TestEventsHelper helper = new TestEventsHelper((IOutput)nand);
 
 			nand.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: L; B: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: L; B: ^; no event");
 			nand.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: L; B: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: L; B: -->H; no event");
 			nand.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: L; B: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: L; B: v; no event");
 			nand.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: L; B: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: L; B: -->L; no event");
 			nand.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: L; A: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: L; A: ^; no event");
 			nand.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: L; A: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: L; A: -->H; no event");
 			nand.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: L; A: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: L; A: v; no event");
 			nand.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: L; A: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: L; A: -->L; no event");
 
 			// setup
 			nand.A = VoltageSignal.HIGH;
@@ -136,13 +136,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nand.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: H; B: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: H; B: ^; no event");
 			nand.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: H; B: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: H; B: -->H; no event");
 			nand.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: H; B: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: H; B: v; no event");
 			nand.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: H; B: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: H; B: -->L; no event");
 
 			// setup
 			nand.A = VoltageSignal.LOW;
@@ -150,13 +150,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nand.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: H; A: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: H; A: ^; no event");
 			nand.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: H; A: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: H; A: -->H; no event");
 			nand.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: H; A: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: H; A: v; no event");
 			nand.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: H; A: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: H; A: -->L; no event");
 		}
 	}
 }

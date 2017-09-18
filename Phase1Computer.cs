@@ -59,7 +59,7 @@ namespace PetzoldComputer
 				_counter.Clk = value;
 
 				// nothing interesting happens when the clock goes low, so don't bother invoking the handler in that case
-				if (value == VoltageSignal.HIGH) _handler?.Invoke(this);
+				if (value == VoltageSignal.HIGH) OutputChanged?.Invoke(this);
 			}
 		}
 
@@ -111,8 +111,8 @@ namespace PetzoldComputer
 
 		#region IOutput Members
 
-		private Action<object> _handler;
-		public void AddOutputHandler(Action<object> handler) => _handler = handler;
+		private Action<object> OutputChanged;
+		public void AddOutputHandler(Action<object> handler) => OutputChanged += handler;
 
 		#endregion
 

@@ -13,12 +13,12 @@ namespace MSTest.PetzoldComputer
 			ISelector2to1 selector = new Selector2to1();
 
 			// assert
-			Assert.AreEqual(selector.Voltage, VoltageSignal.LOW, "Constructor: Voltage");
-			Assert.AreEqual(selector.A, VoltageSignal.LOW, "Constructor: A");
-			Assert.AreEqual(selector.B, VoltageSignal.LOW, "Constructor: B");
-			Assert.AreEqual(selector.Select, VoltageSignal.LOW, "Constructor: Select");
-			Assert.AreEqual(selector.O, VoltageSignal.LOW, "Constructor: O");
-			Assert.AreEqual(selector.ToString(), "LOW", "Constructor: ToString()");
+			Assert.AreEqual(VoltageSignal.LOW, selector.Voltage, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, selector.A, "Constructor: A");
+			Assert.AreEqual(VoltageSignal.LOW, selector.B, "Constructor: B");
+			Assert.AreEqual(VoltageSignal.LOW, selector.Select, "Constructor: Select");
+			Assert.AreEqual(VoltageSignal.LOW, selector.O, "Constructor: O");
+			Assert.AreEqual("LOW", selector.ToString(), "Constructor: ToString()");
 		}
 
 		[DataTestMethod]

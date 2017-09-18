@@ -12,25 +12,25 @@ namespace MSTest.PetzoldComputer
 		{
 			IOnesComplement8 ones = new OnesComplement8();
 
-			Assert.AreEqual(ones.Voltage, VoltageSignal.LOW, "Constructor: Voltage");
-			Assert.AreEqual(ones.Invert, VoltageSignal.LOW, "Constructor: Invert");
-			Assert.AreEqual(ones.I0, VoltageSignal.LOW, "Constructor: I0");
-			Assert.AreEqual(ones.I1, VoltageSignal.LOW, "Constructor: I1");
-			Assert.AreEqual(ones.I2, VoltageSignal.LOW, "Constructor: I2");
-			Assert.AreEqual(ones.I3, VoltageSignal.LOW, "Constructor: I3");
-			Assert.AreEqual(ones.I4, VoltageSignal.LOW, "Constructor: I4");
-			Assert.AreEqual(ones.I5, VoltageSignal.LOW, "Constructor: I5");
-			Assert.AreEqual(ones.I6, VoltageSignal.LOW, "Constructor: I6");
-			Assert.AreEqual(ones.I7, VoltageSignal.LOW, "Constructor: I7");
-			Assert.AreEqual(ones.O0, VoltageSignal.LOW, "Constructor: O0");
-			Assert.AreEqual(ones.O1, VoltageSignal.LOW, "Constructor: O1");
-			Assert.AreEqual(ones.O2, VoltageSignal.LOW, "Constructor: O2");
-			Assert.AreEqual(ones.O3, VoltageSignal.LOW, "Constructor: O3");
-			Assert.AreEqual(ones.O4, VoltageSignal.LOW, "Constructor: O4");
-			Assert.AreEqual(ones.O5, VoltageSignal.LOW, "Constructor: O5");
-			Assert.AreEqual(ones.O6, VoltageSignal.LOW, "Constructor: O6");
-			Assert.AreEqual(ones.O7, VoltageSignal.LOW, "Constructor: O7");
-			Assert.AreEqual(ones.ToString(), "00000000", "Constructor: ToString()");
+			Assert.AreEqual(VoltageSignal.LOW, ones.Voltage, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, ones.Invert, "Constructor: Invert");
+			Assert.AreEqual(VoltageSignal.LOW, ones.I0, "Constructor: I0");
+			Assert.AreEqual(VoltageSignal.LOW, ones.I1, "Constructor: I1");
+			Assert.AreEqual(VoltageSignal.LOW, ones.I2, "Constructor: I2");
+			Assert.AreEqual(VoltageSignal.LOW, ones.I3, "Constructor: I3");
+			Assert.AreEqual(VoltageSignal.LOW, ones.I4, "Constructor: I4");
+			Assert.AreEqual(VoltageSignal.LOW, ones.I5, "Constructor: I5");
+			Assert.AreEqual(VoltageSignal.LOW, ones.I6, "Constructor: I6");
+			Assert.AreEqual(VoltageSignal.LOW, ones.I7, "Constructor: I7");
+			Assert.AreEqual(VoltageSignal.LOW, ones.O0, "Constructor: O0");
+			Assert.AreEqual(VoltageSignal.LOW, ones.O1, "Constructor: O1");
+			Assert.AreEqual(VoltageSignal.LOW, ones.O2, "Constructor: O2");
+			Assert.AreEqual(VoltageSignal.LOW, ones.O3, "Constructor: O3");
+			Assert.AreEqual(VoltageSignal.LOW, ones.O4, "Constructor: O4");
+			Assert.AreEqual(VoltageSignal.LOW, ones.O5, "Constructor: O5");
+			Assert.AreEqual(VoltageSignal.LOW, ones.O6, "Constructor: O6");
+			Assert.AreEqual(VoltageSignal.LOW, ones.O7, "Constructor: O7");
+			Assert.AreEqual("00000000", ones.ToString(), "Constructor: ToString()");
 		}
 
 		[TestMethod]

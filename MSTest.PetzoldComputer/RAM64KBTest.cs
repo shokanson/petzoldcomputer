@@ -12,40 +12,40 @@ namespace MSTest.PetzoldComputer
 		{
 			IRam64KB ram = new RAM64KB();
 
-			Assert.AreEqual(ram.Voltage, VoltageSignal.LOW, "Constructor: Voltage");
-			Assert.AreEqual(ram.Write, VoltageSignal.LOW, "Constructor: Write");
-			Assert.AreEqual(ram.A0, VoltageSignal.LOW, "Constructor: A0");
-			Assert.AreEqual(ram.A1, VoltageSignal.LOW, "Constructor: A1");
-			Assert.AreEqual(ram.A2, VoltageSignal.LOW, "Constructor: A2");
-			Assert.AreEqual(ram.A3, VoltageSignal.LOW, "Constructor: A3");
-			Assert.AreEqual(ram.A4, VoltageSignal.LOW, "Constructor: A4");
-			Assert.AreEqual(ram.A5, VoltageSignal.LOW, "Constructor: A5");
-			Assert.AreEqual(ram.A6, VoltageSignal.LOW, "Constructor: A6");
-			Assert.AreEqual(ram.A7, VoltageSignal.LOW, "Constructor: A7");
-			Assert.AreEqual(ram.A8, VoltageSignal.LOW, "Constructor: A8");
-			Assert.AreEqual(ram.A9, VoltageSignal.LOW, "Constructor: A9");
-			Assert.AreEqual(ram.A10, VoltageSignal.LOW, "Constructor: A10");
-			Assert.AreEqual(ram.A11, VoltageSignal.LOW, "Constructor: A11");
-			Assert.AreEqual(ram.A12, VoltageSignal.LOW, "Constructor: A12");
-			Assert.AreEqual(ram.A13, VoltageSignal.LOW, "Constructor: A13");
-			Assert.AreEqual(ram.A14, VoltageSignal.LOW, "Constructor: A14");
-			Assert.AreEqual(ram.A15, VoltageSignal.LOW, "Constructor: A15");
-			Assert.AreEqual(ram.Din0, VoltageSignal.LOW, "Constructor: Din0");
-			Assert.AreEqual(ram.Din1, VoltageSignal.LOW, "Constructor: Din1");
-			Assert.AreEqual(ram.Din2, VoltageSignal.LOW, "Constructor: Din2");
-			Assert.AreEqual(ram.Din3, VoltageSignal.LOW, "Constructor: Din3");
-			Assert.AreEqual(ram.Din4, VoltageSignal.LOW, "Constructor: Din4");
-			Assert.AreEqual(ram.Din5, VoltageSignal.LOW, "Constructor: Din5");
-			Assert.AreEqual(ram.Din6, VoltageSignal.LOW, "Constructor: Din6");
-			Assert.AreEqual(ram.Din7, VoltageSignal.LOW, "Constructor: Din7");
-			Assert.AreEqual(ram.Dout0, VoltageSignal.LOW, "Constructor: Dout0");
-			Assert.AreEqual(ram.Dout1, VoltageSignal.LOW, "Constructor: Dout1");
-			Assert.AreEqual(ram.Dout2, VoltageSignal.LOW, "Constructor: Dout2");
-			Assert.AreEqual(ram.Dout3, VoltageSignal.LOW, "Constructor: Dout3");
-			Assert.AreEqual(ram.Dout4, VoltageSignal.LOW, "Constructor: Dout4");
-			Assert.AreEqual(ram.Dout5, VoltageSignal.LOW, "Constructor: Dout5");
-			Assert.AreEqual(ram.Dout6, VoltageSignal.LOW, "Constructor: Dout6");
-			Assert.AreEqual(ram.Dout7, VoltageSignal.LOW, "Constructor: Dout7");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Voltage, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Write, "Constructor: Write");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A0, "Constructor: A0");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A1, "Constructor: A1");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A2, "Constructor: A2");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A3, "Constructor: A3");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A4, "Constructor: A4");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A5, "Constructor: A5");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A6, "Constructor: A6");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A7, "Constructor: A7");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A8, "Constructor: A8");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A9, "Constructor: A9");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A10, "Constructor: A10");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A11, "Constructor: A11");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A12, "Constructor: A12");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A13, "Constructor: A13");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A14, "Constructor: A14");
+			Assert.AreEqual(VoltageSignal.LOW, ram.A15, "Constructor: A15");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Din0, "Constructor: Din0");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Din1, "Constructor: Din1");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Din2, "Constructor: Din2");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Din3, "Constructor: Din3");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Din4, "Constructor: Din4");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Din5, "Constructor: Din5");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Din6, "Constructor: Din6");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Din7, "Constructor: Din7");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Dout0, "Constructor: Dout0");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Dout1, "Constructor: Dout1");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Dout2, "Constructor: Dout2");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Dout3, "Constructor: Dout3");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Dout4, "Constructor: Dout4");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Dout5, "Constructor: Dout5");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Dout6, "Constructor: Dout6");
+			Assert.AreEqual(VoltageSignal.LOW, ram.Dout7, "Constructor: Dout7");
 		}
 
 		[TestMethod]
@@ -94,22 +94,22 @@ namespace MSTest.PetzoldComputer
 			ram.Write = VoltageSignal.LOW;
 		}
 
-		private static void TestByte(IRam64KB ram, ushort address, byte data)
+		private static void TestByte(IRam64KB ram, ushort address, byte expected)
 		{
 			SetAddress(ram, address);
 
-			byte ramData = 0;
+			byte actual = 0;
 
-			ramData |= (ram.Dout0 == VoltageSignal.HIGH ? (byte)0x01 : (byte)0x00);
-			ramData |= (ram.Dout1 == VoltageSignal.HIGH ? (byte)0x02 : (byte)0x00);
-			ramData |= (ram.Dout2 == VoltageSignal.HIGH ? (byte)0x04 : (byte)0x00);
-			ramData |= (ram.Dout3 == VoltageSignal.HIGH ? (byte)0x08 : (byte)0x00);
-			ramData |= (ram.Dout4 == VoltageSignal.HIGH ? (byte)0x10 : (byte)0x00);
-			ramData |= (ram.Dout5 == VoltageSignal.HIGH ? (byte)0x20 : (byte)0x00);
-			ramData |= (ram.Dout6 == VoltageSignal.HIGH ? (byte)0x40 : (byte)0x00);
-			ramData |= (ram.Dout7 == VoltageSignal.HIGH ? (byte)0x80 : (byte)0x00);
+			actual |= (ram.Dout0 == VoltageSignal.HIGH ? (byte)0x01 : (byte)0x00);
+			actual |= (ram.Dout1 == VoltageSignal.HIGH ? (byte)0x02 : (byte)0x00);
+			actual |= (ram.Dout2 == VoltageSignal.HIGH ? (byte)0x04 : (byte)0x00);
+			actual |= (ram.Dout3 == VoltageSignal.HIGH ? (byte)0x08 : (byte)0x00);
+			actual |= (ram.Dout4 == VoltageSignal.HIGH ? (byte)0x10 : (byte)0x00);
+			actual |= (ram.Dout5 == VoltageSignal.HIGH ? (byte)0x20 : (byte)0x00);
+			actual |= (ram.Dout6 == VoltageSignal.HIGH ? (byte)0x40 : (byte)0x00);
+			actual |= (ram.Dout7 == VoltageSignal.HIGH ? (byte)0x80 : (byte)0x00);
 
-			Assert.AreEqual(ramData, data, "Data out");
+			Assert.AreEqual(expected, actual, "Data out");
 		}
 
 		private static void SetAddress(IRam64KB ram, ushort address)

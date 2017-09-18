@@ -185,57 +185,342 @@ namespace PetzoldComputer
 		#region Private Methods
 		private void DoWireup()
 		{
-			((IOutput)_flop0).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop1).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop2).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop3).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop4).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop5).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop6).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop7).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop8).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop9).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop10).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop11).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop12).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop13).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop14).AddOutputHandler(InternalEventHandler);
-			((IOutput)_flop15).AddOutputHandler(InternalEventHandler);
+			((IOutput)_flop0).AddOutputHandler(Flop0Handler);
+			((IOutput)_flop1).AddOutputHandler(Flop1Handler);
+			((IOutput)_flop2).AddOutputHandler(Flop2Handler);
+			((IOutput)_flop3).AddOutputHandler(Flop3Handler);
+			((IOutput)_flop4).AddOutputHandler(Flop4Handler);
+			((IOutput)_flop5).AddOutputHandler(Flop5Handler);
+			((IOutput)_flop6).AddOutputHandler(Flop6Handler);
+			((IOutput)_flop7).AddOutputHandler(Flop7Handler);
+			((IOutput)_flop8).AddOutputHandler(Flop8Handler);
+			((IOutput)_flop9).AddOutputHandler(Flop9Handler);
+			((IOutput)_flop10).AddOutputHandler(Flop10Handler);
+			((IOutput)_flop11).AddOutputHandler(Flop11Handler);
+			((IOutput)_flop12).AddOutputHandler(Flop12Handler);
+			((IOutput)_flop13).AddOutputHandler(Flop13Handler);
+			((IOutput)_flop14).AddOutputHandler(Flop14Handler);
+			((IOutput)_flop15).AddOutputHandler(Flop15Handler);
 		}
 
-		private void InternalEventHandler(object o)
+		private void Flop0Handler(object o)
 		{
-			_flop0.D		= _flop0.Qnot;
-			_flop1.Clk	= _flop0.Qnot;
-			_flop1.D		= _flop1.Qnot;
-			_flop2.Clk	= _flop1.Qnot;
-			_flop2.D		= _flop2.Qnot;
-			_flop3.Clk	= _flop2.Qnot;
-			_flop3.D		= _flop3.Qnot;
-			_flop4.Clk	= _flop3.Qnot;
-			_flop4.D		= _flop4.Qnot;
-			_flop5.Clk	= _flop4.Qnot;
-			_flop5.D		= _flop5.Qnot;
-			_flop6.Clk	= _flop5.Qnot;
-			_flop6.D		= _flop6.Qnot;
-			_flop7.Clk	= _flop6.Qnot;
-			_flop7.D		= _flop7.Qnot;
-			_flop8.Clk	= _flop7.Qnot;
-			_flop8.D		= _flop8.Qnot;
-			_flop9.Clk	= _flop8.Qnot;
-			_flop9.D		= _flop9.Qnot;
-			_flop10.Clk	= _flop9.Qnot;
-			_flop10.D	= _flop10.Qnot;
-			_flop11.Clk	= _flop10.Qnot;
-			_flop11.D	= _flop11.Qnot;
-			_flop12.Clk	= _flop11.Qnot;
-			_flop12.D	= _flop12.Qnot;
-			_flop13.Clk	= _flop12.Qnot;
-			_flop13.D	= _flop13.Qnot;
-			_flop14.Clk	= _flop13.Qnot;
-			_flop14.D	= _flop14.Qnot;
-			_flop15.Clk	= _flop14.Qnot;
-			_flop15.D	= _flop15.Qnot;
+			_flop0.D = _flop0.Qnot;
+			_flop1.Clk = _flop0.Qnot;
+			_flop1.D = _flop1.Qnot;
+			_flop2.Clk = _flop1.Qnot;
+			_flop2.D = _flop2.Qnot;
+			_flop3.Clk = _flop2.Qnot;
+			_flop3.D = _flop3.Qnot;
+			_flop4.Clk = _flop3.Qnot;
+			_flop4.D = _flop4.Qnot;
+			_flop5.Clk = _flop4.Qnot;
+			_flop5.D = _flop5.Qnot;
+			_flop6.Clk = _flop5.Qnot;
+			_flop6.D = _flop6.Qnot;
+			_flop7.Clk = _flop6.Qnot;
+			_flop7.D = _flop7.Qnot;
+			_flop8.Clk = _flop7.Qnot;
+			_flop8.D = _flop8.Qnot;
+			_flop9.Clk = _flop8.Qnot;
+			_flop9.D = _flop9.Qnot;
+			_flop10.Clk = _flop9.Qnot;
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop1Handler(object o)
+		{
+			_flop1.D = _flop1.Qnot;
+			_flop2.Clk = _flop1.Qnot;
+			_flop2.D = _flop2.Qnot;
+			_flop3.Clk = _flop2.Qnot;
+			_flop3.D = _flop3.Qnot;
+			_flop4.Clk = _flop3.Qnot;
+			_flop4.D = _flop4.Qnot;
+			_flop5.Clk = _flop4.Qnot;
+			_flop5.D = _flop5.Qnot;
+			_flop6.Clk = _flop5.Qnot;
+			_flop6.D = _flop6.Qnot;
+			_flop7.Clk = _flop6.Qnot;
+			_flop7.D = _flop7.Qnot;
+			_flop8.Clk = _flop7.Qnot;
+			_flop8.D = _flop8.Qnot;
+			_flop9.Clk = _flop8.Qnot;
+			_flop9.D = _flop9.Qnot;
+			_flop10.Clk = _flop9.Qnot;
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop2Handler(object o)
+		{
+			_flop2.D = _flop2.Qnot;
+			_flop3.Clk = _flop2.Qnot;
+			_flop3.D = _flop3.Qnot;
+			_flop4.Clk = _flop3.Qnot;
+			_flop4.D = _flop4.Qnot;
+			_flop5.Clk = _flop4.Qnot;
+			_flop5.D = _flop5.Qnot;
+			_flop6.Clk = _flop5.Qnot;
+			_flop6.D = _flop6.Qnot;
+			_flop7.Clk = _flop6.Qnot;
+			_flop7.D = _flop7.Qnot;
+			_flop8.Clk = _flop7.Qnot;
+			_flop8.D = _flop8.Qnot;
+			_flop9.Clk = _flop8.Qnot;
+			_flop9.D = _flop9.Qnot;
+			_flop10.Clk = _flop9.Qnot;
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop3Handler(object o)
+		{
+			_flop3.D = _flop3.Qnot;
+			_flop4.Clk = _flop3.Qnot;
+			_flop4.D = _flop4.Qnot;
+			_flop5.Clk = _flop4.Qnot;
+			_flop5.D = _flop5.Qnot;
+			_flop6.Clk = _flop5.Qnot;
+			_flop6.D = _flop6.Qnot;
+			_flop7.Clk = _flop6.Qnot;
+			_flop7.D = _flop7.Qnot;
+			_flop8.Clk = _flop7.Qnot;
+			_flop8.D = _flop8.Qnot;
+			_flop9.Clk = _flop8.Qnot;
+			_flop9.D = _flop9.Qnot;
+			_flop10.Clk = _flop9.Qnot;
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop4Handler(object o)
+		{
+			_flop4.D = _flop4.Qnot;
+			_flop5.Clk = _flop4.Qnot;
+			_flop5.D = _flop5.Qnot;
+			_flop6.Clk = _flop5.Qnot;
+			_flop6.D = _flop6.Qnot;
+			_flop7.Clk = _flop6.Qnot;
+			_flop7.D = _flop7.Qnot;
+			_flop8.Clk = _flop7.Qnot;
+			_flop8.D = _flop8.Qnot;
+			_flop9.Clk = _flop8.Qnot;
+			_flop9.D = _flop9.Qnot;
+			_flop10.Clk = _flop9.Qnot;
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop5Handler(object o)
+		{
+			_flop5.D = _flop5.Qnot;
+			_flop6.Clk = _flop5.Qnot;
+			_flop6.D = _flop6.Qnot;
+			_flop7.Clk = _flop6.Qnot;
+			_flop7.D = _flop7.Qnot;
+			_flop8.Clk = _flop7.Qnot;
+			_flop8.D = _flop8.Qnot;
+			_flop9.Clk = _flop8.Qnot;
+			_flop9.D = _flop9.Qnot;
+			_flop10.Clk = _flop9.Qnot;
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop6Handler(object o)
+		{
+			_flop6.D = _flop6.Qnot;
+			_flop7.Clk = _flop6.Qnot;
+			_flop7.D = _flop7.Qnot;
+			_flop8.Clk = _flop7.Qnot;
+			_flop8.D = _flop8.Qnot;
+			_flop9.Clk = _flop8.Qnot;
+			_flop9.D = _flop9.Qnot;
+			_flop10.Clk = _flop9.Qnot;
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop7Handler(object o)
+		{
+			_flop7.D = _flop7.Qnot;
+			_flop8.Clk = _flop7.Qnot;
+			_flop8.D = _flop8.Qnot;
+			_flop9.Clk = _flop8.Qnot;
+			_flop9.D = _flop9.Qnot;
+			_flop10.Clk = _flop9.Qnot;
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop8Handler(object o)
+		{
+			_flop8.D = _flop8.Qnot;
+			_flop9.Clk = _flop8.Qnot;
+			_flop9.D = _flop9.Qnot;
+			_flop10.Clk = _flop9.Qnot;
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop9Handler(object o)
+		{
+			_flop9.D = _flop9.Qnot;
+			_flop10.Clk = _flop9.Qnot;
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop10Handler(object o)
+		{
+			_flop10.D = _flop10.Qnot;
+			_flop11.Clk = _flop10.Qnot;
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop11Handler(object o)
+		{
+			_flop11.D = _flop11.Qnot;
+			_flop12.Clk = _flop11.Qnot;
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop12Handler(object o)
+		{
+			_flop12.D = _flop12.Qnot;
+			_flop13.Clk = _flop12.Qnot;
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop13Handler(object o)
+		{
+			_flop13.D = _flop13.Qnot;
+			_flop14.Clk = _flop13.Qnot;
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop14Handler(object o)
+		{
+			_flop14.D = _flop14.Qnot;
+			_flop15.Clk = _flop14.Qnot;
+			_flop15.D = _flop15.Qnot;
+		}
+
+		private void Flop15Handler(object o)
+		{
+			_flop15.D = _flop15.Qnot;
 		}
 
 		private void SetOutput()

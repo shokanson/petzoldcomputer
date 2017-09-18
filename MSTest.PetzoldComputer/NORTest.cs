@@ -12,34 +12,34 @@ namespace MSTest.PetzoldComputer
 		{
 			INor or = new NOR();
 
-			Assert.AreEqual(or.Voltage, VoltageSignal.LOW, "Constructor: Voltage");
-			Assert.AreEqual(or.A, VoltageSignal.LOW, "Constructor: A");
-			Assert.AreEqual(or.B, VoltageSignal.LOW, "Constructor: B");
-			Assert.AreEqual(or.O, VoltageSignal.LOW, "Constructor: O");
-			Assert.AreEqual(or.ToString(), "LOW", "Constructor: ToString()");
+			Assert.AreEqual(VoltageSignal.LOW, or.Voltage, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, or.A, "Constructor: A");
+			Assert.AreEqual(VoltageSignal.LOW, or.B, "Constructor: B");
+			Assert.AreEqual(VoltageSignal.LOW, or.O, "Constructor: O");
+			Assert.AreEqual("LOW", or.ToString(), "Constructor: ToString()");
 		}
 
 		[TestMethod]
 		public void TestOutput()
 		{
 			INor or = new NOR { Voltage = VoltageSignal.HIGH };
-			Assert.AreEqual(or.O, VoltageSignal.HIGH, "Gate on -- A: L; B: L; O: H");
+			Assert.AreEqual(VoltageSignal.HIGH, or.O, "Gate on -- A: L; B: L; O: H");
 			or.A = VoltageSignal.HIGH;
-			Assert.AreEqual(or.O, VoltageSignal.LOW, "Gate on -- A: H; B: L; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, or.O, "Gate on -- A: H; B: L; O: L");
 			or.B = VoltageSignal.HIGH;
-			Assert.AreEqual(or.O, VoltageSignal.LOW, "Gate on -- A: H; B: H; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, or.O, "Gate on -- A: H; B: H; O: L");
 			or.A = VoltageSignal.LOW;
-			Assert.AreEqual(or.O, VoltageSignal.LOW, "Gate on -- A: L; B: H; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, or.O, "Gate on -- A: L; B: H; O: L");
 
 			or.Voltage = VoltageSignal.LOW;
 			or.B = VoltageSignal.LOW;
-			Assert.AreEqual(or.O, VoltageSignal.LOW, "Gate off -- A: L; B: L; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, or.O, "Gate off -- A: L; B: L; O: L");
 			or.A = VoltageSignal.HIGH;
-			Assert.AreEqual(or.O, VoltageSignal.LOW, "Gate off -- A: H; B: L; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, or.O, "Gate off -- A: H; B: L; O: L");
 			or.B = VoltageSignal.HIGH;
-			Assert.AreEqual(or.O, VoltageSignal.LOW, "Gate off -- A: H; B: H; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, or.O, "Gate off -- A: H; B: H; O: L");
 			or.A = VoltageSignal.LOW;
-			Assert.AreEqual(or.O, VoltageSignal.LOW, "Gate off -- A: L; B: H; O: L");
+			Assert.AreEqual(VoltageSignal.LOW, or.O, "Gate off -- A: L; B: H; O: L");
 		}
 
 		[TestMethod]
@@ -54,25 +54,25 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			or.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "fired", "Gate on -- A: L; B: ^; event");
+			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: ^; event");
 			helper.ResetStatus();
 			or.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: L; B: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->H; no event");
 			or.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "fired", "Gate on -- A: L; B: v; event");
+			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: v; event");
 			helper.ResetStatus();
 			or.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: L; B: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->L; no event");
 			or.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "fired", "Gate on -- B: L; A: ^; event");
+			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: L; A: ^; event");
 			helper.ResetStatus();
 			or.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: L; A: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->H; no event");
 			or.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "fired", "Gate on -- B: L; A: v; event");
+			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: L; A: v; event");
 			helper.ResetStatus();
 			or.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: L; A: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->L; no event");
 
 			// setup
 			or.A = VoltageSignal.HIGH;
@@ -80,13 +80,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			or.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: H; B: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: ^; no event");
 			or.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: H; B: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->H; no event");
 			or.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: H; B: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: v; no event");
 			or.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- A: H; B: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->L; no event");
 
 			// setup
 			or.A = VoltageSignal.LOW;
@@ -94,13 +94,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			or.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: H; A: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: ^; no event");
 			or.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: H; A: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->H; no event");
 			or.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: H; A: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: v; no event");
 			or.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate on -- B: H; A: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->L; no event");
 		}
 
 		[TestMethod]
@@ -111,21 +111,21 @@ namespace MSTest.PetzoldComputer
 			TestEventsHelper helper = new TestEventsHelper((IOutput)or2);
 
 			or2.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: L; B: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: L; B: ^; no event");
 			or2.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: L; B: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: L; B: -->H; no event");
 			or2.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: L; B: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: L; B: v; no event");
 			or2.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: L; B: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: L; B: -->L; no event");
 			or2.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: L; A: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: L; A: ^; no event");
 			or2.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: L; A: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: L; A: -->H; no event");
 			or2.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: L; A: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: L; A: v; no event");
 			or2.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: L; A: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: L; A: -->L; no event");
 
 			// setup
 			or2.A = VoltageSignal.HIGH;
@@ -133,13 +133,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			or2.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: H; B: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: H; B: ^; no event");
 			or2.B = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: H; B: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: H; B: -->H; no event");
 			or2.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: H; B: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: H; B: v; no event");
 			or2.B = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- A: H; B: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- A: H; B: -->L; no event");
 
 			// setup
 			or2.A = VoltageSignal.LOW;
@@ -147,13 +147,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			or2.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: H; A: ^; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: H; A: ^; no event");
 			or2.A = VoltageSignal.HIGH;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: H; A: -->H; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: H; A: -->H; no event");
 			or2.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: H; A: v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: H; A: v; no event");
 			or2.A = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Gate off -- B: H; A: -->L; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Gate off -- B: H; A: -->L; no event");
 		}
 	}
 }

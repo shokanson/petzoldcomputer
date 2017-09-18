@@ -14,17 +14,17 @@ namespace MSTest.PetzoldComputer
 		{
 			IPhase1Computer computer = new Phase1Computer();
 
-			Assert.AreEqual(computer.Voltage, VoltageSignal.LOW, "Constructor: Voltage");
-			Assert.AreEqual(computer.Clr, VoltageSignal.LOW, "Constructor: Clr");
-			Assert.AreEqual(computer.D0, VoltageSignal.LOW, "Constructor: D0");
-			Assert.AreEqual(computer.D1, VoltageSignal.LOW, "Constructor: D1");
-			Assert.AreEqual(computer.D2, VoltageSignal.LOW, "Constructor: D2");
-			Assert.AreEqual(computer.D3, VoltageSignal.LOW, "Constructor: D3");
-			Assert.AreEqual(computer.D4, VoltageSignal.LOW, "Constructor: D4");
-			Assert.AreEqual(computer.D5, VoltageSignal.LOW, "Constructor: D5");
-			Assert.AreEqual(computer.D6, VoltageSignal.LOW, "Constructor: D6");
-			Assert.AreEqual(computer.D7, VoltageSignal.LOW, "Constructor: D7");
-			Assert.AreEqual(computer.ToString(), "00000000", "Constructor: ToString()");
+			Assert.AreEqual(VoltageSignal.LOW, computer.Voltage, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, computer.Clr, "Constructor: Clr");
+			Assert.AreEqual(VoltageSignal.LOW, computer.D0, "Constructor: D0");
+			Assert.AreEqual(VoltageSignal.LOW, computer.D1, "Constructor: D1");
+			Assert.AreEqual(VoltageSignal.LOW, computer.D2, "Constructor: D2");
+			Assert.AreEqual(VoltageSignal.LOW, computer.D3, "Constructor: D3");
+			Assert.AreEqual(VoltageSignal.LOW, computer.D4, "Constructor: D4");
+			Assert.AreEqual(VoltageSignal.LOW, computer.D5, "Constructor: D5");
+			Assert.AreEqual(VoltageSignal.LOW, computer.D6, "Constructor: D6");
+			Assert.AreEqual(VoltageSignal.LOW, computer.D7, "Constructor: D7");
+			Assert.AreEqual("00000000", computer.ToString(), "Constructor: ToString()");
 		}
 
 		[TestMethod]

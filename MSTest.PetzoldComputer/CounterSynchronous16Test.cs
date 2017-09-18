@@ -12,26 +12,26 @@ namespace MSTest.PetzoldComputer
 		{
 			ICounterSynchronous16 counter = new CounterSynchronous16();
 
-			Assert.AreEqual(counter.Voltage, VoltageSignal.LOW, "Constructor: Voltage");
-			Assert.AreEqual(counter.Clk, VoltageSignal.LOW, "Constructor: Clk");
-			Assert.AreEqual(counter.Clr, VoltageSignal.LOW, "Constructor: Clr");
-			Assert.AreEqual(counter.Q0, VoltageSignal.LOW, "Constructor: Q0");
-			Assert.AreEqual(counter.Q1, VoltageSignal.LOW, "Constructor: Q1");
-			Assert.AreEqual(counter.Q2, VoltageSignal.LOW, "Constructor: Q2");
-			Assert.AreEqual(counter.Q3, VoltageSignal.LOW, "Constructor: Q3");
-			Assert.AreEqual(counter.Q4, VoltageSignal.LOW, "Constructor: Q4");
-			Assert.AreEqual(counter.Q5, VoltageSignal.LOW, "Constructor: Q5");
-			Assert.AreEqual(counter.Q6, VoltageSignal.LOW, "Constructor: Q6");
-			Assert.AreEqual(counter.Q7, VoltageSignal.LOW, "Constructor: Q7");
-			Assert.AreEqual(counter.Q8, VoltageSignal.LOW, "Constructor: Q8");
-			Assert.AreEqual(counter.Q9, VoltageSignal.LOW, "Constructor: Q9");
-			Assert.AreEqual(counter.Q10, VoltageSignal.LOW, "Constructor: Q10");
-			Assert.AreEqual(counter.Q11, VoltageSignal.LOW, "Constructor: Q11");
-			Assert.AreEqual(counter.Q12, VoltageSignal.LOW, "Constructor: Q12");
-			Assert.AreEqual(counter.Q13, VoltageSignal.LOW, "Constructor: Q13");
-			Assert.AreEqual(counter.Q14, VoltageSignal.LOW, "Constructor: Q14");
-			Assert.AreEqual(counter.Q15, VoltageSignal.LOW, "Constructor: Q15");
-			Assert.AreEqual(counter.ToString(), "0000000000000000", "Contructor: ToString()");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Voltage, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Clk, "Constructor: Clk");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Clr, "Constructor: Clr");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q0, "Constructor: Q0");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q1, "Constructor: Q1");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q2, "Constructor: Q2");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q3, "Constructor: Q3");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q4, "Constructor: Q4");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q5, "Constructor: Q5");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q6, "Constructor: Q6");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q7, "Constructor: Q7");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q8, "Constructor: Q8");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q9, "Constructor: Q9");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q10, "Constructor: Q10");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q11, "Constructor: Q11");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q12, "Constructor: Q12");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q13, "Constructor: Q13");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q14, "Constructor: Q14");
+			Assert.AreEqual(VoltageSignal.LOW, counter.Q15, "Constructor: Q15");
+			Assert.AreEqual("0000000000000000", counter.ToString(), "Contructor: ToString()");
 		}
 
 		[TestMethod]

@@ -12,25 +12,25 @@ namespace MSTest.PetzoldComputer
 		{
 			ILatchEdge8 latch = new LatchEdge8();
 
-			Assert.AreEqual(latch.Voltage, VoltageSignal.LOW, "Constructor: Voltage");
-			Assert.AreEqual(latch.Clk, VoltageSignal.LOW, "Constructor: Clk");
-			Assert.AreEqual(latch.D0, VoltageSignal.LOW, "Constructor: D0");
-			Assert.AreEqual(latch.D1, VoltageSignal.LOW, "Constructor: D1");
-			Assert.AreEqual(latch.D2, VoltageSignal.LOW, "Constructor: D2");
-			Assert.AreEqual(latch.D3, VoltageSignal.LOW, "Constructor: D3");
-			Assert.AreEqual(latch.D4, VoltageSignal.LOW, "Constructor: D4");
-			Assert.AreEqual(latch.D5, VoltageSignal.LOW, "Constructor: D5");
-			Assert.AreEqual(latch.D6, VoltageSignal.LOW, "Constructor: D6");
-			Assert.AreEqual(latch.D7, VoltageSignal.LOW, "Constructor: D7");
-			Assert.AreEqual(latch.Q0, VoltageSignal.LOW, "Constructor: Q0");
-			Assert.AreEqual(latch.Q1, VoltageSignal.LOW, "Constructor: Q1");
-			Assert.AreEqual(latch.Q2, VoltageSignal.LOW, "Constructor: Q2");
-			Assert.AreEqual(latch.Q3, VoltageSignal.LOW, "Constructor: Q3");
-			Assert.AreEqual(latch.Q4, VoltageSignal.LOW, "Constructor: Q4");
-			Assert.AreEqual(latch.Q5, VoltageSignal.LOW, "Constructor: Q5");
-			Assert.AreEqual(latch.Q6, VoltageSignal.LOW, "Constructor: Q6");
-			Assert.AreEqual(latch.Q7, VoltageSignal.LOW, "Constructor: Q7");
-			Assert.AreEqual(latch.ToString(), "00000000", "Constructor: ToString()");
+			Assert.AreEqual(VoltageSignal.LOW, latch.Voltage, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, latch.Clk, "Constructor: Clk");
+			Assert.AreEqual(VoltageSignal.LOW, latch.D0, "Constructor: D0");
+			Assert.AreEqual(VoltageSignal.LOW, latch.D1, "Constructor: D1");
+			Assert.AreEqual(VoltageSignal.LOW, latch.D2, "Constructor: D2");
+			Assert.AreEqual(VoltageSignal.LOW, latch.D3, "Constructor: D3");
+			Assert.AreEqual(VoltageSignal.LOW, latch.D4, "Constructor: D4");
+			Assert.AreEqual(VoltageSignal.LOW, latch.D5, "Constructor: D5");
+			Assert.AreEqual(VoltageSignal.LOW, latch.D6, "Constructor: D6");
+			Assert.AreEqual(VoltageSignal.LOW, latch.D7, "Constructor: D7");
+			Assert.AreEqual(VoltageSignal.LOW, latch.Q0, "Constructor: Q0");
+			Assert.AreEqual(VoltageSignal.LOW, latch.Q1, "Constructor: Q1");
+			Assert.AreEqual(VoltageSignal.LOW, latch.Q2, "Constructor: Q2");
+			Assert.AreEqual(VoltageSignal.LOW, latch.Q3, "Constructor: Q3");
+			Assert.AreEqual(VoltageSignal.LOW, latch.Q4, "Constructor: Q4");
+			Assert.AreEqual(VoltageSignal.LOW, latch.Q5, "Constructor: Q5");
+			Assert.AreEqual(VoltageSignal.LOW, latch.Q6, "Constructor: Q6");
+			Assert.AreEqual(VoltageSignal.LOW, latch.Q7, "Constructor: Q7");
+			Assert.AreEqual("00000000", latch.ToString(), "Constructor: ToString()");
 		}
 
 		[TestMethod]
@@ -126,21 +126,21 @@ namespace MSTest.PetzoldComputer
 		private void TestLatchEdge8EventHelper(ILatchEdge8 latch, TestEventsHelper helper, byte oldData, byte newData)
 		{
 			latch.D0 = ((newData & 0x01) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual(helper.EventStatus, "not fired", "D0; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "D0; no event");
 			latch.D1 = ((newData & 0x02) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual(helper.EventStatus, "not fired", "D1; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "D1; no event");
 			latch.D2 = ((newData & 0x04) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual(helper.EventStatus, "not fired", "D2; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "D2; no event");
 			latch.D3 = ((newData & 0x08) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual(helper.EventStatus, "not fired", "C3; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "C3; no event");
 			latch.D4 = ((newData & 0x10) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual(helper.EventStatus, "not fired", "D4; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "D4; no event");
 			latch.D5 = ((newData & 0x20) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual(helper.EventStatus, "not fired", "D5; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "D5; no event");
 			latch.D6 = ((newData & 0x40) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual(helper.EventStatus, "not fired", "D6; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "D6; no event");
 			latch.D7 = ((newData & 0x80) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual(helper.EventStatus, "not fired", "D7; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "D7; no event");
 
 			TestData(latch, oldData);
 
@@ -149,15 +149,15 @@ namespace MSTest.PetzoldComputer
 			latch.Clk = VoltageSignal.HIGH;
 			if (oldOutput != GetOutput(latch))
 			{
-				Assert.AreEqual(helper.EventStatus, "fired", "Clk ^ with different output; event");
+				Assert.AreEqual("fired", helper.EventStatus, "Clk ^ with different output; event");
 				helper.ResetStatus();
 			}
 			else
 			{
-				Assert.AreEqual(helper.EventStatus, "not fired", "Clk ^ with same output; no event");
+				Assert.AreEqual("not fired", helper.EventStatus, "Clk ^ with same output; no event");
 			}
 			latch.Clk = VoltageSignal.LOW;
-			Assert.AreEqual(helper.EventStatus, "not fired", "Clk v; no event");
+			Assert.AreEqual("not fired", helper.EventStatus, "Clk v; no event");
 
 			TestData(latch, newData);
 		}
