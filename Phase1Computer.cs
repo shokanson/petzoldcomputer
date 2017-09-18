@@ -3,8 +3,8 @@ using System;
 namespace PetzoldComputer
 {
 	/* Phase1Computer represents the computer as diagrammed on page 208, sans oscillator and control panel.
-	 * The MSTest.PetzoldComputer.Phase1Test class exercises computer as described starting with "Here's how
-	 * it works..." on page 209.
+	 * The MSTest.PetzoldComputer.Phase1Test class exercises the computer as described starting with "Here's
+	 * how it works..." on page 209.
 	 */
 	public class Phase1Computer : IPhase1Computer, IOutput
 	{

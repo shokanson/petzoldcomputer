@@ -48,7 +48,7 @@ namespace MSTest.PetzoldComputer
 
 			byte expected = 1;	// expected is based on how we know we loaded the RAM above
 
-			// have the computer burn through all 64K and do it's thing
+			// have the computer burn through all 64K and do its thing
 			for (uint i = 0; i < nBytes; ++i)
 			{
 				// mimic input from an oscillator, which quickly takes voltage high then low: _/‾\_/‾\_/‾\_/‾\_/‾\_/‾\_ ...
