@@ -84,17 +84,9 @@ namespace PetzoldComputer
 		#region Private Methods
 		private void DoWireup()
 		{
-			((IOutput)_not).AddOutputHandler(InternalEventHandler);
-			((IOutput)_andA).AddOutputHandler(InternalEventHandler);
-			((IOutput)_andB).AddOutputHandler(InternalEventHandler);
-		}
-
-		private void InternalEventHandler(object o)
-		{
-			_andA.B = _not.Output;
-			_andB.B = _not.Input;
-			_or.A = _andA.O;
-			_or.B = _andB.O;
+			((IOutput)_not).AddOutputHandler(_ => { _andA.B = _not.Output; _andB.B = _not.Input; });
+			((IOutput)_andA).AddOutputHandler(_ => _or.A = _andA.O);
+			((IOutput)_andB).AddOutputHandler(_ => _or.B = _andB.O);
 		}
 
 		private void HandleEvent(VoltageSignal oldOutput)

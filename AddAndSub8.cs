@@ -347,11 +347,11 @@ namespace PetzoldComputer
 		#region Private Methods
 		private void DoWireup()
 		{
-			((IOutput)_ones).AddOutputHandler(InternalEventHandler);
-			((IOutput)_xorOverUnder).AddOutputHandler(InternalEventHandler);
+			((IOutput)_ones).AddOutputHandler(InternalOnesHandler);
+			((ICarry)_adder).AddCarryHandler(_ => _xorOverUnder.A = _adder.Carry);
 		}
 
-		private void InternalEventHandler(object o)
+		private void InternalOnesHandler(object o)
 		{
 			_adder.B0 = _ones.O0;
 			_adder.B1 = _ones.O1;
@@ -361,7 +361,6 @@ namespace PetzoldComputer
 			_adder.B5 = _ones.O5;
 			_adder.B6 = _ones.O6;
 			_adder.B7 = _ones.O7;
-			_xorOverUnder.A = _adder.Carry;
 		}
 
 		private void HandleSum(byte oldSum)

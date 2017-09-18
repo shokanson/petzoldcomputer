@@ -96,42 +96,20 @@ namespace PetzoldComputer
 		#region Private Members
 		private void DoWireup()
 		{
-			((IOutput)_not).AddOutputHandler(InternalEventHandler);
-			((IOutput)_nor3Clr).AddOutputHandler(InternalEventHandler);
-			((IOutput)_nor3Pre).AddOutputHandler(InternalEventHandler);
-			((IOutput)_nor3Clk).AddOutputHandler(InternalEventHandler);
-			((IOutput)_nor3D).AddOutputHandler(InternalEventHandler);
-			((IOutput)_nor3Q).AddOutputHandler(InternalEventHandler);
-			((IOutput)_nor3Qnot).AddOutputHandler(InternalEventHandler);
+			((IOutput)_not).AddOutputHandler(_ => { _nor3Pre.C = _not.Output; _nor3Clk.B = _not.Output; });
+			((IOutput)_nor3Clr).AddOutputHandler(_ => _nor3Pre.A = _nor3Clr.O);
+			((IOutput)_nor3Pre).AddOutputHandler(InternalPreHandler);
+			((IOutput)_nor3Clk).AddOutputHandler(_ => { _nor3D.A = _nor3Clk.O; _nor3Qnot.C = _nor3Clk.O; });
+			((IOutput)_nor3D).AddOutputHandler(_ => { _nor3Clr.B = _nor3D.O; _nor3Clk.C = _nor3D.O; });
+			((IOutput)_nor3Q).AddOutputHandler(_ => _nor3Qnot.A = _nor3Q.O);
+			((IOutput)_nor3Qnot).AddOutputHandler(_ => { _nor3Clk.B = _not.Output; _nor3Q.C = _nor3Qnot.O; });
 		}
 
-		private void InternalEventHandler(object o)
+		private void InternalPreHandler(object o)
 		{
-			// _not.Input is user set
-
-			// _nor3Clr.A is user set
-			_nor3Clr.B = _nor3D.O;
 			_nor3Clr.C = _nor3Pre.O;
-
-			_nor3Pre.A = _nor3Clr.O;
-			// _nor3Pre.B is user set
-			_nor3Pre.C = _not.Output;
-
 			_nor3Clk.A = _nor3Pre.O;
-			_nor3Clk.B = _not.Output;
-			_nor3Clk.C = _nor3D.O;
-
-			_nor3D.A = _nor3Clk.O;
-			// _nor3D.B is user set
-			// _nor3D.C is user set
-
-			// _nor3Q.A is user set
 			_nor3Q.B = _nor3Pre.O;
-			_nor3Q.C = _nor3Qnot.O;
-
-			_nor3Qnot.A = _nor3Q.O;
-			// _nor3Qnot.B is user set
-			_nor3Qnot.C = _nor3Clk.O;
 		}
 		#endregion
 	}

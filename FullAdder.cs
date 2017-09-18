@@ -106,16 +106,9 @@ namespace PetzoldComputer
 		#region Private Methods
 		private void DoWireup()
 		{
-			((ISum)_sumHalfAdder).AddSumHandler(InternalEventHandler);
-			((ICarry)_sumHalfAdder).AddCarryHandler(InternalEventHandler);
-			((ICarry)_carryHalfAdder).AddCarryHandler(InternalEventHandler);
-		}
-
-		private void InternalEventHandler(object o)
-		{
-			_carryHalfAdder.B = _sumHalfAdder.Sum;
-			_carryOr.A = _carryHalfAdder.Carry;
-			_carryOr.B = _sumHalfAdder.Carry;
+			((ISum)_sumHalfAdder).AddSumHandler(_ => _carryHalfAdder.B = _sumHalfAdder.Sum);
+			((ICarry)_sumHalfAdder).AddCarryHandler(_ => _carryOr.B = _sumHalfAdder.Carry);
+			((ICarry)_carryHalfAdder).AddCarryHandler(_ => _carryOr.A = _carryHalfAdder.Carry);
 		}
 
 		private void SetSum() => _sum = _carryHalfAdder.Sum;

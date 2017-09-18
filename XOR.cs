@@ -58,14 +58,8 @@ namespace PetzoldComputer
 		#region Private Methods
 		private void DoWireup()
 		{
-			((IOutput)_or).AddOutputHandler(InternalEventHandler);
-			((IOutput)_nand).AddOutputHandler(InternalEventHandler);
-		}
-
-		private void InternalEventHandler(object o)
-		{
-			_and.A = _or.O;
-			_and.B = _nand.O;
+			((IOutput)_or).AddOutputHandler(_ => _and.A = _or.O);
+			((IOutput)_nand).AddOutputHandler(_ => _and.B = _nand.O);
 		}
 		#endregion
 	}

@@ -396,24 +396,13 @@ namespace PetzoldComputer
 		#region Private Members
 		private void DoWireup()
 		{
-			((ICarry)_adder0).AddCarryHandler(InternalEventHandler);
-			((ICarry)_adder1).AddCarryHandler(InternalEventHandler);
-			((ICarry)_adder2).AddCarryHandler(InternalEventHandler);
-			((ICarry)_adder3).AddCarryHandler(InternalEventHandler);
-			((ICarry)_adder4).AddCarryHandler(InternalEventHandler);
-			((ICarry)_adder5).AddCarryHandler(InternalEventHandler);
-			((ICarry)_adder6).AddCarryHandler(InternalEventHandler);
-		}
-
-		private void InternalEventHandler(object o)
-		{
-			_adder1.CarryIn = _adder0.Carry;
-			_adder2.CarryIn = _adder1.Carry;
-			_adder3.CarryIn = _adder2.Carry;
-			_adder4.CarryIn = _adder3.Carry;
-			_adder5.CarryIn = _adder4.Carry;
-			_adder6.CarryIn = _adder5.Carry;
-			_adder7.CarryIn = _adder6.Carry;
+			((ICarry)_adder0).AddCarryHandler(_ => _adder1.CarryIn = _adder0.Carry);
+			((ICarry)_adder1).AddCarryHandler(_ => _adder2.CarryIn = _adder1.Carry);
+			((ICarry)_adder2).AddCarryHandler(_ => _adder3.CarryIn = _adder2.Carry);
+			((ICarry)_adder3).AddCarryHandler(_ => _adder4.CarryIn = _adder3.Carry);
+			((ICarry)_adder4).AddCarryHandler(_ => _adder5.CarryIn = _adder4.Carry);
+			((ICarry)_adder5).AddCarryHandler(_ => _adder6.CarryIn = _adder5.Carry);
+			((ICarry)_adder6).AddCarryHandler(_ => _adder7.CarryIn = _adder6.Carry);
 		}
 
 		private void HandleCarry(VoltageSignal oldCarry)
