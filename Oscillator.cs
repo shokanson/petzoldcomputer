@@ -8,13 +8,13 @@ namespace PetzoldComputer
 			: this(0)   // a never-ending oscillator
 		{ }
 
-		public Oscillator(int nOscillations) => NOscillations = nOscillations;
+		public Oscillator(uint nOscillations) => NOscillations = nOscillations;
 
-		public int NOscillations { get; private set; }
+		public uint NOscillations { get; private set; }
 
 		public void Start()
 		{
-			int nOscillations = 0;
+			uint nOscillations = 0;
 			do
 			{
 				Output = VoltageSignal.HIGH;

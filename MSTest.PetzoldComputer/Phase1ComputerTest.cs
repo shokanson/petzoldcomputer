@@ -7,7 +7,7 @@ using PetzoldComputer;
 namespace MSTest.PetzoldComputer
 {
 	[TestClass]
-	public class Phase1Test
+	public class Phase1ComputerTest
 	{
 		[TestMethod]
 		public void TestConstructor()

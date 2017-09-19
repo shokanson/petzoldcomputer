@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="AddAndSub8.cs" />
     <Compile Include="AND.cs" />
+    <Compile Include="ControlPanel.cs" />
     <Compile Include="CounterSynchronous16.cs" />
     <Compile Include="DFlipFlopEdgeWithPresetAndClear.cs" />
     <Compile Include="FullAdder.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Oscillator.cs" />
     <Compile Include="Phase1Computer.cs" />
     <Compile Include="Phase2Computer.cs" />
+    <Compile Include="Phase3Computer.cs" />
     <Compile Include="RAM64KB.cs" />
     <Compile Include="Relay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

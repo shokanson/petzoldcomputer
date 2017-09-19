@@ -24,7 +24,7 @@ namespace PetzoldComputer
 
 		#region Implementation
 		private ICounterSynchronous16 _counter;
-		private IRam64KB _ram;
+		protected IRam64KB _ram;	// make it available to subclasses
 		private IRippleAdder8 _adder;
 		private ILatchEdge8 _latch;
 		#endregion
@@ -33,7 +33,7 @@ namespace PetzoldComputer
 
 		#region IPhase1Computer Members
 
-		public VoltageSignal Voltage
+		public virtual VoltageSignal Voltage
 		{
 			get => _counter.Voltage;
 			set => _counter.Voltage =
@@ -72,7 +72,7 @@ namespace PetzoldComputer
 		public VoltageSignal D6 => _latch.Q6;
 		public VoltageSignal D7 => _latch.Q7;
 
-		public void WriteByte(ushort address, byte data)
+		public virtual void WriteByte(ushort address, byte data)
 		{
 			_ram.A0  = ((address & 0x0001) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
 			_ram.A1  = ((address & 0x0002) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);

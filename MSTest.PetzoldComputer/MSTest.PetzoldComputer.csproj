@@ -72,7 +72,7 @@
     <Compile Include="NOTTest.cs" />
     <Compile Include="OnesComplementTest.cs" />
     <Compile Include="ORTest.cs" />
-    <Compile Include="Phase1Test.cs" />
+    <Compile Include="Phase1ComputerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RAM64KBTest.cs" />
     <Compile Include="RelayTest.cs" />
@@ -80,6 +80,8 @@
     <Compile Include="TestEventsHelper.cs" />
     <Compile Include="Phase2ComputerTest.cs" />
     <Compile Include="Selector2to1Test.cs" />
+    <Compile Include="ControlPanelTest.cs" />
+    <Compile Include="Phase3ComputerTest.cs" />
     <Compile Include="XORTest.cs" />
   </ItemGroup>
   <ItemGroup>

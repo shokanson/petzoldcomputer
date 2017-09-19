@@ -4,7 +4,7 @@
 	// see notes in Phase1Computer for info about the rest
 	public class Phase2Computer : Phase1Computer
 	{
-		public Phase2Computer(int nIterations)
+		public Phase2Computer(uint nIterations)
 		{
 			_oscillator = new Oscillator(nIterations);
 
