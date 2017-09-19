@@ -126,21 +126,21 @@ namespace MSTest.PetzoldComputer
 		private void TestLatchEdge8EventHelper(ILatchEdge8 latch, TestEventsHelper helper, byte oldData, byte newData)
 		{
 			latch.D0 = ((newData & 0x01) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual("not fired", helper.EventStatus, "D0; no event");
+			Assert.IsFalse(helper.EventFired, "D0; no event");
 			latch.D1 = ((newData & 0x02) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual("not fired", helper.EventStatus, "D1; no event");
+			Assert.IsFalse(helper.EventFired, "D1; no event");
 			latch.D2 = ((newData & 0x04) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual("not fired", helper.EventStatus, "D2; no event");
+			Assert.IsFalse(helper.EventFired, "D2; no event");
 			latch.D3 = ((newData & 0x08) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual("not fired", helper.EventStatus, "C3; no event");
+			Assert.IsFalse(helper.EventFired, "C3; no event");
 			latch.D4 = ((newData & 0x10) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual("not fired", helper.EventStatus, "D4; no event");
+			Assert.IsFalse(helper.EventFired, "D4; no event");
 			latch.D5 = ((newData & 0x20) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual("not fired", helper.EventStatus, "D5; no event");
+			Assert.IsFalse(helper.EventFired, "D5; no event");
 			latch.D6 = ((newData & 0x40) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual("not fired", helper.EventStatus, "D6; no event");
+			Assert.IsFalse(helper.EventFired, "D6; no event");
 			latch.D7 = ((newData & 0x80) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			Assert.AreEqual("not fired", helper.EventStatus, "D7; no event");
+			Assert.IsFalse(helper.EventFired, "D7; no event");
 
 			TestData(latch, oldData);
 
@@ -149,15 +149,15 @@ namespace MSTest.PetzoldComputer
 			latch.Clk = VoltageSignal.HIGH;
 			if (oldOutput != GetOutput(latch))
 			{
-				Assert.AreEqual("fired", helper.EventStatus, "Clk ^ with different output; event");
+				Assert.IsTrue(helper.EventFired, "Clk ^ with different output; event");
 				helper.ResetStatus();
 			}
 			else
 			{
-				Assert.AreEqual("not fired", helper.EventStatus, "Clk ^ with same output; no event");
+				Assert.IsFalse(helper.EventFired, "Clk ^ with same output; no event");
 			}
 			latch.Clk = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Clk v; no event");
+			Assert.IsFalse(helper.EventFired, "Clk v; no event");
 
 			TestData(latch, newData);
 		}

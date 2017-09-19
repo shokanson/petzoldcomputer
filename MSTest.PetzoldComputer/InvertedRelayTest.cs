@@ -49,49 +49,49 @@ namespace MSTest.PetzoldComputer
 			TestEventsHelper helper = new TestEventsHelper((IOutput)invRelay);
 
 			invRelay.Voltage = VoltageSignal.HIGH;	// I: L; V: goes H
-			Assert.AreEqual("fired", helper.EventStatus, "Events: Input LOW, Voltage goes HIGH, event");
+			Assert.IsTrue(helper.EventFired, "Events: Input LOW, Voltage goes HIGH, event");
 			helper.ResetStatus();
 			invRelay.Voltage = VoltageSignal.HIGH;	// I: L; V: stays H
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Input LOW, Voltage stays HIGH, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Input LOW, Voltage stays HIGH, no event");
 			invRelay.Voltage = VoltageSignal.LOW;	// I: L; V: goes L
-			Assert.AreEqual("fired", helper.EventStatus, "Events: Input LOW, Voltage goes LOW, event");
+			Assert.IsTrue(helper.EventFired, "Events: Input LOW, Voltage goes LOW, event");
 			helper.ResetStatus();
 			invRelay.Voltage = VoltageSignal.LOW;	// I: L; V: stays L
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Input LOW, Voltage stays LOW, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Input LOW, Voltage stays LOW, no event");
 
 			invRelay.Input = VoltageSignal.HIGH;	// V: L; I: goes H
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Voltage LOW, Input goes HIGH, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Voltage LOW, Input goes HIGH, no event");
 			invRelay.Input = VoltageSignal.HIGH;	// V: L; I: stays H
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Voltage LOW, Input stays HIGH, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Voltage LOW, Input stays HIGH, no event");
 			invRelay.Input = VoltageSignal.LOW;	// V: L; I: goes L
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Voltage LOW, Input goes LOW, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Voltage LOW, Input goes LOW, no event");
 			invRelay.Input = VoltageSignal.LOW;	// V: L; I: stays L
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Voltage LOW, Input stays LOW, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Voltage LOW, Input stays LOW, no event");
 
 			invRelay.Input = VoltageSignal.HIGH;
 			helper.ResetStatus();
 			invRelay.Voltage = VoltageSignal.HIGH;	// I: H; V: goes H
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Input HIGH, Voltage goes HIGH, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Input HIGH, Voltage goes HIGH, no event");
 			invRelay.Voltage = VoltageSignal.HIGH;	// I: H; V: stays H
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Input HIGH, Voltage stays HIGH, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Input HIGH, Voltage stays HIGH, no event");
 			invRelay.Voltage = VoltageSignal.LOW;	// I: H; V: goes L
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Input HIGH, Voltage goes LOW, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Input HIGH, Voltage goes LOW, no event");
 			invRelay.Voltage = VoltageSignal.LOW;	// I: H; V: stays L
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Input HIGH, Voltage stays LOW, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Input HIGH, Voltage stays LOW, no event");
 
 			invRelay.Voltage = VoltageSignal.HIGH;
 			invRelay.Input = VoltageSignal.LOW;
 			helper.ResetStatus();
 			invRelay.Input = VoltageSignal.HIGH;	// V: H; I: goes H
-			Assert.AreEqual("fired", helper.EventStatus, "Events: Voltage HIGH, Input goes HIGH, event");
+			Assert.IsTrue(helper.EventFired, "Events: Voltage HIGH, Input goes HIGH, event");
 			helper.ResetStatus();
 			invRelay.Input = VoltageSignal.HIGH;	// V: H; I: stays H
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Voltage HIGH, Input stays HIGH, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Voltage HIGH, Input stays HIGH, no event");
 			invRelay.Input = VoltageSignal.LOW;	// V: H; I: goes L
-			Assert.AreEqual("fired", helper.EventStatus, "Events: Voltage HIGH, Input goes LOW, event");
+			Assert.IsTrue(helper.EventFired, "Events: Voltage HIGH, Input goes LOW, event");
 			helper.ResetStatus();
 			invRelay.Input = VoltageSignal.LOW;	// V: H; I: stays L
-			Assert.AreEqual("not fired", helper.EventStatus, "Events: Voltage HIGH, Input stays LOW, no event");
+			Assert.IsFalse(helper.EventFired, "Events: Voltage HIGH, Input stays LOW, no event");
 		}
 	}
 }

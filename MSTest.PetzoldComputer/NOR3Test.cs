@@ -73,35 +73,35 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nor3.A = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: ^; B: L; C: L; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: ^; B: L; C: L; event");
 			helper.ResetStatus();
 			nor3.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: -->H; B: L; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: -->H; B: L; C: L; no event");
 			nor3.A = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: v; B: L; C: L; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: v; B: L; C: L; event");
 			helper.ResetStatus();
 			nor3.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: -->L; B: L; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: -->L; B: L; C: L; no event");
 			nor3.B = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: ^; C: L; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: L; B: ^; C: L; event");
 			helper.ResetStatus();
 			nor3.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->H; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->H; C: L; no event");
 			nor3.B = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: v; C: L; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: L; B: v; C: L; event");
 			helper.ResetStatus();
 			nor3.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->L; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->L; C: L; no event");
 			nor3.C = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: L; C: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: L; B: L; C: ^; event");
 			helper.ResetStatus();
 			nor3.C = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: L; C: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: L; C: -->H; no event");
 			nor3.C = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: L; C: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: L; B: L; C: v; event");
 			helper.ResetStatus();
 			nor3.C = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: L; C: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: L; C: -->L; no event");
 
 			//
 			// TEST A
@@ -113,13 +113,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nor3.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: ^; B: H; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: ^; B: H; C: L; no event");
 			nor3.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: -->H; B: H; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: -->H; B: H; C: L; no event");
 			nor3.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: v; B: H; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: v; B: H; C: L; no event");
 			nor3.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: -->L; B: H; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: -->L; B: H; C: L; no event");
 
 			// setup
 			nor3.A = VoltageSignal.LOW;
@@ -128,13 +128,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nor3.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: ^; B: H; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: ^; B: H; C: H; no event");
 			nor3.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: -->H; B: H; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: -->H; B: H; C: H; no event");
 			nor3.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: v; B: H; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: v; B: H; C: H; no event");
 			nor3.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: -->L; B: H; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: -->L; B: H; C: H; no event");
 
 			// setup
 			nor3.A = VoltageSignal.LOW;
@@ -143,13 +143,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nor3.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: ^; B: L; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: ^; B: L; C: H; no event");
 			nor3.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: -->H; B: L; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: -->H; B: L; C: H; no event");
 			nor3.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: v; B: L; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: v; B: L; C: H; no event");
 			nor3.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: -->L; B: L; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: -->L; B: L; C: H; no event");
 
 			//
 			// TEST B
@@ -161,13 +161,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nor3.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: ^; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: ^; C: L; no event");
 			nor3.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->H; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->H; C: L; no event");
 			nor3.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: v; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: v; C: L; no event");
 			nor3.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->L; C: L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->L; C: L; no event");
 
 			// setup
 			nor3.A = VoltageSignal.HIGH;
@@ -176,13 +176,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nor3.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: ^; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: ^; C: H; no event");
 			nor3.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->H; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->H; C: H; no event");
 			nor3.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: v; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: v; C: H; no event");
 			nor3.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->L; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->L; C: H; no event");
 
 			// setup
 			nor3.A = VoltageSignal.LOW;
@@ -191,13 +191,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nor3.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: ^; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: ^; C: H; no event");
 			nor3.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->H; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->H; C: H; no event");
 			nor3.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: v; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: v; C: H; no event");
 			nor3.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->L; C: H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->L; C: H; no event");
 
 
 			//
@@ -210,13 +210,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nor3.C = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: H; C: ^; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: H; C: ^; no event");
 			nor3.C = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: H; C: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: H; C: -->H; no event");
 			nor3.C = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: H; C: v; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: H; C: v; no event");
 			nor3.C = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: H; C: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: H; C: -->L; no event");
 
 			// setup
 			nor3.A = VoltageSignal.HIGH;
@@ -225,13 +225,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nor3.C = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: L; C: ^; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: L; C: ^; no event");
 			nor3.C = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: L; C: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: L; C: -->H; no event");
 			nor3.C = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: L; C: v; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: L; C: v; no event");
 			nor3.C = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: L; C: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: L; C: -->L; no event");
 
 			// setup
 			nor3.A = VoltageSignal.LOW;
@@ -240,13 +240,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			nor3.C = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: H; C: ^; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: H; C: ^; no event");
 			nor3.C = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: H; C: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: H; C: -->H; no event");
 			nor3.C = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: H; C: v; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: H; C: v; no event");
 			nor3.C = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: H; C: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: H; C: -->L; no event");
 		}
 	}
 }

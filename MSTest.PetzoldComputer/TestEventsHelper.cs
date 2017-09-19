@@ -7,26 +7,26 @@ namespace MSTest.PetzoldComputer
 		public TestEventsHelper(IOutput oe)
 		{
 			ResetStatus();
-			oe.AddOutputHandler(_ => { EventStatus = "fired"; });
+			oe.AddOutputHandler(_ => { EventFired = true; });
 		}
 
 		public TestEventsHelper(ISum se)
 		{
 			ResetStatus();
-			se.AddSumHandler(_ => { EventStatus = "fired"; });
+			se.AddSumHandler(_ => { EventFired = true; });
 		}
 
 		public TestEventsHelper(ICarry ce)
 		{
 			ResetStatus();
-			ce.AddCarryHandler(_ => { EventStatus = "fired"; });
+			ce.AddCarryHandler(_ => { EventFired = true; });
 		}
 
-		public string EventStatus { get; private set; }
+		public bool EventFired { get; private set; }
 
 		public void ResetStatus()
 		{
-			EventStatus = "not fired";
+			EventFired = false;
 		}
 	}
 }

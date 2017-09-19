@@ -97,25 +97,25 @@ namespace MSTest.PetzoldComputer
 			fullAdder.Voltage = VoltageSignal.HIGH;
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: L; B: ^; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->H; no event");
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: L; B: v; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->L; no event");
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: L; A: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: L; A: ^; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: L; A: -->H; no event");
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: L; A: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: L; A: v; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: L; A: -->L; no event");
 
 			// setup
 			fullAdder.A = VoltageSignal.HIGH;
@@ -123,15 +123,15 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: H; B: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: H; B: ^; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->H; no event");
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: H; B: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: H; B: v; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->L; no event");
 
 			// setup
 			fullAdder.A = VoltageSignal.LOW;
@@ -139,15 +139,15 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: H; A: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: H; A: ^; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: H; A: -->H; no event");
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: H; A: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: H; A: v; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: H; A: -->L; no event");
 		}
 
 		[TestMethod]
@@ -162,21 +162,21 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: ^; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: ^; no event");
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->H; no event");
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: v; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: v; no event");
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->L; no event");
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: ^; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: L; A: ^; no event");
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: L; A: -->H; no event");
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: v; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: L; A: v; no event");
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: L; A: -->L; no event");
 
 			// setup
 			fullAdder.A = VoltageSignal.HIGH;
@@ -184,15 +184,15 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: H; B: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: H; B: ^; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->H; no event");
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: H; B: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: H; B: v; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->L; no event");
 
 			// setup
 			fullAdder.A = VoltageSignal.LOW;
@@ -200,15 +200,15 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: H; A: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: H; A: ^; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: H; A: -->H; no event");
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: H; A: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: H; A: v; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: H; A: -->L; no event");
 		}
 
 		[TestMethod]
@@ -222,25 +222,25 @@ namespace MSTest.PetzoldComputer
 			fullAdder.CarryIn = VoltageSignal.HIGH;
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: L; B: ^; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->H; no event");
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: L; B: v; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->L; no event");
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: L; A: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: L; A: ^; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: L; A: -->H; no event");
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: L; A: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: L; A: v; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: L; A: -->L; no event");
 
 			// setup
 			fullAdder.A = VoltageSignal.HIGH;
@@ -248,15 +248,15 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: H; B: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: H; B: ^; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->H; no event");
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: H; B: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: H; B: v; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->L; no event");
 
 			// setup
 			fullAdder.A = VoltageSignal.LOW;
@@ -264,15 +264,15 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: H; A: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: H; A: ^; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: H; A: -->H; no event");
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: H; A: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: H; A: v; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: H; A: -->L; no event");
 		}
 
 		[TestMethod]
@@ -288,25 +288,25 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: L; B: ^; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->H; no event");
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- A: L; B: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- A: L; B: v; event");
 			helper.ResetStatus();
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: L; B: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: L; B: -->L; no event");
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: L; A: ^; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: L; A: ^; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: L; A: -->H; no event");
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("fired", helper.EventStatus, "Gate on -- B: L; A: v; event");
+			Assert.IsTrue(helper.EventFired, "Gate on -- B: L; A: v; event");
 			helper.ResetStatus();
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: L; A: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: L; A: -->L; no event");
 
 			// setup
 			fullAdder.A = VoltageSignal.HIGH;
@@ -314,13 +314,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: ^; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: ^; no event");
 			fullAdder.B = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->H; no event");
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: v; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: v; no event");
 			fullAdder.B = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- A: H; B: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- A: H; B: -->L; no event");
 
 			// setup
 			fullAdder.A = VoltageSignal.LOW;
@@ -328,13 +328,13 @@ namespace MSTest.PetzoldComputer
 			helper.ResetStatus();
 			// test
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: ^; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: H; A: ^; no event");
 			fullAdder.A = VoltageSignal.HIGH;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->H; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: H; A: -->H; no event");
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: v; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: H; A: v; no event");
 			fullAdder.A = VoltageSignal.LOW;
-			Assert.AreEqual("not fired", helper.EventStatus, "Gate on -- B: H; A: -->L; no event");
+			Assert.IsFalse(helper.EventFired, "Gate on -- B: H; A: -->L; no event");
 		}
 	}
 }
