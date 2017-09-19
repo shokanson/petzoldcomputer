@@ -63,6 +63,7 @@
     <Compile Include="NOT.cs" />
     <Compile Include="OR.cs" />
     <Compile Include="Oscillator.cs" />
+    <Compile Include="PetzoldComputer.cs" />
     <Compile Include="Phase1Computer.cs" />
     <Compile Include="Phase2Computer.cs" />
     <Compile Include="Phase3Computer.cs" />

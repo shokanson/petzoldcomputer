@@ -1,6 +1,8 @@
 ﻿namespace PetzoldComputer
 {
-	// Phase 2 computer w/ a control panel
+	/* Phase 2 computer w/ a control panel. In other words, this is the full realization
+	 * of the diagram on page 208.
+	 */
 	public class Phase3Computer : Phase2Computer
 	{
 		#region Construction

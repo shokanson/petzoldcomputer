@@ -82,6 +82,7 @@
     <Compile Include="Selector2to1Test.cs" />
     <Compile Include="ControlPanelTest.cs" />
     <Compile Include="Phase3ComputerTest.cs" />
+    <Compile Include="PetzoldComputerTest.cs" />
     <Compile Include="XORTest.cs" />
   </ItemGroup>
   <ItemGroup>

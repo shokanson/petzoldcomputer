@@ -193,6 +193,23 @@ namespace PetzoldComputer
 		void WriteByte(ushort address, byte data);
 	}
 
+	public interface IPetzoldComputer
+	{
+		VoltageSignal Voltage { get; set; }
+		VoltageSignal Clr { get; set; }
+		IControlPanel Panel { get; }
+
+		VoltageSignal B0 { get; }
+		VoltageSignal B1 { get; }
+		VoltageSignal B2 { get; }
+		VoltageSignal B3 { get; }
+		VoltageSignal B4 { get; }
+		VoltageSignal B5 { get; }
+		VoltageSignal B6 { get; }
+		VoltageSignal B7 { get; }
+		string Bulbs { get; }
+	}
+
 	public interface IPresetAndClear
 	{
 		VoltageSignal Pre { get; set; }
