@@ -39,7 +39,7 @@ namespace MSTest.PetzoldComputer
 				Clr = VoltageSignal.HIGH
 			};
 
-			int nBytes = 0x10000;	// do not set higher than 0x10000 (64K)
+			int nBytes = 0x100;	// do not set higher than 0x10000 (64K)
 
 			LoadComputerRAM(computer, nBytes);
 

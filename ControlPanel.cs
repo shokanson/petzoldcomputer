@@ -683,7 +683,7 @@ namespace PetzoldComputer
 		public VoltageSignal B7 { get; set; }
 
 		public string Bulbs => $"{bulb(B7)}{bulb(B6)}{bulb(B5)}{bulb(B4)}{bulb(B3)}{bulb(B2)}{bulb(B1)}{bulb(B0)}";
-		private char bulb(VoltageSignal voltage) => voltage == VoltageSignal.HIGH ? 'O' : '.';
+		private char bulb(VoltageSignal voltage) => voltage == VoltageSignal.HIGH ? 'Ȳ' : '.';
 
 		#region IOutput Members
 

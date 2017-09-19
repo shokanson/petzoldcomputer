@@ -10,7 +10,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestComputer()
 		{
-			uint nBytes = 0x10000;   // do not set higher than 0x10000 (64K)
+			uint nBytes = 0x100;   // do not set higher than 0x10000 (64K)
 
 			var computer = new Phase2Computer(nBytes)
 			{
@@ -27,6 +27,7 @@ namespace MSTest.PetzoldComputer
 			// allow the oscillator to drive the computer
 			computer.Clr = VoltageSignal.LOW;
 
+			Trace.TraceInformation($"PC: {computer.PC}; Output: {computer.ToString()}");
 			// and...go!
 			computer.Oscillator.Start();	// synchronous--doesn't return until done
 		}

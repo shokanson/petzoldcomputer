@@ -28,6 +28,8 @@ namespace MSTest.PetzoldComputer
 			// allow the oscillator to drive the computer
 			computer.Clr = VoltageSignal.LOW;
 
+			Trace.TraceInformation($"PC: {computer.PC}; Output: {computer.ToString()}; Bulbs: {computer.Panel.Bulbs}");
+
 			// and...go!
 			computer.Oscillator.Start();  // synchronous--doesn't return until done
 		}
