@@ -23,10 +23,10 @@ namespace MSTest.PetzoldComputer
 		{
 			IRelay relay = new Relay
 			{
-				// if Input is LOW, Output should be LOW
 				Input = VoltageSignal.LOW,
 				Voltage = VoltageSignal.HIGH
 			};
+			// if Input is LOW, Output should be LOW
 			Assert.AreEqual(VoltageSignal.LOW, relay.Output, "Input LOW, Voltage HIGH, Output LOW");
 			relay.Voltage = VoltageSignal.LOW;
 			Assert.AreEqual(VoltageSignal.LOW, relay.Output, "Input LOW, Voltage LOW, Output LOW");
@@ -109,7 +109,7 @@ namespace MSTest.PetzoldComputer
 		public void Relay_2_Constructor_NormallyClosedSwitch()
 		{
 			// arrage, act
-			var relay = new Relay_2(SwitchType.NormallyClosed);
+			var relay = new Relay_2(true);
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, relay.Voltage.Voltage, "Coil Voltage");
@@ -143,7 +143,7 @@ namespace MSTest.PetzoldComputer
 		public void Relay_2_NormallyClosedSwitch(VoltageSignal voltage, VoltageSignal input, VoltageSignal expected)
 		{
 			// arrage
-			var relay = new Relay_2(SwitchType.NormallyClosed);
+			var relay = new Relay_2(true);
 
 			// act
 			relay.Voltage.Voltage = voltage;
@@ -196,7 +196,7 @@ namespace MSTest.PetzoldComputer
 		public void Relay_2_NormallyClosedSwitch_Events()
 		{
 			// arrage
-			var relay = new Relay_2(SwitchType.NormallyClosed);
+			var relay = new Relay_2(true);
 
 			// act,assert
 			bool fired = false;

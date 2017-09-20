@@ -94,133 +94,46 @@ namespace PetzoldComputer
 		#endregion
 	}
 
-	public enum SwitchType
-	{
-		NormallyOpen,
-		NormallyClosed
-	}
-
-	public class Switch
-	{
-		private enum SwitchState
-		{
-			Idle,
-			Activated
-		}
-
-		public Switch(SwitchType type = SwitchType.NormallyOpen)
-		{
-			Type = type;
-
-			Input = new ConnectionPoint();
-			Output = new ConnectionPoint();
-
-			Input.VoltageChanged += cp => UpdateOutput(cp.Voltage);
-		}
-
-		public ConnectionPoint Input { get; private set; }
-		public ConnectionPoint Output { get; private set; }
-		public bool IsSwitchActivated
-		{
-			get => (State == SwitchState.Activated);
-			set => State = (value ? SwitchState.Activated : SwitchState.Idle);
-		}
-
-		private SwitchState _state = SwitchState.Idle;
-		private SwitchState State
-		{
-			get => _state;
-			set
-			{
-				if (_state != value)
-				{
-					_state = value;
-					UpdateOutput(Input.Voltage);
-				}
-			}
-		}
-
-		private SwitchType Type { get; set; }
-
-		private void UpdateOutput(VoltageSignal voltage)
-		{
-			bool isActivated = IsSwitchActivated;
-			if (Type == SwitchType.NormallyOpen)
-			{
-				Output.Voltage = isActivated ? voltage : VoltageSignal.LOW;
-			}
-			else
-			{
-				Output.Voltage = isActivated ? VoltageSignal.LOW : voltage;
-			}
-		}
-	}
-
 	public class Relay_2
 	{
-		public Relay_2(SwitchType switchType = SwitchType.NormallyOpen)
+		public Relay_2(bool inverted = false)
 		{
-			_input = new ConnectionPoint();
-			_switch = new Switch(switchType);
+			_inverted = inverted;
+
+			Input = new ConnectionPoint();
+			Voltage = new ConnectionPoint();
+			Output = new ConnectionPoint();
 
 			// when the input voltage changes, (de)activate the switch
-			_input.VoltageChanged += _ => _switch.IsSwitchActivated = _input.Voltage == VoltageSignal.HIGH;
+			Input.VoltageChanged += _ => IsSwitchActivated = Input.Voltage == VoltageSignal.HIGH;
 
-			_voltage = new ConnectionPoint();
-			_output = new ConnectionPoint();
-			_type = switchType;
-			//_input.VoltageChanged += _ => IsSwitchActivated = _input.Voltage == VoltageSignal.HIGH;
-			//_input.VoltageChanged += cp => UpdateOutput(cp.Voltage);
+			Voltage.VoltageChanged += cp => UpdateOutput(cp.Voltage);
 		}
 
-		private readonly ConnectionPoint _voltage;
-		private readonly ConnectionPoint _input;
-		private readonly ConnectionPoint _output;
-		private readonly Switch _switch;
+		public ConnectionPoint Voltage { get; private set; }
+		public ConnectionPoint Input { get; private set; }
+		public ConnectionPoint Output { get; private set; }
 
-		public ConnectionPoint Voltage => _switch.Input;
-		public ConnectionPoint Input => _input;
-		public ConnectionPoint Output => _switch.Output;
+		private bool _inverted;
 
 		// internal switch details
-		private readonly SwitchType _type;
-		private enum SwitchState
-		{
-			Idle,
-			Activated
-		}
-
+		private bool _switchActive;
 		private bool IsSwitchActivated
 		{
-			get => (State == SwitchState.Activated);
-			set => State = (value ? SwitchState.Activated : SwitchState.Idle);
-		}
-
-		private SwitchState _state = SwitchState.Idle;
-		private SwitchState State
-		{
-			get => _state;
+			get => _switchActive;
 			set
 			{
-				if (_state != value)
-				{
-					_state = value;
-					UpdateOutput(Input.Voltage);
-				}
+				bool originalValue = _switchActive;
+				_switchActive = value;
+				if (originalValue != value) UpdateOutput(Voltage.Voltage);
 			}
 		}
 
 		private void UpdateOutput(VoltageSignal voltage)
 		{
-			bool isActivated = IsSwitchActivated;
-			if (_type == SwitchType.NormallyOpen)
-			{
-				Output.Voltage = isActivated ? voltage : VoltageSignal.LOW;
-			}
-			else
-			{
-				Output.Voltage = isActivated ? VoltageSignal.LOW : voltage;
-			}
+			Output.Voltage = _inverted
+				? _switchActive ? VoltageSignal.LOW : voltage
+				: _switchActive ? voltage : VoltageSignal.LOW;
 		}
 	}
 }

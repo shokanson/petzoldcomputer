@@ -8,7 +8,7 @@ namespace PetzoldComputer
 	{
 		public NOT_2()
 		{
-			_relay = new Relay_2(SwitchType.NormallyClosed);
+			_relay = new Relay_2(true);
 		}
 
 		private readonly Relay_2 _relay;
