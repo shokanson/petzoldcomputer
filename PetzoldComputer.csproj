@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="AddAndSub8.cs" />
     <Compile Include="AND.cs" />
+    <Compile Include="ConnectionPoint.cs" />
     <Compile Include="ControlPanel.cs" />
     <Compile Include="CounterSynchronous16.cs" />
     <Compile Include="DFlipFlopEdgeWithPresetAndClear.cs" />

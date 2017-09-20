@@ -92,5 +92,71 @@ namespace MSTest.PetzoldComputer
 			not.Input = VoltageSignal.LOW;	// V: H; I: stays L
 			Assert.IsFalse(helper.EventFired, "Events: Voltage HIGH, Input stays LOW, no event");
 		}
+
+		[TestMethod]
+		public void Not2_Constructor()
+		{
+			// arrage, act
+			var not = new NOT_2();
+
+			// Assert
+			Assert.AreEqual(VoltageSignal.LOW, not.Voltage.Voltage, "Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, not.Input.Voltage, "Input");
+			Assert.AreEqual(VoltageSignal.LOW, not.Output.Voltage, "Output");
+		}
+
+		[DataTestMethod]
+		[DataRow(VoltageSignal.LOW, VoltageSignal.LOW, VoltageSignal.LOW)]
+		[DataRow(VoltageSignal.LOW, VoltageSignal.HIGH, VoltageSignal.LOW)]
+		[DataRow(VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.HIGH)]
+		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW)]
+		public void Not2(VoltageSignal voltage, VoltageSignal input, VoltageSignal expected)
+		{
+			// arrange
+			var not = new NOT_2();
+
+			// act
+			not.Voltage.Voltage = voltage;
+			not.Input.Voltage = input;
+
+			// assert
+			Assert.AreEqual(expected, not.Output.Voltage, $"V: {voltage}; I:{input}");
+		}
+
+		[TestMethod]
+		public void Not2_Events()
+		{
+			// arrage
+			var not = new NOT_2();
+
+			// act,assert
+			bool fired = false;
+			not.Output.VoltageChanged += _ => fired = true;
+
+			// w/ voltage L, output shouldn't change
+			not.Input.Voltage = VoltageSignal.HIGH;
+			Assert.IsFalse(fired);
+			not.Input.Voltage = VoltageSignal.LOW;
+			Assert.IsFalse(fired);
+
+			// w/ input L, and voltage changed to H, output should change (to H)
+			not.Voltage.Voltage = VoltageSignal.HIGH;
+			Assert.IsTrue(fired);
+			fired = false;
+
+			// w/ voltage H, and input changed to H, output should change (to H)
+			not.Input.Voltage = VoltageSignal.HIGH;
+			Assert.IsTrue(fired);
+			fired = false;
+
+			// w/ voltage H, input H, and input set to H again, output shouldn't change
+			not.Input.Voltage = VoltageSignal.HIGH;
+			Assert.IsFalse(fired);
+
+			// w/ voltage H, input L, and voltage set to L, output should change (to L)
+			not.Input.Voltage = VoltageSignal.LOW;
+			not.Voltage.Voltage = VoltageSignal.LOW;
+			Assert.IsTrue(fired);
+		}
 	}
 }
