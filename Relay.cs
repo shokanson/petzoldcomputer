@@ -185,13 +185,17 @@ namespace PetzoldComputer
 	{
 		public Relay_2(SwitchType switchType = SwitchType.NormallyOpen)
 		{
-			Coil = new Coil();
-			Switch = new Switch(switchType);
+			_coil = new Coil();
+			_switch = new Switch(switchType);
 
-			Coil.OutputChanged += () => Switch.IsSwitchActivated = Coil.Voltage.Voltage == VoltageSignal.HIGH;
+			_coil.OutputChanged += () => _switch.IsSwitchActivated = _coil.Voltage.Voltage == VoltageSignal.HIGH;
 		}
 
-		public Coil Coil { get; private set; }
-		public Switch Switch { get; private set; }
+		private readonly Coil _coil;
+		private readonly Switch _switch;
+
+		public ConnectionPoint Input => _coil.Voltage;
+		public ConnectionPoint Voltage => _switch.Input;
+		public ConnectionPoint Output => _switch.Output;
 	}
 }

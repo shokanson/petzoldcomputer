@@ -8,20 +8,14 @@ namespace PetzoldComputer
 	{
 		public NOT_2()
 		{
-			Relay = new Relay_2(SwitchType.NormallyClosed);
-			Output = new ConnectionPoint();
-			//Relay.Switch.Input.VoltageChanged += _ => Output.Voltage = Relay.Switch.Output.Voltage;
-			Relay.Switch.Output.VoltageChanged += _ => Output.Voltage = Relay.Switch.Output.Voltage;
+			_relay = new Relay_2(SwitchType.NormallyClosed);
 		}
 
-		private Relay_2 Relay { get; set; }
+		private readonly Relay_2 _relay;
 
-		public ConnectionPoint Voltage
-		{
-			get => Relay.Switch.Input;
-		}
-		public ConnectionPoint Input => Relay.Coil.Voltage;
-		public ConnectionPoint Output { get; private set; }
+		public ConnectionPoint Voltage => _relay.Voltage;
+		public ConnectionPoint Input => _relay.Input;
+		public ConnectionPoint Output => _relay.Output;
 
 		public override string ToString() => $"V: {Voltage.Voltage}; I:{Input.Voltage}; O:{Output.Voltage}";
 	}
