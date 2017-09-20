@@ -114,6 +114,8 @@ namespace PetzoldComputer
 		public ConnectionPoint Input { get; private set; }
 		public ConnectionPoint Output { get; private set; }
 
+		public override string ToString() => $"{Output.Voltage}";
+
 		private bool _inverted;
 
 		// internal switch details

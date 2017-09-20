@@ -103,6 +103,7 @@ namespace MSTest.PetzoldComputer
 			Assert.AreEqual(VoltageSignal.LOW, not.Voltage.Voltage, "Voltage");
 			Assert.AreEqual(VoltageSignal.LOW, not.Input.Voltage, "Input");
 			Assert.AreEqual(VoltageSignal.LOW, not.Output.Voltage, "Output");
+			Assert.AreEqual("LOW", not.ToString());
 		}
 
 		[DataTestMethod]
@@ -133,30 +134,50 @@ namespace MSTest.PetzoldComputer
 			bool fired = false;
 			not.Output.VoltageChanged += _ => fired = true;
 
-			// w/ voltage L, output shouldn't change
-			not.Input.Voltage = VoltageSignal.HIGH;
-			Assert.IsFalse(fired);
-			not.Input.Voltage = VoltageSignal.LOW;
-			Assert.IsFalse(fired);
+			not.Voltage.Voltage = VoltageSignal.HIGH;   // I: L; V: goes H
+			Assert.IsTrue(fired, "Events: Input LOW, Voltage goes HIGH, event");
+			fired = false;
+			not.Voltage.Voltage = VoltageSignal.HIGH;   // I: L; V: stays H
+			Assert.IsFalse(fired, "Events: Input LOW, Voltage stays HIGH, no event");
+			not.Voltage.Voltage = VoltageSignal.LOW; // I: L; V: goes L
+			Assert.IsTrue(fired, "Events: Input LOW, Voltage goes LOW, event");
+			fired = false;
+			not.Voltage.Voltage = VoltageSignal.LOW; // I: L; V: stays L
+			Assert.IsFalse(fired, "Events: Input LOW, Voltage stays LOW, no event");
 
-			// w/ input L, and voltage changed to H, output should change (to H)
+			not.Input.Voltage = VoltageSignal.HIGH;  // V: L; I: goes H
+			Assert.IsFalse(fired, "Events: Voltage LOW, Input goes HIGH, no event");
+			not.Input.Voltage = VoltageSignal.HIGH;  // V: L; I: stays H
+			Assert.IsFalse(fired, "Events: Voltage LOW, Input stays HIGH, no event");
+			not.Input.Voltage = VoltageSignal.LOW;   // V: L; I: goes L
+			Assert.IsFalse(fired, "Events: Voltage LOW, Input goes LOW, no event");
+			not.Input.Voltage = VoltageSignal.LOW;   // V: L; I: stays L
+			Assert.IsFalse(fired, "Events: Voltage LOW, Input stays LOW, no event");
+
+			not.Input.Voltage = VoltageSignal.HIGH;
+			fired = false;
+			not.Voltage.Voltage = VoltageSignal.HIGH;   // I: H; V: goes H
+			Assert.IsFalse(fired, "Events: Input HIGH, Voltage goes HIGH, no event");
+			not.Voltage.Voltage = VoltageSignal.HIGH;   // I: H; V: stays H
+			Assert.IsFalse(fired, "Events: Input HIGH, Voltage stays HIGH, no event");
+			not.Voltage.Voltage = VoltageSignal.LOW; // I: H; V: goes L
+			Assert.IsFalse(fired, "Events: Input HIGH, Voltage goes LOW, no event");
+			not.Voltage.Voltage = VoltageSignal.LOW; // I: H; V: stays L
+			Assert.IsFalse(fired, "Events: Input HIGH, Voltage stays LOW, no event");
+
 			not.Voltage.Voltage = VoltageSignal.HIGH;
-			Assert.IsTrue(fired);
-			fired = false;
-
-			// w/ voltage H, and input changed to H, output should change (to H)
-			not.Input.Voltage = VoltageSignal.HIGH;
-			Assert.IsTrue(fired);
-			fired = false;
-
-			// w/ voltage H, input H, and input set to H again, output shouldn't change
-			not.Input.Voltage = VoltageSignal.HIGH;
-			Assert.IsFalse(fired);
-
-			// w/ voltage H, input L, and voltage set to L, output should change (to L)
 			not.Input.Voltage = VoltageSignal.LOW;
-			not.Voltage.Voltage = VoltageSignal.LOW;
-			Assert.IsTrue(fired);
+			fired = false;
+			not.Input.Voltage = VoltageSignal.HIGH;  // V: H; I: goes H
+			Assert.IsTrue(fired, "Events: Voltage HIGH, Input goes HIGH, event");
+			fired = false;
+			not.Input.Voltage = VoltageSignal.HIGH;  // V: H; I: stays H
+			Assert.IsFalse(fired, "Events: Voltage HIGH, Input stays HIGH, no event");
+			not.Input.Voltage = VoltageSignal.LOW;   // V: H; I: goes L
+			Assert.IsTrue(fired, "Events: Voltage HIGH, Input goes LOW, event");
+			fired = false;
+			not.Input.Voltage = VoltageSignal.LOW;   // V: H; I: stays L
+			Assert.IsFalse(fired, "Events: Voltage HIGH, Input stays LOW, no event");
 		}
 	}
 }
