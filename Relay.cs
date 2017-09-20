@@ -94,31 +94,6 @@ namespace PetzoldComputer
 		#endregion
 	}
 
-	public class Coil
-	{
-		public Coil()
-		{
-			Voltage = new ConnectionPoint();
-			Output = new ConnectionPoint();
-
-			Voltage.VoltageChanged += OnVoltageChanged;
-		}
-
-		public ConnectionPoint Voltage { get; private set; }
-		public ConnectionPoint Output { get; private set; }
-
-		public Action OutputChanged;
-
-		private void OnVoltageChanged(ConnectionPoint cp)
-		{
-			VoltageSignal voltage = Voltage.Voltage;
-
-			OutputChanged?.Invoke();
-
-			Output.Voltage = voltage;
-		}
-	}
-
 	public enum SwitchType
 	{
 		NormallyOpen,
@@ -185,17 +160,67 @@ namespace PetzoldComputer
 	{
 		public Relay_2(SwitchType switchType = SwitchType.NormallyOpen)
 		{
-			_coil = new Coil();
+			_input = new ConnectionPoint();
 			_switch = new Switch(switchType);
 
-			_coil.OutputChanged += () => _switch.IsSwitchActivated = _coil.Voltage.Voltage == VoltageSignal.HIGH;
+			// when the input voltage changes, (de)activate the switch
+			_input.VoltageChanged += _ => _switch.IsSwitchActivated = _input.Voltage == VoltageSignal.HIGH;
+
+			_voltage = new ConnectionPoint();
+			_output = new ConnectionPoint();
+			_type = switchType;
+			//_input.VoltageChanged += _ => IsSwitchActivated = _input.Voltage == VoltageSignal.HIGH;
+			//_input.VoltageChanged += cp => UpdateOutput(cp.Voltage);
 		}
 
-		private readonly Coil _coil;
+		private readonly ConnectionPoint _voltage;
+		private readonly ConnectionPoint _input;
+		private readonly ConnectionPoint _output;
 		private readonly Switch _switch;
 
-		public ConnectionPoint Input => _coil.Voltage;
 		public ConnectionPoint Voltage => _switch.Input;
+		public ConnectionPoint Input => _input;
 		public ConnectionPoint Output => _switch.Output;
+
+		// internal switch details
+		private readonly SwitchType _type;
+		private enum SwitchState
+		{
+			Idle,
+			Activated
+		}
+
+		private bool IsSwitchActivated
+		{
+			get => (State == SwitchState.Activated);
+			set => State = (value ? SwitchState.Activated : SwitchState.Idle);
+		}
+
+		private SwitchState _state = SwitchState.Idle;
+		private SwitchState State
+		{
+			get => _state;
+			set
+			{
+				if (_state != value)
+				{
+					_state = value;
+					UpdateOutput(Input.Voltage);
+				}
+			}
+		}
+
+		private void UpdateOutput(VoltageSignal voltage)
+		{
+			bool isActivated = IsSwitchActivated;
+			if (_type == SwitchType.NormallyOpen)
+			{
+				Output.Voltage = isActivated ? voltage : VoltageSignal.LOW;
+			}
+			else
+			{
+				Output.Voltage = isActivated ? VoltageSignal.LOW : voltage;
+			}
+		}
 	}
 }
