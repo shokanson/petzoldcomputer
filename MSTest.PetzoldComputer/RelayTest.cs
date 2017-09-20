@@ -100,9 +100,9 @@ namespace MSTest.PetzoldComputer
 			var relay = new Relay_2();
 
 			// assert
-			Assert.AreEqual(VoltageSignal.LOW, relay.Voltage.Voltage, "Coil Voltage");
-			Assert.AreEqual(VoltageSignal.LOW, relay.Input.Voltage, "Switch input");
-			Assert.AreEqual(VoltageSignal.LOW, relay.Output.Voltage, "Switch Output");
+			Assert.AreEqual(VoltageSignal.LOW, relay.Voltage.V, "Coil Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, relay.Input.V, "Switch input");
+			Assert.AreEqual(VoltageSignal.LOW, relay.Output.V, "Switch Output");
 			Assert.AreEqual("LOW", relay.ToString());
 		}
 
@@ -113,9 +113,9 @@ namespace MSTest.PetzoldComputer
 			var relay = new Relay_2(true);
 
 			// assert
-			Assert.AreEqual(VoltageSignal.LOW, relay.Voltage.Voltage, "Coil Voltage");
-			Assert.AreEqual(VoltageSignal.LOW, relay.Input.Voltage, "Switch input");
-			Assert.AreEqual(VoltageSignal.LOW, relay.Output.Voltage, "Switch Output");
+			Assert.AreEqual(VoltageSignal.LOW, relay.Voltage.V, "Coil Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, relay.Input.V, "Switch input");
+			Assert.AreEqual(VoltageSignal.LOW, relay.Output.V, "Switch Output");
 			Assert.AreEqual("LOW", relay.ToString());
 		}
 
@@ -130,11 +130,11 @@ namespace MSTest.PetzoldComputer
 			var relay = new Relay_2();
 
 			// act
-			relay.Voltage.Voltage = voltage;
-			relay.Input.Voltage = input;
+			relay.Voltage.V = voltage;
+			relay.Input.V = input;
 
 			// assert
-			Assert.AreEqual(expected, relay.Output.Voltage, $"V: {voltage}; I:{input}");
+			Assert.AreEqual(expected, relay.Output.V, $"V: {voltage}; I:{input}");
 		}
 
 		[DataTestMethod]
@@ -148,11 +148,11 @@ namespace MSTest.PetzoldComputer
 			var relay = new Relay_2(true);
 
 			// act
-			relay.Voltage.Voltage = voltage;
-			relay.Input.Voltage = input;
+			relay.Voltage.V = voltage;
+			relay.Input.V = input;
 
 			// assert
-			Assert.AreEqual(expected, relay.Output.Voltage, $"V: {voltage}; I:{input}");
+			Assert.AreEqual(expected, relay.Output.V, $"V: {voltage}; I:{input}");
 		}
 
 		[TestMethod]
@@ -163,52 +163,52 @@ namespace MSTest.PetzoldComputer
 
 			// act,assert
 			bool fired = false;
-			relay.Output.VoltageChanged += _ => fired = true;
+			relay.Output.Changed += _ => fired = true;
 
 
-			relay.Voltage.Voltage = VoltageSignal.HIGH; // I: L; V: goes H
+			relay.Voltage.V = VoltageSignal.HIGH; // I: L; V: goes H
 			Assert.IsFalse(fired, "Events: Input LOW, Voltage goes HIGH, no event");
-			relay.Voltage.Voltage = VoltageSignal.HIGH; // I: L; V: stays H
+			relay.Voltage.V = VoltageSignal.HIGH; // I: L; V: stays H
 			Assert.IsFalse(fired, "Events: Input LOW, Voltage stays HIGH, no event");
-			relay.Voltage.Voltage = VoltageSignal.LOW;  // I: L; V: goes L
+			relay.Voltage.V = VoltageSignal.LOW;  // I: L; V: goes L
 			Assert.IsFalse(fired, "Events: Input LOW, Voltage goes LOW, no event");
-			relay.Voltage.Voltage = VoltageSignal.LOW;  // I: L; V: stays L
+			relay.Voltage.V = VoltageSignal.LOW;  // I: L; V: stays L
 			Assert.IsFalse(fired, "Events: Input LOW, Voltage stays LOW, no event");
 
-			relay.Input.Voltage = VoltageSignal.HIGH;   // V: L; I: goes H
+			relay.Input.V = VoltageSignal.HIGH;   // V: L; I: goes H
 			Assert.IsFalse(fired, "Events: Voltage LOW, Input goes HIGH, no event");
-			relay.Input.Voltage = VoltageSignal.HIGH;   // V: L; I: stays H
+			relay.Input.V = VoltageSignal.HIGH;   // V: L; I: stays H
 			Assert.IsFalse(false, "Events: Voltage LOW, Input stays HIGH, no event");
-			relay.Input.Voltage = VoltageSignal.LOW; // V: L; I: goes L
+			relay.Input.V = VoltageSignal.LOW; // V: L; I: goes L
 			Assert.IsFalse(false, "Events: Voltage LOW, Input goes LOW, no event");
-			relay.Input.Voltage = VoltageSignal.LOW; // V: L; I: stays L
+			relay.Input.V = VoltageSignal.LOW; // V: L; I: stays L
 			Assert.IsFalse(fired, "Events: Voltage LOW, Input stays LOW, no event");
 
-			relay.Input.Voltage = VoltageSignal.HIGH;
+			relay.Input.V = VoltageSignal.HIGH;
 			fired = false;
-			relay.Voltage.Voltage = VoltageSignal.HIGH; // I: H; V: goes H
+			relay.Voltage.V = VoltageSignal.HIGH; // I: H; V: goes H
 			Assert.IsTrue(true, "Events: Input HIGH, Voltage goes HIGH, event");
 			fired = false;
-			relay.Voltage.Voltage = VoltageSignal.HIGH; // I: H; V: stays H
+			relay.Voltage.V = VoltageSignal.HIGH; // I: H; V: stays H
 			Assert.IsFalse(false, "Events: Input HIGH, Voltage stays HIGH, no event");
-			relay.Voltage.Voltage = VoltageSignal.LOW;  // I: H; V: goes L
+			relay.Voltage.V = VoltageSignal.LOW;  // I: H; V: goes L
 			Assert.IsTrue(fired, "Events: Input HIGH, Voltage goes LOW, event");
 			fired = false;
-			relay.Voltage.Voltage = VoltageSignal.LOW;  // I: H; V: stays L
+			relay.Voltage.V = VoltageSignal.LOW;  // I: H; V: stays L
 			Assert.IsFalse(fired, "Events: Input HIGH, Voltage stays LOW, no event");
 
-			relay.Voltage.Voltage = VoltageSignal.HIGH;
-			relay.Input.Voltage = VoltageSignal.LOW;
+			relay.Voltage.V = VoltageSignal.HIGH;
+			relay.Input.V = VoltageSignal.LOW;
 			fired = false;
-			relay.Input.Voltage = VoltageSignal.HIGH;   // V: H; I: goes H
+			relay.Input.V = VoltageSignal.HIGH;   // V: H; I: goes H
 			Assert.IsTrue(fired, "Events: Voltage HIGH, Input goes HIGH, event");
 			fired = false;
-			relay.Input.Voltage = VoltageSignal.HIGH;   // V: H; I: stays H
+			relay.Input.V = VoltageSignal.HIGH;   // V: H; I: stays H
 			Assert.IsFalse(fired, "Events: Voltage HIGH, Input stays HIGH, no event");
-			relay.Input.Voltage = VoltageSignal.LOW; // V: H; I: goes L
+			relay.Input.V = VoltageSignal.LOW; // V: H; I: goes L
 			Assert.IsTrue(fired, "Events: Voltage HIGH, Input goes LOW, event");
 			fired = false;
-			relay.Input.Voltage = VoltageSignal.LOW; // V: H; I: stays L
+			relay.Input.V = VoltageSignal.LOW; // V: H; I: stays L
 			Assert.IsFalse(fired, "Events: Voltage HIGH, Input stays LOW, no event");
 		}
 
@@ -217,54 +217,53 @@ namespace MSTest.PetzoldComputer
 		{
 			// arrage
 			var relay = new Relay_2(true);
+			bool fired = false;
+			relay.Output.Changed += _ => fired = true;
 
 			// act,assert
-			bool fired = false;
-			relay.Output.VoltageChanged += _ => fired = true;
-
-			relay.Voltage.Voltage = VoltageSignal.HIGH;   // I: L; V: goes H
+			relay.Voltage.V = VoltageSignal.HIGH;   // I: L; V: goes H
 			Assert.IsTrue(fired, "Events: Input LOW, Voltage goes HIGH, event");
 			fired = false;
-			relay.Voltage.Voltage = VoltageSignal.HIGH;   // I: L; V: stays H
+			relay.Voltage.V = VoltageSignal.HIGH;   // I: L; V: stays H
 			Assert.IsFalse(fired, "Events: Input LOW, Voltage stays HIGH, no event");
-			relay.Voltage.Voltage = VoltageSignal.LOW; // I: L; V: goes L
+			relay.Voltage.V = VoltageSignal.LOW; // I: L; V: goes L
 			Assert.IsTrue(fired, "Events: Input LOW, Voltage goes LOW, event");
 			fired = false;
-			relay.Voltage.Voltage = VoltageSignal.LOW; // I: L; V: stays L
+			relay.Voltage.V = VoltageSignal.LOW; // I: L; V: stays L
 			Assert.IsFalse(fired, "Events: Input LOW, Voltage stays LOW, no event");
 
-			relay.Input.Voltage = VoltageSignal.HIGH;  // V: L; I: goes H
+			relay.Input.V = VoltageSignal.HIGH;  // V: L; I: goes H
 			Assert.IsFalse(fired, "Events: Voltage LOW, Input goes HIGH, no event");
-			relay.Input.Voltage = VoltageSignal.HIGH;  // V: L; I: stays H
+			relay.Input.V = VoltageSignal.HIGH;  // V: L; I: stays H
 			Assert.IsFalse(fired, "Events: Voltage LOW, Input stays HIGH, no event");
-			relay.Input.Voltage = VoltageSignal.LOW;   // V: L; I: goes L
+			relay.Input.V = VoltageSignal.LOW;   // V: L; I: goes L
 			Assert.IsFalse(fired, "Events: Voltage LOW, Input goes LOW, no event");
-			relay.Input.Voltage = VoltageSignal.LOW;   // V: L; I: stays L
+			relay.Input.V = VoltageSignal.LOW;   // V: L; I: stays L
 			Assert.IsFalse(fired, "Events: Voltage LOW, Input stays LOW, no event");
 
-			relay.Input.Voltage = VoltageSignal.HIGH;
+			relay.Input.V = VoltageSignal.HIGH;
 			fired = false;
-			relay.Voltage.Voltage = VoltageSignal.HIGH;   // I: H; V: goes H
+			relay.Voltage.V = VoltageSignal.HIGH;   // I: H; V: goes H
 			Assert.IsFalse(fired, "Events: Input HIGH, Voltage goes HIGH, no event");
-			relay.Voltage.Voltage = VoltageSignal.HIGH;   // I: H; V: stays H
+			relay.Voltage.V = VoltageSignal.HIGH;   // I: H; V: stays H
 			Assert.IsFalse(fired, "Events: Input HIGH, Voltage stays HIGH, no event");
-			relay.Voltage.Voltage = VoltageSignal.LOW; // I: H; V: goes L
+			relay.Voltage.V = VoltageSignal.LOW; // I: H; V: goes L
 			Assert.IsFalse(fired, "Events: Input HIGH, Voltage goes LOW, no event");
-			relay.Voltage.Voltage = VoltageSignal.LOW; // I: H; V: stays L
+			relay.Voltage.V = VoltageSignal.LOW; // I: H; V: stays L
 			Assert.IsFalse(fired, "Events: Input HIGH, Voltage stays LOW, no event");
 
-			relay.Voltage.Voltage = VoltageSignal.HIGH;
-			relay.Input.Voltage = VoltageSignal.LOW;
+			relay.Voltage.V = VoltageSignal.HIGH;
+			relay.Input.V = VoltageSignal.LOW;
 			fired = false;
-			relay.Input.Voltage = VoltageSignal.HIGH;  // V: H; I: goes H
+			relay.Input.V = VoltageSignal.HIGH;  // V: H; I: goes H
 			Assert.IsTrue(fired, "Events: Voltage HIGH, Input goes HIGH, event");
 			fired = false;
-			relay.Input.Voltage = VoltageSignal.HIGH;  // V: H; I: stays H
+			relay.Input.V = VoltageSignal.HIGH;  // V: H; I: stays H
 			Assert.IsFalse(fired, "Events: Voltage HIGH, Input stays HIGH, no event");
-			relay.Input.Voltage = VoltageSignal.LOW;   // V: H; I: goes L
+			relay.Input.V = VoltageSignal.LOW;   // V: H; I: goes L
 			Assert.IsTrue(fired, "Events: Voltage HIGH, Input goes LOW, event");
 			fired = false;
-			relay.Input.Voltage = VoltageSignal.LOW;   // V: H; I: stays L
+			relay.Input.V = VoltageSignal.LOW;   // V: H; I: stays L
 			Assert.IsFalse(fired, "Events: Voltage HIGH, Input stays LOW, no event");
 		}
 	}

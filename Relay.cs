@@ -105,16 +105,16 @@ namespace PetzoldComputer
 			Output = new ConnectionPoint();
 
 			// when the input voltage changes, (de)activate the switch
-			Input.VoltageChanged += _ => IsSwitchActivated = Input.Voltage == VoltageSignal.HIGH;
+			Input.Changed += _ => IsSwitchActivated = Input.V == VoltageSignal.HIGH;
 
-			Voltage.VoltageChanged += cp => UpdateOutput(cp.Voltage);
+			Voltage.Changed += cp => UpdateOutput(cp.V);
 		}
 
 		public ConnectionPoint Voltage { get; private set; }
 		public ConnectionPoint Input { get; private set; }
 		public ConnectionPoint Output { get; private set; }
 
-		public override string ToString() => $"{Output.Voltage}";
+		public override string ToString() => $"{Output.V}";
 
 		private bool _inverted;
 
@@ -127,13 +127,13 @@ namespace PetzoldComputer
 			{
 				bool originalValue = _switchActive;
 				_switchActive = value;
-				if (originalValue != value) UpdateOutput(Voltage.Voltage);
+				if (originalValue != value) UpdateOutput(Voltage.V);
 			}
 		}
 
 		private void UpdateOutput(VoltageSignal voltage)
 		{
-			Output.Voltage = _inverted
+			Output.V = _inverted
 				? _switchActive ? VoltageSignal.LOW : voltage
 				: _switchActive ? voltage : VoltageSignal.LOW;
 		}

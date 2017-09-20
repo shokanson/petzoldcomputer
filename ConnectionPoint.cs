@@ -6,26 +6,26 @@ namespace PetzoldComputer
 	{
 		private VoltageSignal _voltage;
 
-		public Action<ConnectionPoint> VoltageChanged;
+		public Action<ConnectionPoint> Changed;
 
-		public VoltageSignal Voltage
+		public VoltageSignal V
 		{
 			get => _voltage;
 			set
 			{
 				VoltageSignal original = _voltage;
 				_voltage = value;
-				if (original != value) VoltageChanged?.Invoke(this);
+				if (original != value) Changed?.Invoke(this);
 			}
 		}
 
 		public void ConnectTo(ConnectionPoint sink)
 		{
-			VoltageChanged += source => sink.Voltage = source.Voltage;
+			Changed += source => sink.V = source.V;
 
-			sink.Voltage = Voltage;
+			sink.V = V;
 		}
 
-		public override string ToString() => $"{Voltage}";
+		public override string ToString() => $"{V}";
 	}
 }

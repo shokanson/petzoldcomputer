@@ -17,6 +17,6 @@ namespace PetzoldComputer
 		public ConnectionPoint Input => _relay.Input;
 		public ConnectionPoint Output => _relay.Output;
 
-		public override string ToString() => $"{Output.Voltage}";
+		public override string ToString() => $"{Output.V}";
 	}
 }
