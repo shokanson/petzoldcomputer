@@ -314,7 +314,7 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void OR_2_Event_GateOnOff()
+		public void AND_2_Event_GateOnOff()
 		{
 			// arrange
 			var and = new AND_2();
@@ -348,7 +348,7 @@ namespace MSTest.PetzoldComputer
 			and.V.V = VoltageSignal.HIGH;
 			Assert.IsFalse(fired, "A: L; B: H; V: --->H; no event");
 			and.V.V = VoltageSignal.LOW;
-			Assert.IsFalse(fired, "A: L; B: H; V: v; event");
+			Assert.IsFalse(fired, "A: L; B: H; V: v; no event");
 			and.V.V = VoltageSignal.LOW;
 			Assert.IsFalse(fired, "A: L; B: H; V: --->L; no event");
 
