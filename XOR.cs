@@ -63,4 +63,32 @@ namespace PetzoldComputer
 		}
 		#endregion
 	}
+
+	public class XOR_2
+	{
+		public XOR_2()
+		{
+			_or = new OR_2();
+			_nand = new NAND_2();
+			_and = new AND_2();
+
+			_or.V.ConnectTo(_nand.V);
+			_or.V.ConnectTo(_and.V);
+			_or.O.ConnectTo(_and.A);
+			_nand.O.ConnectTo(_and.B);
+			_or.A.ConnectTo(_nand.A);
+			_or.B.ConnectTo(_nand.B);
+		}
+
+		private readonly OR_2 _or;
+		private readonly NAND_2 _nand;
+		private readonly AND_2 _and;
+
+		public ConnectionPoint V => _or.V;
+		public ConnectionPoint A => _or.A;
+		public ConnectionPoint B => _or.B;
+		public ConnectionPoint O => _and.O;
+
+		public override string ToString() => $"{O}";
+	}
 }

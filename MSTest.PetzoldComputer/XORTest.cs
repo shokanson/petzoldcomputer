@@ -110,54 +110,208 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void TestOutputEventsGateOff()
 		{
-			IOr or2 = new OR();
+			IXor xor2 = new XOR();
 
-			TestEventsHelper helper = new TestEventsHelper((IOutput)or2);
+			TestEventsHelper helper = new TestEventsHelper((IOutput)xor2);
 
-			or2.B = VoltageSignal.HIGH;
+			xor2.B = VoltageSignal.HIGH;
 			Assert.IsFalse(helper.EventFired, "Gate off -- A: L; B: ^; no event");
-			or2.B = VoltageSignal.HIGH;
+			xor2.B = VoltageSignal.HIGH;
 			Assert.IsFalse(helper.EventFired, "Gate off -- A: L; B: -->H; no event");
-			or2.B = VoltageSignal.LOW;
+			xor2.B = VoltageSignal.LOW;
 			Assert.IsFalse(helper.EventFired, "Gate off -- A: L; B: v; no event");
-			or2.B = VoltageSignal.LOW;
+			xor2.B = VoltageSignal.LOW;
 			Assert.IsFalse(helper.EventFired, "Gate off -- A: L; B: -->L; no event");
-			or2.A = VoltageSignal.HIGH;
+			xor2.A = VoltageSignal.HIGH;
 			Assert.IsFalse(helper.EventFired, "Gate off -- B: L; A: ^; no event");
-			or2.A = VoltageSignal.HIGH;
+			xor2.A = VoltageSignal.HIGH;
 			Assert.IsFalse(helper.EventFired, "Gate off -- B: L; A: -->H; no event");
-			or2.A = VoltageSignal.LOW;
+			xor2.A = VoltageSignal.LOW;
 			Assert.IsFalse(helper.EventFired, "Gate off -- B: L; A: v; no event");
-			or2.A = VoltageSignal.LOW;
+			xor2.A = VoltageSignal.LOW;
 			Assert.IsFalse(helper.EventFired, "Gate off -- B: L; A: -->L; no event");
 
 			// setup
-			or2.A = VoltageSignal.HIGH;
-			or2.B = VoltageSignal.LOW;
+			xor2.A = VoltageSignal.HIGH;
+			xor2.B = VoltageSignal.LOW;
 			helper.ResetStatus();
 			// test
-			or2.B = VoltageSignal.HIGH;
+			xor2.B = VoltageSignal.HIGH;
 			Assert.IsFalse(helper.EventFired, "Gate off -- A: H; B: ^; no event");
-			or2.B = VoltageSignal.HIGH;
+			xor2.B = VoltageSignal.HIGH;
 			Assert.IsFalse(helper.EventFired, "Gate off -- A: H; B: -->H; no event");
-			or2.B = VoltageSignal.LOW;
+			xor2.B = VoltageSignal.LOW;
 			Assert.IsFalse(helper.EventFired, "Gate off -- A: H; B: v; no event");
-			or2.B = VoltageSignal.LOW;
+			xor2.B = VoltageSignal.LOW;
 			Assert.IsFalse(helper.EventFired, "Gate off -- A: H; B: -->L; no event");
 
 			// setup
-			or2.A = VoltageSignal.LOW;
-			or2.B = VoltageSignal.HIGH;
+			xor2.A = VoltageSignal.LOW;
+			xor2.B = VoltageSignal.HIGH;
 			helper.ResetStatus();
 			// test
-			or2.A = VoltageSignal.HIGH;
+			xor2.A = VoltageSignal.HIGH;
 			Assert.IsFalse(helper.EventFired, "Gate off -- B: H; A: ^; no event");
-			or2.A = VoltageSignal.HIGH;
+			xor2.A = VoltageSignal.HIGH;
 			Assert.IsFalse(helper.EventFired, "Gate off -- B: H; A: -->H; no event");
-			or2.A = VoltageSignal.LOW;
+			xor2.A = VoltageSignal.LOW;
 			Assert.IsFalse(helper.EventFired, "Gate off -- B: H; A: v; no event");
-			or2.A = VoltageSignal.LOW;
+			xor2.A = VoltageSignal.LOW;
 			Assert.IsFalse(helper.EventFired, "Gate off -- B: H; A: -->L; no event");
+		}
+
+		[TestMethod]
+		public void XOR_2_Constructor()
+		{
+			var xor = new XOR_2();
+
+			Assert.AreEqual(VoltageSignal.LOW, xor.V.V, "Constructor: Voltage");
+			Assert.AreEqual(VoltageSignal.LOW, xor.A.V, "Constructor: A");
+			Assert.AreEqual(VoltageSignal.LOW, xor.B.V, "Constructor: B");
+			Assert.AreEqual(VoltageSignal.LOW, xor.O.V, "Constructor: O");
+			Assert.AreEqual("LOW", xor.ToString(), "Constructor: ToString()");
+		}
+
+		[DataTestMethod]
+		#region data
+		[DataRow(VoltageSignal.LOW, VoltageSignal.LOW, VoltageSignal.LOW, VoltageSignal.LOW)]
+		[DataRow(VoltageSignal.LOW, VoltageSignal.LOW, VoltageSignal.HIGH, VoltageSignal.LOW)]
+		[DataRow(VoltageSignal.LOW, VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.LOW)]
+		[DataRow(VoltageSignal.LOW, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW)]
+		[DataRow(VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.LOW, VoltageSignal.LOW)]
+		[DataRow(VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.HIGH, VoltageSignal.HIGH)]
+		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.HIGH)]
+		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW)]
+		#endregion
+		public void XOR_2(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
+		{
+			// arrage
+			var xor = new XOR_2();
+
+			// act
+			xor.V.V = voltage;
+			xor.A.V = a;
+			xor.B.V = b;
+
+			// assert
+			Assert.AreEqual(expected, xor.O.V, $"V:{xor.V.V}; A:{xor.A.V}; B:{xor.B.V}");
+		}
+
+		[TestMethod]
+		public void XOR_2_Events_GateOn()
+		{
+			// arrange
+			var xor = new XOR_2();
+			xor.V.V = VoltageSignal.HIGH;
+			bool fired = false;
+			xor.O.Changed += _ => fired = true;
+
+			// act, assert
+			xor.B.V = VoltageSignal.HIGH;
+			Assert.IsTrue(fired, "Gate on -- A: L; B: ^; event");
+			fired = false;
+			xor.B.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate on -- A: L; B: -->H; no event");
+			xor.B.V = VoltageSignal.LOW;
+			Assert.IsTrue(fired, "Gate on -- A: L; B: v; event");
+			fired = false;
+			xor.B.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate on -- A: L; B: -->L; no event");
+			xor.A.V = VoltageSignal.HIGH;
+			Assert.IsTrue(fired, "Gate on -- B: L; A: ^; event");
+			fired = false;
+			xor.A.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate on -- B: L; A: -->H; no event");
+			xor.A.V = VoltageSignal.LOW;
+			Assert.IsTrue(fired, "Gate on -- B: L; A: v; event");
+			fired = false;
+			xor.A.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate on -- B: L; A: -->L; no event");
+
+			// setup
+			xor.A.V = VoltageSignal.HIGH;
+			xor.B.V = VoltageSignal.LOW;
+			fired = false;
+			// test
+			xor.B.V = VoltageSignal.HIGH;
+			Assert.IsTrue(fired, "Gate on -- A: H; B: ^; event");
+			fired = false;
+			xor.B.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate on -- A: H; B: -->H; no event");
+			xor.B.V = VoltageSignal.LOW;
+			Assert.IsTrue(fired, "Gate on -- A: H; B: v; event");
+			fired = false;
+			xor.B.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate on -- A: H; B: -->L; no event");
+
+			// setup
+			xor.A.V = VoltageSignal.LOW;
+			xor.B.V = VoltageSignal.HIGH;
+			fired = false;
+			// test
+			xor.A.V = VoltageSignal.HIGH;
+			Assert.IsTrue(fired, "Gate on -- B: H; A: ^; event");
+			fired = false;
+			xor.A.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate on -- B: H; A: -->H; no event");
+			xor.A.V = VoltageSignal.LOW;
+			Assert.IsTrue(fired, "Gate on -- B: H; A: v; event");
+			fired = false;
+			xor.A.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate on -- B: H; A: -->L; no event");
+		}
+
+		[TestMethod]
+		public void XOR_2_Events_GateOff()
+		{
+			// arrange
+			var xor = new XOR_2();
+			bool fired = false;
+			xor.O.Changed += _ => fired = true;
+
+			// act, assert
+			xor.B.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate off -- A: L; B: ^; no event");
+			xor.B.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate off -- A: L; B: -->H; no event");
+			xor.B.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate off -- A: L; B: v; no event");
+			xor.B.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate off -- A: L; B: -->L; no event");
+			xor.A.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate off -- B: L; A: ^; no event");
+			xor.A.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate off -- B: L; A: -->H; no event");
+			xor.A.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate off -- B: L; A: v; no event");
+			xor.A.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate off -- B: L; A: -->L; no event");
+
+			// setup
+			xor.A.V = VoltageSignal.HIGH;
+			xor.B.V = VoltageSignal.LOW;
+			// test
+			xor.B.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate off -- A: H; B: ^; no event");
+			xor.B.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate off -- A: H; B: -->H; no event");
+			xor.B.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate off -- A: H; B: v; no event");
+			xor.B.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate off -- A: H; B: -->L; no event");
+
+			// setup
+			xor.A.V = VoltageSignal.LOW;
+			xor.B.V = VoltageSignal.HIGH;
+			// test
+			xor.A.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate off -- B: H; A: ^; no event");
+			xor.A.V = VoltageSignal.HIGH;
+			Assert.IsFalse(fired, "Gate off -- B: H; A: -->H; no event");
+			xor.A.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate off -- B: H; A: v; no event");
+			xor.A.V = VoltageSignal.LOW;
+			Assert.IsFalse(fired, "Gate off -- B: H; A: -->L; no event");
 		}
 	}
 }
