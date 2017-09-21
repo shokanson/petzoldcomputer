@@ -53,4 +53,25 @@ namespace PetzoldComputer
 		private void DoWireup() => ((IOutput)_relay1).AddOutputHandler(_ => { _relay2.Voltage = _relay1.Output; });
 		#endregion
 	}
+
+	public class AND_2
+	{
+		public AND_2()
+		{
+			_relay1 = new Relay_2();
+			_relay2 = new Relay_2();
+
+			_relay1.Output.ConnectTo(_relay2.Voltage);
+		}
+
+		private readonly Relay_2 _relay1;
+		private readonly Relay_2 _relay2;
+
+		public ConnectionPoint V { get => _relay1.Voltage; }
+		public ConnectionPoint A { get => _relay1.Input; }
+		public ConnectionPoint B { get => _relay2.Input; }
+		public ConnectionPoint O { get => _relay2.Output; }
+
+		public override string ToString() => $"{O}";
+	}
 }
