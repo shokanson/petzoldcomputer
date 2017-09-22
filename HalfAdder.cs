@@ -63,16 +63,11 @@ namespace PetzoldComputer
 	{
 		public HalfAdder_2()
 		{
-			_xor = new XOR_2();
-			_and = new AND_2();
-
-			_xor.V.ConnectTo(_and.V);
-			_xor.A.ConnectTo(_and.A);
-			_xor.B.ConnectTo(_and.B);
+			DoWireUp();
 		}
 
-		private readonly XOR_2 _xor;
-		private readonly AND_2 _and;
+		private readonly XOR_2 _xor = new XOR_2();
+		private readonly AND_2 _and = new AND_2();
 
 		public ConnectionPoint V => _xor.V;
 		public ConnectionPoint A => _xor.A;
@@ -81,5 +76,12 @@ namespace PetzoldComputer
 		public ConnectionPoint Carry => _and.O;
 
 		public override string ToString() => $"Sum: {Sum}; Carry: {Carry}";
+
+		private void DoWireUp()
+		{
+			_xor.V.ConnectTo(_and.V);
+			_xor.A.ConnectTo(_and.A);
+			_xor.B.ConnectTo(_and.B);
+		}
 	}
 }

@@ -58,14 +58,11 @@ namespace PetzoldComputer
 	{
 		public AND_2()
 		{
-			_relay1 = new Relay_2();
-			_relay2 = new Relay_2();
-
-			_relay1.Output.ConnectTo(_relay2.Voltage);
+			DoWireUp();
 		}
 
-		private readonly Relay_2 _relay1;
-		private readonly Relay_2 _relay2;
+		private readonly Relay_2 _relay1 = new Relay_2();
+		private readonly Relay_2 _relay2 = new Relay_2();
 
 		public ConnectionPoint V { get => _relay1.Voltage; }
 		public ConnectionPoint A { get => _relay1.Input; }
@@ -73,5 +70,10 @@ namespace PetzoldComputer
 		public ConnectionPoint O { get => _relay2.Output; }
 
 		public override string ToString() => $"{O}";
+
+		private void DoWireUp()
+		{
+			_relay1.Output.ConnectTo(_relay2.Voltage);
+		}
 	}
 }

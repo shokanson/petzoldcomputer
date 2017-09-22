@@ -148,19 +148,12 @@ namespace PetzoldComputer
 	{
 		public FullAdder_2()
 		{
-			_halfAdder1 = new HalfAdder_2();
-			_halfAdder2 = new HalfAdder_2();
-			_or = new OR_2();
-
-			_halfAdder1.V.ConnectTo(_halfAdder2.V).ConnectTo(_or.V);
-			_halfAdder1.Sum.ConnectTo(_halfAdder2.B);
-			_halfAdder1.Carry.ConnectTo(_or.B);
-			_halfAdder2.Carry.ConnectTo(_or.A);
+			DoWireUp();
 		}
 
-		private readonly HalfAdder_2 _halfAdder1;
-		private readonly HalfAdder_2 _halfAdder2;
-		private readonly OR_2 _or;
+		private readonly HalfAdder_2 _halfAdder1 = new HalfAdder_2();
+		private readonly HalfAdder_2 _halfAdder2 = new HalfAdder_2();
+		private readonly OR_2 _or = new OR_2();
 
 		public ConnectionPoint V => _halfAdder1.V;
 		public ConnectionPoint CarryIn => _halfAdder2.A;
@@ -170,5 +163,13 @@ namespace PetzoldComputer
 		public ConnectionPoint Carry => _or.O;
 
 		public override string ToString() => $"Sum: {Sum}; Carry: {Carry}";
+
+		private void DoWireUp()
+		{
+			_halfAdder1.V.ConnectTo(_halfAdder2.V).ConnectTo(_or.V);
+			_halfAdder1.Sum.ConnectTo(_halfAdder2.B);
+			_halfAdder1.Carry.ConnectTo(_or.B);
+			_halfAdder2.Carry.ConnectTo(_or.A);
+		}
 	}
 }

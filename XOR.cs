@@ -68,20 +68,12 @@ namespace PetzoldComputer
 	{
 		public XOR_2()
 		{
-			_or = new OR_2();
-			_nand = new NAND_2();
-			_and = new AND_2();
-
-			_or.V.ConnectTo(_nand.V).ConnectTo(_and.V);
-			_or.O.ConnectTo(_and.A);
-			_nand.O.ConnectTo(_and.B);
-			_or.A.ConnectTo(_nand.A);
-			_or.B.ConnectTo(_nand.B);
+			DoWireUp();
 		}
 
-		private readonly OR_2 _or;
-		private readonly NAND_2 _nand;
-		private readonly AND_2 _and;
+		private readonly OR_2 _or = new OR_2();
+		private readonly NAND_2 _nand = new NAND_2();
+		private readonly AND_2 _and = new AND_2();
 
 		public ConnectionPoint V => _or.V;
 		public ConnectionPoint A => _or.A;
@@ -89,5 +81,14 @@ namespace PetzoldComputer
 		public ConnectionPoint O => _and.O;
 
 		public override string ToString() => $"{O}";
+
+		private void DoWireUp()
+		{
+			_or.V.ConnectTo(_nand.V).ConnectTo(_and.V);
+			_or.O.ConnectTo(_and.A);
+			_nand.O.ConnectTo(_and.B);
+			_or.A.ConnectTo(_nand.A);
+			_or.B.ConnectTo(_nand.B);
+		}
 	}
 }

@@ -100,28 +100,32 @@ namespace PetzoldComputer
 
 		public Relay_2(bool inverted = false)
 		{
+			_inverted = inverted;
 			_myId = ++Counter;
 
-			_inverted = inverted;
-
-			Input = new ConnectionPoint();
-			Voltage = new ConnectionPoint();
-			Output = new ConnectionPoint();
-
-			// when the input voltage changes, (de)activate the switch
-			Input.Changed += _ => IsSwitchActivated = Input.V == VoltageSignal.HIGH;
-
-			Voltage.Changed += cp => UpdateOutput(cp.V);
+			DoWireUp();
 		}
 
 		private readonly int _myId;
-		public ConnectionPoint Voltage { get; private set; }
-		public ConnectionPoint Input { get; private set; }
-		public ConnectionPoint Output { get; private set; }
-
-		public override string ToString() => $"{Output.V}";
-
 		private bool _inverted;
+		private readonly ConnectionPoint _v = new ConnectionPoint();
+		private readonly ConnectionPoint _in = new ConnectionPoint();
+		private readonly ConnectionPoint _out = new ConnectionPoint();
+
+		public ConnectionPoint Voltage => _v;
+		public ConnectionPoint Input => _in;
+		public ConnectionPoint Output => _out;
+
+		public override string ToString() => $"{_out}";
+
+
+		private void DoWireUp()
+		{
+			// when the input voltage changes, (de)activate the switch
+			_in.Changed += cp => IsSwitchActivated = cp.V == VoltageSignal.HIGH;
+
+			_v.Changed += cp => UpdateOutput(cp.V);
+		}
 
 		// internal switch details
 		private bool _switchActive;
@@ -132,13 +136,13 @@ namespace PetzoldComputer
 			{
 				bool originalValue = _switchActive;
 				_switchActive = value;
-				if (originalValue != value) UpdateOutput(Voltage.V);
+				if (originalValue != value) UpdateOutput(_v.V);
 			}
 		}
 
 		private void UpdateOutput(VoltageSignal voltage)
 		{
-			Output.V = _inverted
+			_out.V = _inverted
 				? _switchActive ? VoltageSignal.LOW : voltage
 				: _switchActive ? voltage : VoltageSignal.LOW;
 		}
