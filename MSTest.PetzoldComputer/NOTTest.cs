@@ -121,7 +121,7 @@ namespace MSTest.PetzoldComputer
 			not.Input.V = input;
 
 			// assert
-			Assert.AreEqual(expected, not.Output.V, $"V: {voltage}; I:{input}");
+			Assert.AreEqual(expected, not.Output.V, $"V: {not.Voltage}; I:{not.Input}");
 		}
 
 		[TestMethod]

@@ -96,8 +96,12 @@ namespace PetzoldComputer
 
 	public class Relay_2
 	{
+		private static int Counter = 0;
+
 		public Relay_2(bool inverted = false)
 		{
+			_myId = ++Counter;
+
 			_inverted = inverted;
 
 			Input = new ConnectionPoint();
@@ -110,6 +114,7 @@ namespace PetzoldComputer
 			Voltage.Changed += cp => UpdateOutput(cp.V);
 		}
 
+		private readonly int _myId;
 		public ConnectionPoint Voltage { get; private set; }
 		public ConnectionPoint Input { get; private set; }
 		public ConnectionPoint Output { get; private set; }

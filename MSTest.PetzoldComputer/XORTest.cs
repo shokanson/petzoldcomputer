@@ -194,7 +194,7 @@ namespace MSTest.PetzoldComputer
 			xor.B.V = b;
 
 			// assert
-			Assert.AreEqual(expected, xor.O.V, $"V:{xor.V.V}; A:{xor.A.V}; B:{xor.B.V}");
+			Assert.AreEqual(expected, xor.O.V, $"V:{xor.V}; A:{xor.A}; B:{xor.B}");
 		}
 
 		[TestMethod]

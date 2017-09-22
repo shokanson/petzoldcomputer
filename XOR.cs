@@ -72,8 +72,7 @@ namespace PetzoldComputer
 			_nand = new NAND_2();
 			_and = new AND_2();
 
-			_or.V.ConnectTo(_nand.V);
-			_or.V.ConnectTo(_and.V);
+			_or.V.ConnectTo(_nand.V).ConnectTo(_and.V);
 			_or.O.ConnectTo(_and.A);
 			_nand.O.ConnectTo(_and.B);
 			_or.A.ConnectTo(_nand.A);

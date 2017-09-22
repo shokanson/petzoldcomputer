@@ -295,7 +295,7 @@ namespace MSTest.PetzoldComputer
 			nor3.C.V = c;
 
 			// assert
-			Assert.AreEqual(expected, nor3.O.V, $"V:{nor3.V.V}; A:{nor3.A.V}; B:{nor3.B.V}; C:{nor3.C.V}");
+			Assert.AreEqual(expected, nor3.O.V, $"V:{nor3.V.V}; A:{nor3.A}; B:{nor3.B}; C:{nor3.C}");
 		}
 
 		[TestMethod]

@@ -192,7 +192,7 @@ namespace MSTest.PetzoldComputer
 			nor.B.V = b;
 
 			// assert
-			Assert.AreEqual(expected, nor.O.V, $"V:{nor.V.V}; A:{nor.A.V}; B:{nor.B.V}");
+			Assert.AreEqual(expected, nor.O.V, $"V:{nor.V}; A:{nor.A}; B:{nor.B}");
 		}
 
 		[TestMethod]

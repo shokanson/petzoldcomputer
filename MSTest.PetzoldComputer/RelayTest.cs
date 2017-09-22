@@ -134,7 +134,7 @@ namespace MSTest.PetzoldComputer
 			relay.Input.V = input;
 
 			// assert
-			Assert.AreEqual(expected, relay.Output.V, $"V: {voltage}; I:{input}");
+			Assert.AreEqual(expected, relay.Output.V, $"V: {relay.Voltage}; I:{relay.Input}");
 		}
 
 		[DataTestMethod]

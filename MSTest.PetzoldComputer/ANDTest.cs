@@ -197,7 +197,7 @@ namespace MSTest.PetzoldComputer
 			and.B.V = b;
 
 			// assert
-			Assert.AreEqual(expected, and.O.V, $"V:{and.V.V}; A:{and.A.V}; B:{and.B.V}");
+			Assert.AreEqual(expected, and.O.V, $"V:{and.V}; A:{and.A}; B:{and.B}");
 		}
 
 		[TestMethod]

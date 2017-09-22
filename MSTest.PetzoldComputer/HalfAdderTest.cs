@@ -205,7 +205,7 @@ namespace MSTest.PetzoldComputer
 			halfAdder.B.V = b;
 
 			// assert
-			Assert.AreEqual(expected, halfAdder.Sum.V, $"V:{halfAdder.V.V}; A:{halfAdder.A.V}; B:{halfAdder.B.V}");
+			Assert.AreEqual(expected, halfAdder.Sum.V, $"V:{halfAdder.V}; A:{halfAdder.A}; B:{halfAdder.B}");
 		}
 
 		[DataTestMethod]

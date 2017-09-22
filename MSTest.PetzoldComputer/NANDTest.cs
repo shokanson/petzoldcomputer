@@ -193,7 +193,7 @@ namespace MSTest.PetzoldComputer
 			nand.B.V = b;
 
 			// assert
-			Assert.AreEqual(expected, nand.O.V, $"V:{nand.V.V}; A:{nand.A.V}; B:{nand.B.V}");
+			Assert.AreEqual(expected, nand.O.V, $"V:{nand.V}; A:{nand.A}; B:{nand.B}");
 		}
 
 		[TestMethod]

@@ -19,11 +19,13 @@ namespace PetzoldComputer
 			}
 		}
 
-		public void ConnectTo(ConnectionPoint sink)
+		public ConnectionPoint ConnectTo(ConnectionPoint sink)
 		{
 			Changed += source => sink.V = source.V;
 
 			sink.V = V;
+
+			return this;
 		}
 
 		public override string ToString() => $"{V}";
