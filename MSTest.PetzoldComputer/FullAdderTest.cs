@@ -650,7 +650,7 @@ namespace MSTest.PetzoldComputer
 			// vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 			// for some reason, (based on how things are wired up??) this does fire an event,
 			// even though Carry starts out H and ends H (i.e., somewhere along the way it goes
-			// L and H again.  Until I figure it out, I'll comment this test out, and reset
+			// L and H again).  Until I figure it out, I'll comment this test out, and reset
 			// fired to false.
 			//
 			// When all is said and done, though, the gate output ends up in the right state, it's just that
