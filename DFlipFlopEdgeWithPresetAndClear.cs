@@ -113,4 +113,70 @@ namespace PetzoldComputer
 		}
 		#endregion
 	}
+
+	public class DFlipFlopEdgeWithPresetAndClear_2
+	{
+		#region Construction
+		public DFlipFlopEdgeWithPresetAndClear_2()
+		{
+			DoWireUp();
+		}
+		#endregion
+
+		#region Implementation
+		private readonly NOT_2 _not = new NOT_2();
+		private readonly NOR3_2 _nor3Clr = new NOR3_2();
+		private readonly NOR3_2 _nor3Pre = new NOR3_2();
+		private readonly NOR3_2 _nor3Clk = new NOR3_2();
+		private readonly NOR3_2 _nor3D = new NOR3_2();
+		private readonly NOR3_2 _nor3Q = new NOR3_2();
+		private readonly NOR3_2 _nor3Qnot = new NOR3_2();
+
+		private readonly ConnectionPoint _v = new ConnectionPoint();
+		private readonly ConnectionPoint _clr = new ConnectionPoint();
+		private readonly ConnectionPoint _pre = new ConnectionPoint();
+		#endregion
+
+		#region Public Properties
+		public ConnectionPoint V => _v;
+		public ConnectionPoint Clr => _clr;
+		public ConnectionPoint Pre => _pre;
+		public ConnectionPoint Clk => _not.Input;
+		public ConnectionPoint D => _nor3D.C;
+		public ConnectionPoint Q => _nor3Q.O;
+		public ConnectionPoint Qnot => _nor3Qnot.O;
+		#endregion
+
+		#region Object Override Methods
+		public override string ToString() => $"Q: {Q}; Qnot: {Qnot}";
+		#endregion
+
+		#region Private Methods
+		private void DoWireUp()
+		{
+			_not.Output.ConnectTo(_nor3Clk.B)
+						  .ConnectTo(_nor3Pre.C);
+			_nor3Clr.O.ConnectTo(_nor3Pre.A);
+			_nor3Pre.O.ConnectTo(_nor3Clr.C)
+						 .ConnectTo(_nor3Clk.A)
+						 .ConnectTo(_nor3Q.B);
+			_nor3Clk.O.ConnectTo(_nor3D.A)
+						 .ConnectTo(_nor3Qnot.C);
+			_nor3D.O.ConnectTo(_nor3Clr.B)
+					  .ConnectTo(_nor3Clk.C);
+			_nor3Q.O.ConnectTo(_nor3Qnot.A);
+			_nor3Qnot.O.ConnectTo(_nor3Q.C);
+
+			_v.Changed += cp => _not.V.V =
+				_nor3Clr.V.V =
+				_nor3Pre.V.V =
+				_nor3Clk.V.V =
+				_nor3D.V.V =
+				_nor3Q.V.V =
+				_nor3Qnot.V.V = cp.V;
+			_clr.Changed += cp => _nor3Clr.A.V = _nor3Q.A.V = cp.V;
+			_pre.Changed += cp => _nor3Pre.B.V = _nor3D.B.V = _nor3Qnot.B.V = cp.V;
+		}
+		#endregion
+	}
 }

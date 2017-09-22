@@ -13,7 +13,7 @@ namespace PetzoldComputer
 
 		private readonly Relay_2 _relay;
 
-		public ConnectionPoint Voltage => _relay.Voltage;
+		public ConnectionPoint V => _relay.Voltage;
 		public ConnectionPoint Input => _relay.Input;
 		public ConnectionPoint Output => _relay.Output;
 

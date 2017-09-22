@@ -61,13 +61,13 @@ namespace PetzoldComputer
 			_not1 = new NOT_2();
 			_not2 = new NOT_2();
 
-			_not1.Output.ConnectTo(_not2.Voltage);
+			_not1.Output.ConnectTo(_not2.V);
 		}
 		
 		private readonly NOT_2 _not1;
 		private readonly NOT_2 _not2;
 
-		public ConnectionPoint V { get => _not1.Voltage; }
+		public ConnectionPoint V { get => _not1.V; }
 		public ConnectionPoint A { get => _not1.Input; }
 		public ConnectionPoint B { get => _not2.Input; }
 		public ConnectionPoint O { get => _not2.Output; }
