@@ -107,7 +107,7 @@ namespace PetzoldComputer
 		public ConnectionPoint B => _relay2.Input;
 		public ConnectionPoint O => _output;
 
-		public override string ToString() => $"{O}";
+		public override string ToString() => O.ToString();
 
 		private void DoWireUp()
 		{

@@ -80,7 +80,7 @@ namespace PetzoldComputer
 		public ConnectionPoint B => _or.B;
 		public ConnectionPoint O => _and.O;
 
-		public override string ToString() => $"{O}";
+		public override string ToString() => O.ToString();
 
 		private void DoWireUp()
 		{

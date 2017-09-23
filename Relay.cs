@@ -116,7 +116,7 @@ namespace PetzoldComputer
 		public ConnectionPoint Input => _in;
 		public ConnectionPoint Output => _out;
 
-		public override string ToString() => $"{_out}";
+		public override string ToString() => _out.ToString();
 
 
 		private void DoWireUp()

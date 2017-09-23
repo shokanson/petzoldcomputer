@@ -28,6 +28,6 @@ namespace PetzoldComputer
 			return this;
 		}
 
-		public override string ToString() => $"{V}";
+		public override string ToString() => V.ToString();
 	}
 }

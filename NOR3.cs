@@ -91,7 +91,7 @@ namespace PetzoldComputer
 		public ConnectionPoint C => _not3.Input;
 		public ConnectionPoint O => _not3.Output;
 
-		public override string ToString() => $"{O}";
+		public override string ToString() => O.ToString();
 
 		private void DoWireUp()
 		{
