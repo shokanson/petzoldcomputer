@@ -246,4 +246,79 @@ namespace PetzoldComputer
 		}
 		#endregion
 	}
+
+	public class OnesComplement8_2
+	{
+		public OnesComplement8_2()
+		{
+			DoWireUp();
+		}
+
+		private readonly ConnectionPoint _v = new ConnectionPoint();
+		private readonly ConnectionPoint _invert = new ConnectionPoint();
+		private readonly XOR_2 _xor0 = new XOR_2();
+		private readonly XOR_2 _xor1 = new XOR_2();
+		private readonly XOR_2 _xor2 = new XOR_2();
+		private readonly XOR_2 _xor3 = new XOR_2();
+		private readonly XOR_2 _xor4 = new XOR_2();
+		private readonly XOR_2 _xor5 = new XOR_2();
+		private readonly XOR_2 _xor6 = new XOR_2();
+		private readonly XOR_2 _xor7 = new XOR_2();
+
+		public ConnectionPoint V => _v;
+		public ConnectionPoint Invert => _invert;
+
+		public ConnectionPoint I0 => _xor0.B;
+		public ConnectionPoint I1 => _xor1.B;
+		public ConnectionPoint I2 => _xor2.B;
+		public ConnectionPoint I3 => _xor3.B;
+		public ConnectionPoint I4 => _xor4.B;
+		public ConnectionPoint I5 => _xor5.B;
+		public ConnectionPoint I6 => _xor6.B;
+		public ConnectionPoint I7 => _xor7.B;
+
+		public ConnectionPoint O0 => _xor0.O;
+		public ConnectionPoint O1 => _xor1.O;
+		public ConnectionPoint O2 => _xor2.O;
+		public ConnectionPoint O3 => _xor3.O;
+		public ConnectionPoint O4 => _xor4.O;
+		public ConnectionPoint O5 => _xor5.O;
+		public ConnectionPoint O6 => _xor6.O;
+		public ConnectionPoint O7 => _xor7.O;
+
+		// this is a case where string.Format is clearer than an interpolated string
+		public override string ToString() => string.Format(
+					"{0}{1}{2}{3}{4}{5}{6}{7}",
+					_xor7.O.V == VoltageSignal.HIGH ? 1 : 0,
+					_xor6.O.V == VoltageSignal.HIGH ? 1 : 0,
+					_xor5.O.V == VoltageSignal.HIGH ? 1 : 0,
+					_xor4.O.V == VoltageSignal.HIGH ? 1 : 0,
+					_xor3.O.V == VoltageSignal.HIGH ? 1 : 0,
+					_xor2.O.V == VoltageSignal.HIGH ? 1 : 0,
+					_xor1.O.V == VoltageSignal.HIGH ? 1 : 0,
+					_xor0.O.V == VoltageSignal.HIGH ? 1 : 0);
+
+		private void DoWireUp()
+		{
+			_v.Changed += cp =>
+				_xor0.V.V =
+				_xor1.V.V =
+				_xor2.V.V =
+				_xor3.V.V =
+				_xor4.V.V =
+				_xor5.V.V =
+				_xor6.V.V =
+				_xor7.V.V = cp.V;
+
+			_invert.Changed += cp =>
+				_xor0.A.V =
+				_xor1.A.V =
+				_xor2.A.V =
+				_xor3.A.V =
+				_xor4.A.V =
+				_xor5.A.V =
+				_xor6.A.V =
+				_xor7.A.V = cp.V;
+		}
+	}
 }
