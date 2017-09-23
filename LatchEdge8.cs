@@ -225,4 +225,104 @@ namespace PetzoldComputer
 		}
 		#endregion
 	}
+
+	public class LatchEdge8_2
+	{
+		public LatchEdge8_2()
+		{
+			DoWireUp();
+		}
+
+		private readonly ConnectionPoint _v = new ConnectionPoint();
+		private readonly ConnectionPoint _clr = new ConnectionPoint();
+		private readonly ConnectionPoint _clk = new ConnectionPoint();
+		private readonly ConnectionPoint _pre = new ConnectionPoint();
+
+		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop0 = new DFlipFlopEdgeWithPresetAndClear_2();
+		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop1 = new DFlipFlopEdgeWithPresetAndClear_2();
+		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop2 = new DFlipFlopEdgeWithPresetAndClear_2();
+		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop3 = new DFlipFlopEdgeWithPresetAndClear_2();
+		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop4 = new DFlipFlopEdgeWithPresetAndClear_2();
+		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop5 = new DFlipFlopEdgeWithPresetAndClear_2();
+		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop6 = new DFlipFlopEdgeWithPresetAndClear_2();
+		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop7 = new DFlipFlopEdgeWithPresetAndClear_2();
+
+		public ConnectionPoint V => _v;
+		public ConnectionPoint Clr => _clr;
+		public ConnectionPoint Clk => _clk;
+		public ConnectionPoint Pre => _pre;
+
+		public ConnectionPoint Din0 => _flop0.D;
+		public ConnectionPoint Din1 => _flop1.D;
+		public ConnectionPoint Din2 => _flop2.D;
+		public ConnectionPoint Din3 => _flop3.D;
+		public ConnectionPoint Din4 => _flop4.D;
+		public ConnectionPoint Din5 => _flop5.D;
+		public ConnectionPoint Din6 => _flop6.D;
+		public ConnectionPoint Din7 => _flop7.D;
+
+		public ConnectionPoint Dout0 => _flop0.Q;
+		public ConnectionPoint Dout1 => _flop1.Q;
+		public ConnectionPoint Dout2 => _flop2.Q;
+		public ConnectionPoint Dout3 => _flop3.Q;
+		public ConnectionPoint Dout4 => _flop4.Q;
+		public ConnectionPoint Dout5 => _flop5.Q;
+		public ConnectionPoint Dout6 => _flop6.Q;
+		public ConnectionPoint Dout7 => _flop7.Q;
+
+		// this is a case where string.Format is clearer than an interpolated string
+		public override string ToString() => string.Format(
+					"{0}{1}{2}{3}{4}{5}{6}{7}",
+					_flop7.Q.V == VoltageSignal.HIGH ? 1 : 0,
+					_flop6.Q.V == VoltageSignal.HIGH ? 1 : 0,
+					_flop5.Q.V == VoltageSignal.HIGH ? 1 : 0,
+					_flop4.Q.V == VoltageSignal.HIGH ? 1 : 0,
+					_flop3.Q.V == VoltageSignal.HIGH ? 1 : 0,
+					_flop2.Q.V == VoltageSignal.HIGH ? 1 : 0,
+					_flop1.Q.V == VoltageSignal.HIGH ? 1 : 0,
+					_flop0.Q.V == VoltageSignal.HIGH ? 1 : 0);
+
+		private void DoWireUp()
+		{
+			_v.Changed += cp =>
+				_flop0.V.V =
+				_flop1.V.V =
+				_flop2.V.V =
+				_flop3.V.V =
+				_flop4.V.V =
+				_flop5.V.V =
+				_flop6.V.V =
+				_flop7.V.V = cp.V;
+
+			_clr.Changed += cp =>
+				_flop0.Clr.V =
+				_flop1.Clr.V =
+				_flop2.Clr.V =
+				_flop3.Clr.V =
+				_flop4.Clr.V =
+				_flop5.Clr.V =
+				_flop6.Clr.V =
+				_flop7.Clr.V = cp.V;
+
+			_clk.Changed += cp =>
+				_flop0.Clk.V =
+				_flop1.Clk.V =
+				_flop2.Clk.V =
+				_flop3.Clk.V =
+				_flop4.Clk.V =
+				_flop5.Clk.V =
+				_flop6.Clk.V =
+				_flop7.Clk.V = cp.V;
+
+			_pre.Changed += cp =>
+				_flop0.Pre.V =
+				_flop1.Pre.V =
+				_flop2.Pre.V =
+				_flop3.Pre.V =
+				_flop4.Pre.V =
+				_flop5.Pre.V =
+				_flop6.Pre.V =
+				_flop7.Pre.V = cp.V;
+		}
+	}
 }
