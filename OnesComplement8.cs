@@ -311,25 +311,22 @@ namespace PetzoldComputer
 
 		private void DoWireUp()
 		{
-			_v.Changed += cp =>
-				_xor0.V.V =
-				_xor1.V.V =
-				_xor2.V.V =
-				_xor3.V.V =
-				_xor4.V.V =
-				_xor5.V.V =
-				_xor6.V.V =
-				_xor7.V.V = cp.V;
-
-			_invert.Changed += cp =>
-				_xor0.A.V =
-				_xor1.A.V =
-				_xor2.A.V =
-				_xor3.A.V =
-				_xor4.A.V =
-				_xor5.A.V =
-				_xor6.A.V =
-				_xor7.A.V = cp.V;
+			_v.ConnectTo(_xor7.V)
+			  .ConnectTo(_xor6.V)
+			  .ConnectTo(_xor5.V)
+			  .ConnectTo(_xor4.V)
+			  .ConnectTo(_xor3.V)
+			  .ConnectTo(_xor2.V)
+			  .ConnectTo(_xor1.V)
+			  .ConnectTo(_xor0.V);
+			_invert.ConnectTo(_xor7.A)
+					 .ConnectTo(_xor6.A)
+					 .ConnectTo(_xor5.A)
+					 .ConnectTo(_xor4.A)
+					 .ConnectTo(_xor3.A)
+					 .ConnectTo(_xor2.A)
+					 .ConnectTo(_xor1.A)
+					 .ConnectTo(_xor0.A);
 		}
 	}
 }

@@ -9,7 +9,7 @@ namespace PetzoldComputer
 		private readonly string _name;
 		private VoltageSignal _voltage;
 
-		public event Action<ConnectionPoint> Changed;
+		public Action<ConnectionPoint> Changed;
 
 		public VoltageSignal V
 		{

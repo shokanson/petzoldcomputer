@@ -298,45 +298,38 @@ namespace PetzoldComputer
 
 		private void DoWireUp()
 		{
-			_v.Changed += cp =>
-				_flop0.V.V =
-				_flop1.V.V =
-				_flop2.V.V =
-				_flop3.V.V =
-				_flop4.V.V =
-				_flop5.V.V =
-				_flop6.V.V =
-				_flop7.V.V = cp.V;
-
-			_clr.Changed += cp =>
-				_flop0.Clr.V =
-				_flop1.Clr.V =
-				_flop2.Clr.V =
-				_flop3.Clr.V =
-				_flop4.Clr.V =
-				_flop5.Clr.V =
-				_flop6.Clr.V =
-				_flop7.Clr.V = cp.V;
-
-			_clk.Changed += cp =>
-				_flop0.Clk.V =
-				_flop1.Clk.V =
-				_flop2.Clk.V =
-				_flop3.Clk.V =
-				_flop4.Clk.V =
-				_flop5.Clk.V =
-				_flop6.Clk.V =
-				_flop7.Clk.V = cp.V;
-
-			_pre.Changed += cp =>
-				_flop0.Pre.V =
-				_flop1.Pre.V =
-				_flop2.Pre.V =
-				_flop3.Pre.V =
-				_flop4.Pre.V =
-				_flop5.Pre.V =
-				_flop6.Pre.V =
-				_flop7.Pre.V = cp.V;
+			_v.ConnectTo(_flop7.V)
+			  .ConnectTo(_flop6.V)
+			  .ConnectTo(_flop5.V)
+			  .ConnectTo(_flop4.V)
+			  .ConnectTo(_flop3.V)
+			  .ConnectTo(_flop2.V)
+			  .ConnectTo(_flop1.V)
+			  .ConnectTo(_flop0.V);
+			_clr.ConnectTo(_flop7.Clr)
+				 .ConnectTo(_flop6.Clr)
+				 .ConnectTo(_flop5.Clr)
+				 .ConnectTo(_flop4.Clr)
+				 .ConnectTo(_flop3.Clr)
+				 .ConnectTo(_flop2.Clr)
+				 .ConnectTo(_flop1.Clr)
+				 .ConnectTo(_flop0.Clr);
+			_clk.ConnectTo(_flop7.Clk)
+				 .ConnectTo(_flop6.Clk)
+				 .ConnectTo(_flop5.Clk)
+				 .ConnectTo(_flop4.Clk)
+				 .ConnectTo(_flop3.Clk)
+				 .ConnectTo(_flop2.Clk)
+				 .ConnectTo(_flop1.Clk)
+				 .ConnectTo(_flop0.Clk);
+			_pre.ConnectTo(_flop7.Pre)
+				 .ConnectTo(_flop6.Pre)
+				 .ConnectTo(_flop5.Pre)
+				 .ConnectTo(_flop4.Pre)
+				 .ConnectTo(_flop3.Pre)
+				 .ConnectTo(_flop2.Pre)
+				 .ConnectTo(_flop1.Pre)
+				 .ConnectTo(_flop0.Pre);
 		}
 	}
 }
