@@ -2,7 +2,7 @@ namespace PetzoldComputer
 {
 	public interface ISelector2to1
 	{
-		VoltageSignal Voltage { get; set; }
+		VoltageSignal V { get; set; }
 		VoltageSignal A { get; set; }
 		VoltageSignal B { get; set; }
 		VoltageSignal Select { get; set; }

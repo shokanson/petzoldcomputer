@@ -71,35 +71,35 @@ namespace PetzoldComputer
 
 		public VoltageSignal Voltage
 		{
-			get => _write.Voltage;
+			get => _write.V;
 			set
 			{
 				string oldOutput = ToString();
-				_d0.Voltage =
-					_d1.Voltage =
-					_d2.Voltage =
-					_d3.Voltage =
-					_d4.Voltage =
-					_d5.Voltage =
-					_d6.Voltage =
-					_d7.Voltage =
-					_a0.Voltage =
-					_a1.Voltage =
-					_a2.Voltage =
-					_a3.Voltage =
-					_a4.Voltage =
-					_a5.Voltage =
-					_a6.Voltage =
-					_a7.Voltage =
-					_a8.Voltage =
-					_a9.Voltage =
-					_a10.Voltage =
-					_a11.Voltage =
-					_a12.Voltage =
-					_a13.Voltage =
-					_a14.Voltage =
-					_a15.Voltage =
-					_write.Voltage = value;
+				_d0.V =
+					_d1.V =
+					_d2.V =
+					_d3.V =
+					_d4.V =
+					_d5.V =
+					_d6.V =
+					_d7.V =
+					_a0.V =
+					_a1.V =
+					_a2.V =
+					_a3.V =
+					_a4.V =
+					_a5.V =
+					_a6.V =
+					_a7.V =
+					_a8.V =
+					_a9.V =
+					_a10.V =
+					_a11.V =
+					_a12.V =
+					_a13.V =
+					_a14.V =
+					_a15.V =
+					_write.V = value;
 				if (ToString() != oldOutput) OutputChanged?.Invoke(this);
 			}
 		}
