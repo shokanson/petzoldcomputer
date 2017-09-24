@@ -46,9 +46,13 @@ namespace PetzoldComputer
 		}
 
 		public uint NOscillations { get; private set; }
+		public VoltageSignal V { get; set; }
+		public readonly ConnectionPoint Output;
 
 		public void Start()
 		{
+			if (V == VoltageSignal.LOW) return;
+
 			uint nOscillations = 0;
 			do
 			{
@@ -56,7 +60,5 @@ namespace PetzoldComputer
 				Output.V = VoltageSignal.LOW;
 			} while (NOscillations == 0 || ++nOscillations < NOscillations);
 		}
-
-		public readonly ConnectionPoint Output;
 	}
 }
