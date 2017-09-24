@@ -104,9 +104,9 @@ namespace PetzoldComputer
 			_myId = ++Counter;
 			_name = name;
 
-			_v = new ConnectionPoint($"{name}-relay.v");
-			_in = new ConnectionPoint($"{name}-relay.in");
-			_out = new ConnectionPoint($"{name}-relay.out");
+			_voltage = new ConnectionPoint($"{name}-relay.v");
+			_input = new ConnectionPoint($"{name}-relay.in");
+			_output = new ConnectionPoint($"{name}-relay.out");
 
 			DoWireUp();
 		}
@@ -114,23 +114,23 @@ namespace PetzoldComputer
 		private readonly int _myId;
 		private readonly string _name;
 		private bool _inverted;
-		private readonly ConnectionPoint _v;
-		private readonly ConnectionPoint _in;
-		private readonly ConnectionPoint _out;
+		private readonly ConnectionPoint _voltage;
+		private readonly ConnectionPoint _input;
+		private readonly ConnectionPoint _output;
 
-		public ConnectionPoint Voltage => _v;
-		public ConnectionPoint Input => _in;
-		public ConnectionPoint Output => _out;
+		public ConnectionPoint Voltage => _voltage;
+		public ConnectionPoint Input => _input;
+		public ConnectionPoint Output => _output;
 
-		public override string ToString() => _out.ToString();
+		public override string ToString() => _output.ToString();
 
 
 		private void DoWireUp()
 		{
 			// when the input voltage changes, (de)activate the switch
-			_in.Changed += cp => IsSwitchActivated = cp.V == VoltageSignal.HIGH;
+			_input.Changed += input => IsSwitchActivated = input.V == VoltageSignal.HIGH;
 
-			_v.Changed += cp => UpdateOutput(cp.V);
+			_voltage.Changed += voltage => UpdateOutput(voltage.V);
 		}
 
 		// internal switch details
@@ -142,13 +142,13 @@ namespace PetzoldComputer
 			{
 				bool originalValue = _switchActive;
 				_switchActive = value;
-				if (originalValue != value) UpdateOutput(_v.V);
+				if (originalValue != value) UpdateOutput(_voltage.V);
 			}
 		}
 
 		private void UpdateOutput(VoltageSignal voltage)
 		{
-			_out.V = _inverted
+			_output.V = _inverted
 				? _switchActive ? VoltageSignal.LOW : voltage
 				: _switchActive ? voltage : VoltageSignal.LOW;
 		}

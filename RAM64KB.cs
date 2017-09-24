@@ -829,8 +829,8 @@ namespace PetzoldComputer
 
 		private void DoWireUp()
 		{
-			_voltage.Changed += cp => { if (cp.V == VoltageSignal.LOW) Reset(); };
-			_clk.Changed += cp => { if (cp.V == VoltageSignal.HIGH) WriteData(); };
+			_voltage.Changed += voltage => { if (voltage.V == VoltageSignal.LOW) Reset(); };
+			_clk.Changed += clk => { if (clk.V == VoltageSignal.HIGH) WriteData(); };
 			_a0.Changed += _ => ReadData();
 			_a1.Changed += _ => ReadData();
 			_a2.Changed += _ => ReadData();

@@ -662,10 +662,10 @@ namespace PetzoldComputer
 				.ConnectTo(_flop1.V)
 				.ConnectTo(_flop0.V);
 
-			_v.Changed += cp =>
+			_v.Changed += v =>
 			{
 				// a little bump to get things started
-				if (cp.V == VoltageSignal.HIGH)
+				if (v.V == VoltageSignal.HIGH)
 				{
 					_clr.V = VoltageSignal.HIGH;
 					_clr.V = VoltageSignal.LOW;

@@ -27,9 +27,36 @@ namespace PetzoldComputer
 		private Action<object> _handler;
 		public void AddOutputHandler(Action<object> handler)
 		{
-			_handler = handler;
+			_handler += handler;
 		}
 
 		public VoltageSignal Output { get; private set; }
+	}
+
+	public class Oscillator_2
+	{
+		public Oscillator_2(string name)
+			: this(name, 0)   // a never-ending oscillator
+		{ }
+
+		public Oscillator_2(string name, uint nOscillations)
+		{
+			Output = new ConnectionPoint($"{name}-oscillator");
+			NOscillations = nOscillations;
+		}
+
+		public uint NOscillations { get; private set; }
+
+		public void Start()
+		{
+			uint nOscillations = 0;
+			do
+			{
+				Output.V = VoltageSignal.HIGH;
+				Output.V = VoltageSignal.LOW;
+			} while (NOscillations == 0 || ++nOscillations < NOscillations);
+		}
+
+		public readonly ConnectionPoint Output;
 	}
 }

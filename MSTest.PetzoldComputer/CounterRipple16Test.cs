@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PetzoldComputer;
+using System.Diagnostics;
 
 namespace MSTest.PetzoldComputer
 {
@@ -50,6 +51,19 @@ namespace MSTest.PetzoldComputer
 				counter.Clk.V = VoltageSignal.LOW;
 			}
 			Assert.AreEqual(0x0000, GetCount(counter), "wraparound; count all 0's");
+		}
+
+		[TestMethod]
+		public void Counter_driven_by_Oscillator()
+		{
+			var counter = new CounterRipple16("test");
+			counter.V.V = VoltageSignal.HIGH;
+			var oscillator = new Oscillator_2("test", 0x10000);
+
+			oscillator.Output.ConnectTo(counter.Clk);
+			//oscillator.Output.Changed += output => { if (output.V == VoltageSignal.LOW) Trace.TraceInformation(counter.ToString()); };
+
+			oscillator.Start();
 		}
 
 		[TestMethod]
