@@ -1,8 +1,5 @@
 namespace PetzoldComputer
 {
-	public class NOT : InvertedRelay, INot
-	{ }
-
 	public class NOT_2
 	{
 		public NOT_2(string name)

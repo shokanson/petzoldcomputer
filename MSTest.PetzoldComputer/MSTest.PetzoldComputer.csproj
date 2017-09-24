@@ -58,13 +58,10 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddAndSub8Test.cs" />
     <Compile Include="ANDTest.cs" />
-    <Compile Include="CounterSynchronous16Test.cs" />
     <Compile Include="DFlipFlopEdgeWithPresetAndClearTest.cs" />
     <Compile Include="FullAdderTest.cs" />
     <Compile Include="HalfAdderTest.cs" />
-    <Compile Include="InvertedRelayTest.cs" />
     <Compile Include="LatchEdge8Test.cs" />
     <Compile Include="NANDTest.cs" />
     <Compile Include="NOR3Test.cs" />
@@ -77,7 +74,6 @@
     <Compile Include="RAM64KBTest.cs" />
     <Compile Include="RelayTest.cs" />
     <Compile Include="RippleAdder8Test.cs" />
-    <Compile Include="TestEventsHelper.cs" />
     <Compile Include="Phase2ComputerTest.cs" />
     <Compile Include="Selector2to1Test.cs" />
     <Compile Include="ControlPanelTest.cs" />

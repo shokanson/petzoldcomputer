@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddAndSub8.cs" />
     <Compile Include="AND.cs" />
     <Compile Include="ConnectionPoint.cs" />
     <Compile Include="ControlPanel.cs" />
@@ -53,9 +52,7 @@
     <Compile Include="DFlipFlopEdgeWithPresetAndClear.cs" />
     <Compile Include="FullAdder.cs" />
     <Compile Include="GlobalTypes.cs" />
-    <Compile Include="Events.cs" />
     <Compile Include="HalfAdder.cs" />
-    <Compile Include="Interfaces.cs" />
     <Compile Include="LatchEdge8.cs" />
     <Compile Include="NOR3.cs" />
     <Compile Include="OnesComplement8.cs" />
