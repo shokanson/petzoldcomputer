@@ -10,7 +10,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void ControlPanel()
 		{
-			var panel = new ControlPanel_2("test");
+			var panel = new ControlPanel("test");
 			panel.V.V = VoltageSignal.HIGH;
 
 			WireUpEventHandler(panel);
@@ -30,7 +30,7 @@ namespace MSTest.PetzoldComputer
 			panel.Takeover.V = VoltageSignal.LOW;
 		}
 
-		private static void WireUpEventHandler(ControlPanel_2 panel)
+		private static void WireUpEventHandler(ControlPanel panel)
 		{
 			panel.D0.Changed += EventHandler;
 			panel.D1.Changed += EventHandler;

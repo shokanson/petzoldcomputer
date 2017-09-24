@@ -10,9 +10,9 @@ namespace MSTest.PetzoldComputer
 	public class NANDTest
 	{
 		[TestMethod]
-		public void NAND_2_Constructor()
+		public void NAND_Constructor()
 		{
-			var nand = new NAND_2("test");
+			var nand = new NAND("test");
 
 			Assert.AreEqual(VoltageSignal.LOW, nand.V.V, "NAND Constructor: Voltage");
 			Assert.AreEqual(VoltageSignal.LOW, nand.A.V, "NAND Constructor: A");
@@ -32,10 +32,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.HIGH)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW)]
 		#endregion
-		public void NAND_2(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
+		public void NAND(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var nand = new NAND_2("test");
+			var nand = new NAND("test");
 
 			// act
 			nand.V.V = voltage;
@@ -47,10 +47,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void NAND_2_Events_GateOn()
+		public void NAND_Events_GateOn()
 		{
 			// arrange
-			var nand = new NAND_2("test");
+			var nand = new NAND("test");
 			nand.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			nand.O.Changed += _ => fired = true;
@@ -107,10 +107,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void AND_2_Events_GateOff()
+		public void AND_Events_GateOff()
 		{
 			// arrange
-			var nand = new NAND_2("test");
+			var nand = new NAND("test");
 			bool fired = false;
 			nand.O.Changed += _ => fired = true;
 
@@ -160,10 +160,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void NAND_2_Event_GateOnOff()
+		public void NAND_Event_GateOnOff()
 		{
 			// arrange
-			var nand = new NAND_2("test");
+			var nand = new NAND("test");
 			bool fired = false;
 			nand.O.Changed += _ => fired = true;
 

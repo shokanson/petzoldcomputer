@@ -7,10 +7,10 @@ namespace MSTest.PetzoldComputer
 	public class RippleAdder8Test
 	{
 		[TestMethod]
-		public void RippleAdder8_2_Constructor()
+		public void RippleAdder8_Constructor()
 		{
 			// arrage, act
-			var adder = new RippleAdder8_2("test");
+			var adder = new RippleAdder8("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, adder.V.V, "Constructor: Voltage");
@@ -44,22 +44,22 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void RippleAdder8_2_SumAndCarry()
+		public void RippleAdder8_SumAndCarry()
 		{
 			// arrange
-			var adder = new RippleAdder8_2("test");
+			var adder = new RippleAdder8("test");
 			adder.V.V = VoltageSignal.HIGH;
 			for (ushort a = 0; a < 0x100; ++a)
 			{
 				for (ushort b = 0; b < 0x100; ++b)
 				{
-					RippleAdder8_2_TestHelper(adder, (byte)a, (byte)b, false);
-					RippleAdder8_2_TestHelper(adder, (byte)a, (byte)b, true);
+					RippleAdder8_TestHelper(adder, (byte)a, (byte)b, false);
+					RippleAdder8_TestHelper(adder, (byte)a, (byte)b, true);
 				}
 			}
 		}
 
-		private static void RippleAdder8_2_TestHelper(RippleAdder8_2 adder, byte a, byte b, bool carryIn)
+		private static void RippleAdder8_TestHelper(RippleAdder8 adder, byte a, byte b, bool carryIn)
 		{
 			adder.CarryIn.V = (carryIn ? VoltageSignal.HIGH : VoltageSignal.LOW);
 			adder.A0.V = ((a & 0x01) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);

@@ -12,7 +12,7 @@ namespace MSTest.PetzoldComputer
 		{
 			uint nBytes = 0x100;   // do not set higher than 0x10000 (64K)
 
-			var computer = new Phase3Computer_2("test", nBytes);
+			var computer = new Phase3Computer("test", nBytes);
 			// turn on the computer
 			computer.V.V = VoltageSignal.HIGH;
 			// get ready to write to RAM
@@ -32,7 +32,7 @@ namespace MSTest.PetzoldComputer
 			computer.Oscillator.Start();  // synchronous--doesn't return until done
 		}
 
-		private void LoadComputerRAM(Phase3Computer_2 computer, uint nBytes)
+		private void LoadComputerRAM(Phase3Computer computer, uint nBytes)
 		{
 			for (uint i = 0; i < nBytes; ++i)
 			{

@@ -7,22 +7,22 @@ namespace PetzoldComputer
 			_v = new ConnectionPoint($"{name}-counter16.v");
 			_clr = new ConnectionPoint($"{name}-counter16.clr");
 
-			_flop0 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q0");
-			_flop1 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q1");
-			_flop2 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q2");
-			_flop3 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q3");
-			_flop4 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q4");
-			_flop5 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q5");
-			_flop6 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q6");
-			_flop7 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q7");
-			_flop8 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q8");
-			_flop9 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q9");
-			_flop10 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q10");
-			_flop11 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q11");
-			_flop12 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q12");
-			_flop13 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q13");
-			_flop14 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q14");
-			_flop15 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-counter16.q15");
+			_flop0 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q0");
+			_flop1 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q1");
+			_flop2 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q2");
+			_flop3 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q3");
+			_flop4 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q4");
+			_flop5 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q5");
+			_flop6 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q6");
+			_flop7 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q7");
+			_flop8 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q8");
+			_flop9 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q9");
+			_flop10 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q10");
+			_flop11 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q11");
+			_flop12 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q12");
+			_flop13 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q13");
+			_flop14 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q14");
+			_flop15 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q15");
 
 			DoWireUp();
 		}
@@ -30,22 +30,22 @@ namespace PetzoldComputer
 		private readonly ConnectionPoint _v;
 		private readonly ConnectionPoint _clr;
 
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop0;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop1;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop2;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop3;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop4;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop5;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop6;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop7;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop8;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop9;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop10;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop11;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop12;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop13;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop14;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop15;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop0;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop1;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop2;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop3;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop4;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop5;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop6;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop7;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop8;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop9;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop10;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop11;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop12;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop13;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop14;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop15;
 
 		public ConnectionPoint V => _v;
 		public ConnectionPoint Clr => _clr;

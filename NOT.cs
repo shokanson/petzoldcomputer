@@ -1,13 +1,13 @@
 namespace PetzoldComputer
 {
-	public class NOT_2
+	public class NOT
 	{
-		public NOT_2(string name)
+		public NOT(string name)
 		{
-			_relay = new Relay_2($"{name}-not", inverted: true);
+			_relay = new Relay($"{name}-not", inverted: true);
 		}
 
-		private readonly Relay_2 _relay;
+		private readonly Relay _relay;
 
 		public ConnectionPoint V => _relay.Voltage;
 		public ConnectionPoint Input => _relay.Input;

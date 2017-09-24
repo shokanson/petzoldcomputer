@@ -57,7 +57,7 @@ namespace MSTest.PetzoldComputer
 		public void Counter_driven_by_Oscillator()
 		{
 			var counter = new CounterRipple16("test");
-			var oscillator = new Oscillator_2("test", 0x10000);
+			var oscillator = new Oscillator("test", 0x10000);
 			counter.V.V = oscillator.V.V = VoltageSignal.HIGH;
 
 			oscillator.Output.ConnectTo(counter.Clk);

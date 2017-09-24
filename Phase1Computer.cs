@@ -4,17 +4,17 @@ namespace PetzoldComputer
 	 * The MSTest.PetzoldComputer.Phase1Test class exercises the computer as described starting with "Here's
 	 * how it works..." on page 209.
 	 */
-	public class Phase1Computer_2
+	public class Phase1Computer
 	{
-		public Phase1Computer_2(string name)
+		public Phase1Computer(string name)
 		{
 			_v = new ConnectionPoint($"{name}-phase1computer.v");
 			_clk = new ConnectionPoint($"{name}-phase1computer.clk");
 			_clr= new ConnectionPoint($"{name}-phase1computer.clr");
 			_counter = new CounterRipple16($"{name}-phase1computer.counter");
-			_ram = new RAM64KB_2($"{name}-phase1computer.ram");
-			_adder = new RippleAdder8_2($"{name}-phase1computer.accumulator");	// _adder.CarryIn is LOW
-			_latch = new LatchEdge8_2($"{name}-phase1computer.register");
+			_ram = new RAM64KB($"{name}-phase1computer.ram");
+			_adder = new RippleAdder8($"{name}-phase1computer.accumulator");	// _adder.CarryIn is LOW
+			_latch = new LatchEdge8($"{name}-phase1computer.register");
 
 			DoWireUp();
 		}
@@ -23,9 +23,9 @@ namespace PetzoldComputer
 		private readonly ConnectionPoint _clk;
 		private readonly ConnectionPoint _clr;
 		private readonly CounterRipple16 _counter;
-		protected readonly RAM64KB_2 _ram;   // make it available to subclasses
-		private RippleAdder8_2 _adder;
-		private LatchEdge8_2 _latch;
+		protected readonly RAM64KB _ram;   // make it available to subclasses
+		private RippleAdder8 _adder;
+		private LatchEdge8 _latch;
 
 		public ConnectionPoint V => _v;
 		public ConnectionPoint Clr => _clr;

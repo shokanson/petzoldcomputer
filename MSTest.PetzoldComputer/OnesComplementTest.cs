@@ -7,10 +7,10 @@ namespace MSTest.PetzoldComputer
 	public class OnesComplementTest
 	{
 		[TestMethod]
-		public void OnesComplement8_2_Constructor()
+		public void OnesComplement8_Constructor()
 		{
 			// arrange, act
-			var ones = new OnesComplement8_2("test");
+			var ones = new OnesComplement8("test");
 			               
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, ones.V.V, "Constructor: Voltage");
@@ -35,20 +35,20 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void OnesComplement8_2()
+		public void OnesComplement8()
 		{
 			// arrange
-			var ones = new OnesComplement8_2("test");
+			var ones = new OnesComplement8("test");
 			ones.V.V = VoltageSignal.HIGH;
 			for (ushort input = 0; input < 0x100; ++input)
 			{
 				// act, assert
-				OnesComplement8_2_TestHelper(ones, (byte)input, false);
-				OnesComplement8_2_TestHelper(ones, (byte)input, true);
+				OnesComplement8_TestHelper(ones, (byte)input, false);
+				OnesComplement8_TestHelper(ones, (byte)input, true);
 			}
 		}
 
-		private static void OnesComplement8_2_TestHelper(OnesComplement8_2 ones, byte input, bool invert)
+		private static void OnesComplement8_TestHelper(OnesComplement8 ones, byte input, bool invert)
 		{
 			ones.Invert.V = (invert ? VoltageSignal.HIGH : VoltageSignal.LOW);
 			ones.I0.V = ((input & 0x01) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);

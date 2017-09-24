@@ -7,10 +7,10 @@ namespace MSTest.PetzoldComputer
 	public class FullAdderTest
 	{
 		[TestMethod]
-		public void FullAdder_2_Constructor()
+		public void FullAdder_Constructor()
 		{
 			// arrange
-			var fullAdder = new FullAdder_2("test");
+			var fullAdder = new FullAdder("test");
 
 			Assert.AreEqual(VoltageSignal.LOW, fullAdder.V.V, "Constructor: V");
 			Assert.AreEqual(VoltageSignal.LOW, fullAdder.A.V, "Constructor: A");
@@ -40,10 +40,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.LOW)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH)]
 		#endregion
-		public void FullAdder_2_Sum(VoltageSignal v, VoltageSignal carryIn, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
+		public void FullAdder_Sum(VoltageSignal v, VoltageSignal carryIn, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrange
-			var fullAdder = new FullAdder_2("test");
+			var fullAdder = new FullAdder("test");
 
 			// act
 			fullAdder.V.V = v;
@@ -74,10 +74,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.HIGH)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH)]
 		#endregion
-		public void FullAdder_2_Carry(VoltageSignal v, VoltageSignal carryIn, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
+		public void FullAdder_Carry(VoltageSignal v, VoltageSignal carryIn, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrange
-			var fullAdder = new FullAdder_2("test");
+			var fullAdder = new FullAdder("test");
 
 			// act
 			fullAdder.V.V = v;
@@ -90,10 +90,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void FullAdder_2_SumEvent_NoCarryin()
+		public void FullAdder_SumEvent_NoCarryin()
 		{
 			// arrange
-			var fullAdder = new FullAdder_2("test");
+			var fullAdder = new FullAdder("test");
 			fullAdder.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			fullAdder.Sum.Changed += _ => fired = true;
@@ -154,10 +154,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void FullAdder_2_CarryEvent_NoCarryin()
+		public void FullAdder_CarryEvent_NoCarryin()
 		{
 			// arrange
-			var fullAdder = new FullAdder_2("test");
+			var fullAdder = new FullAdder("test");
 			fullAdder.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			fullAdder.Carry.Changed += _ => fired = true;
@@ -214,10 +214,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void FullAdder_2_SumEvent_WithCarryin()
+		public void FullAdder_SumEvent_WithCarryin()
 		{
 			// arrange
-			var fullAdder = new FullAdder_2("test");
+			var fullAdder = new FullAdder("test");
 			fullAdder.V.V = VoltageSignal.HIGH;
 			fullAdder.CarryIn.V = VoltageSignal.HIGH;
 			bool fired = false;
@@ -279,10 +279,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void FullAdder_2_CarryEvent_WithCarryin()
+		public void FullAdder_CarryEvent_WithCarryin()
 		{
 			// arrange
-			var fullAdder = new FullAdder_2("test");
+			var fullAdder = new FullAdder("test");
 			fullAdder.V.V = VoltageSignal.HIGH;
 			fullAdder.CarryIn.V = VoltageSignal.HIGH;
 			bool fired = false;

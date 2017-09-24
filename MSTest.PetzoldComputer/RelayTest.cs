@@ -7,10 +7,10 @@ namespace MSTest.PetzoldComputer
 	public class RelayTest
 	{
 		[TestMethod]
-		public void Relay_2_Constructor()
+		public void Relay_Constructor()
 		{
 			// arrage, act
-			var relay = new Relay_2("test");
+			var relay = new Relay("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, relay.Voltage.V, "Coil Voltage");
@@ -20,10 +20,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void Relay_2_Constructor_Inverted()
+		public void Relay_Constructor_Inverted()
 		{
 			// arrage, act
-			var relay = new Relay_2("test", true);
+			var relay = new Relay("test", true);
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, relay.Voltage.V, "Coil Voltage");
@@ -37,10 +37,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.LOW, VoltageSignal.HIGH, VoltageSignal.LOW)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.LOW)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH)]
-		public void Relay_2(VoltageSignal voltage, VoltageSignal input, VoltageSignal expected)
+		public void Relay(VoltageSignal voltage, VoltageSignal input, VoltageSignal expected)
 		{
 			// arrage
-			var relay = new Relay_2("test");
+			var relay = new Relay("test");
 
 			// act
 			relay.Voltage.V = voltage;
@@ -55,10 +55,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.LOW, VoltageSignal.HIGH, VoltageSignal.LOW)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.HIGH)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW)]
-		public void Relay_2_Inverted(VoltageSignal voltage, VoltageSignal input, VoltageSignal expected)
+		public void Relay_Inverted(VoltageSignal voltage, VoltageSignal input, VoltageSignal expected)
 		{
 			// arrage
-			var relay = new Relay_2("test", true);
+			var relay = new Relay("test", true);
 
 			// act
 			relay.Voltage.V = voltage;
@@ -69,10 +69,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void Relay_2_Events()
+		public void Relay_Events()
 		{
 			// arrage
-			var relay = new Relay_2("test");
+			var relay = new Relay("test");
 
 			// act,assert
 			bool fired = false;
@@ -126,10 +126,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void Relay_2_Inverted_Events()
+		public void Relay_Inverted_Events()
 		{
 			// arrage
-			var relay = new Relay_2("test", true);
+			var relay = new Relay("test", true);
 			bool fired = false;
 			relay.Output.Changed += _ => fired = true;
 

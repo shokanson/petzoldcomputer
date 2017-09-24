@@ -1,22 +1,22 @@
 namespace PetzoldComputer
 {
-	public class LatchEdge8_2
+	public class LatchEdge8
 	{
-		public LatchEdge8_2(string name)
+		public LatchEdge8(string name)
 		{
 			_v = new ConnectionPoint($"{name}-latch8.v");
 			_clr = new ConnectionPoint($"{name}-latch8.clr");
 			_clk = new ConnectionPoint($"{name}-latch8.clk");
 			_pre = new ConnectionPoint($"{name}-latch8.pre");
 
-			_flop0 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-latch8.0");
-			_flop1 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-latch8.1");
-			_flop2 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-latch8.2");
-			_flop3 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-latch8.3");
-			_flop4 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-latch8.4");
-			_flop5 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-latch8.5");
-			_flop6 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-latch8.6");
-			_flop7 = new DFlipFlopEdgeWithPresetAndClear_2($"{name}-latch8.7");
+			_flop0 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.0");
+			_flop1 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.1");
+			_flop2 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.2");
+			_flop3 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.3");
+			_flop4 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.4");
+			_flop5 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.5");
+			_flop6 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.6");
+			_flop7 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.7");
 
 			DoWireUp();
 		}
@@ -26,14 +26,14 @@ namespace PetzoldComputer
 		private readonly ConnectionPoint _clk;
 		private readonly ConnectionPoint _pre;
 
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop0;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop1;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop2;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop3;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop4;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop5;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop6;
-		private readonly DFlipFlopEdgeWithPresetAndClear_2 _flop7;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop0;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop1;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop2;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop3;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop4;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop5;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop6;
+		private readonly DFlipFlopEdgeWithPresetAndClear _flop7;
 
 		public ConnectionPoint V => _v;
 		public ConnectionPoint Clr => _clr;

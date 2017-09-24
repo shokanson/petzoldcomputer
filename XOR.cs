@@ -1,19 +1,19 @@
 namespace PetzoldComputer
 {
-	public class XOR_2
+	public class XOR
 	{
-		public XOR_2(string name)
+		public XOR(string name)
 		{
-			_or = new OR_2($"{name}-xor.in");
-			_nand = new NAND_2($"{name}-xor.in");
-			_and = new AND_2($"{name}-xor.o");
+			_or = new OR($"{name}-xor.in");
+			_nand = new NAND($"{name}-xor.in");
+			_and = new AND($"{name}-xor.o");
 
 			DoWireUp();
 		}
 
-		private readonly OR_2 _or;
-		private readonly NAND_2 _nand;
-		private readonly AND_2 _and;
+		private readonly OR _or;
+		private readonly NAND _nand;
+		private readonly AND _and;
 
 		public ConnectionPoint V => _or.V;
 		public ConnectionPoint A => _or.A;

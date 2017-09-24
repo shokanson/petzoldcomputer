@@ -12,7 +12,7 @@ namespace MSTest.PetzoldComputer
 		{
 			uint nBytes = 0x100;   // do not set higher than 0x10000 (64K)
 
-			var computer = new Phase2Computer_2("test", nBytes);
+			var computer = new Phase2Computer("test", nBytes);
 			// turn on the computer
 			computer.V.V = VoltageSignal.HIGH;
 			// get ready to load data
@@ -33,7 +33,7 @@ namespace MSTest.PetzoldComputer
 		}
 
 		// This mimics operating the control panel on page 204, which Phase2Computer doesn't have
-		private static void LoadComputerRAM(Phase2Computer_2 computer, uint nBytes)
+		private static void LoadComputerRAM(Phase2Computer computer, uint nBytes)
 		{
 			for (uint i = 0; i < nBytes; ++i)
 			{

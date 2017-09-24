@@ -13,7 +13,7 @@ namespace MSTest.PetzoldComputer
 		{
 			uint nBytes = 0x100;   // do not set higher than 0x10000 (64K)
 
-			var computer = new PC.PetzoldComputer_2("test", nBytes);
+			var computer = new PC.PetzoldComputer("test", nBytes);
 			// turn on the computer
 			computer.Voltage.V = PC.VoltageSignal.HIGH;
 			// prepare to load data to RAM
@@ -27,7 +27,7 @@ namespace MSTest.PetzoldComputer
 			computer.Clr.V = PC.VoltageSignal.LOW;   // synchronous call
 		}
 
-		private static void LoadComputer(PC.PetzoldComputer_2 computer, uint nBytes)
+		private static void LoadComputer(PC.PetzoldComputer computer, uint nBytes)
 		{
 			for (uint i = 0; i < nBytes; ++i)
 			{
@@ -35,7 +35,7 @@ namespace MSTest.PetzoldComputer
 			}
 		}
 
-		public static void WriteByte(PC.ControlPanel_2 panel, ushort address, byte data)
+		public static void WriteByte(PC.ControlPanel panel, ushort address, byte data)
 		{
 			panel.Takeover.V = PC.VoltageSignal.HIGH;
 

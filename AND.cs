@@ -1,17 +1,17 @@
 namespace PetzoldComputer
 {
-	public class AND_2
+	public class AND
 	{
-		public AND_2(string name)
+		public AND(string name)
 		{
-			_relay1 = new Relay_2($"{name}-and.a");
-			_relay2 = new Relay_2($"{name}-and.b");
+			_relay1 = new Relay($"{name}-and.a");
+			_relay2 = new Relay($"{name}-and.b");
 
 			DoWireUp();
 		}
 
-		private readonly Relay_2 _relay1;
-		private readonly Relay_2 _relay2;
+		private readonly Relay _relay1;
+		private readonly Relay _relay2;
 
 		public ConnectionPoint V { get => _relay1.Voltage; }
 		public ConnectionPoint A { get => _relay1.Input; }

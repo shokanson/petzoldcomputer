@@ -11,7 +11,7 @@ namespace MSTest.PetzoldComputer
 		public void Constructor()
 		{
 			// arrange
-			var computer = new Phase1Computer_2("test");
+			var computer = new Phase1Computer("test");
 
 			Assert.AreEqual(VoltageSignal.LOW, computer.V.V, "Constructor: Voltage");
 			Assert.AreEqual(VoltageSignal.LOW, computer.Clr.V, "Constructor: Clr");
@@ -30,7 +30,7 @@ namespace MSTest.PetzoldComputer
 		public void Computer()
 		{
 			// Drive the computer as described on page 209...
-			var computer = new Phase1Computer_2("test");
+			var computer = new Phase1Computer("test");
 
 			// turn on the computer
 			computer.V.V = VoltageSignal.HIGH;
@@ -61,7 +61,7 @@ namespace MSTest.PetzoldComputer
 		}
 
 		// This mimics operating the control panel on page 204, which Phase1Computer doesn't have
-		private static void LoadComputerRAM(Phase1Computer_2 computer, int nBytes)
+		private static void LoadComputerRAM(Phase1Computer computer, int nBytes)
 		{
 			for (int i = 0; i < nBytes; ++i)
 			{
@@ -69,7 +69,7 @@ namespace MSTest.PetzoldComputer
 			}
 		}
 
-		private static void TestData(Phase1Computer_2 computer, byte expected)
+		private static void TestData(Phase1Computer computer, byte expected)
 		{
 			byte actual = 0x00;
 
@@ -85,7 +85,7 @@ namespace MSTest.PetzoldComputer
 			Assert.AreEqual(expected, actual, "Computer Data");
 		}
 
-		private static void TestToString(Phase1Computer_2 computer, byte expected)
+		private static void TestToString(Phase1Computer computer, byte expected)
 		{
 			string expectedString = Convert.ToString(expected, 2).PadLeft(8, '0');
 			Assert.AreEqual(expectedString, computer.ToString(), "ToString()");

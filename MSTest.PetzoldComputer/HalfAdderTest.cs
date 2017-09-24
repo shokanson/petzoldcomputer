@@ -7,9 +7,9 @@ namespace MSTest.PetzoldComputer
 	public class HalfAdderTest
 	{
 		[TestMethod]
-		public void HalfAdder_2_Constructor()
+		public void HalfAdder_Constructor()
 		{
-			var halfAdder = new HalfAdder_2("test");
+			var halfAdder = new HalfAdder("test");
 
 			Assert.AreEqual(VoltageSignal.LOW, halfAdder.V.V, "Constructor: V");
 			Assert.AreEqual(VoltageSignal.LOW, halfAdder.A.V, "Constructor: A");
@@ -30,10 +30,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.HIGH)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW)]
 		#endregion
-		public void XOR_2_Sum(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
+		public void XOR_Sum(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var halfAdder = new HalfAdder_2("test");
+			var halfAdder = new HalfAdder("test");
 
 			// act
 			halfAdder.V.V = voltage;
@@ -55,10 +55,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.LOW)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH)]
 		#endregion
-		public void HalfAdder_2_Carry(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
+		public void HalfAdder_Carry(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var halfAdder = new HalfAdder_2("test");
+			var halfAdder = new HalfAdder("test");
 
 			// act
 			halfAdder.V.V = voltage;
@@ -70,10 +70,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void HalfAdder_2_Sum_Event()
+		public void HalfAdder_Sum_Event()
 		{
 			// arrange
-			var halfAdder = new HalfAdder_2("test");
+			var halfAdder = new HalfAdder("test");
 			halfAdder.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			halfAdder.Sum.Changed += _ => fired = true;
@@ -134,10 +134,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void HalfAdder_2_Carry_Event()
+		public void HalfAdder_Carry_Event()
 		{
 			// arrange
-			var halfAdder = new HalfAdder_2("test");
+			var halfAdder = new HalfAdder("test");
 			halfAdder.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			halfAdder.Carry.Changed += _ => fired = true;

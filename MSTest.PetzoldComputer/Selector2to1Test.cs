@@ -7,10 +7,10 @@ namespace MSTest.PetzoldComputer
 	public class Selector2to1Test
 	{
 		[TestMethod]
-		public void Selector2to1_2_Constructor()
+		public void Selector2to1_Constructor()
 		{
 			// arrange, act
-			var selector = new Selector2to1_2("name");
+			var selector = new Selector2to1("name");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, selector.V.V, "Constructor: V");
@@ -41,10 +41,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.LOW, VoltageSignal.LOW, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW)]
 		[DataRow(VoltageSignal.LOW, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW)]
 		#endregion
-		public void Selector2to1_2_Output(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal select, VoltageSignal expected)
+		public void Selector2to1_Output(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal select, VoltageSignal expected)
 		{
 			// arrange
-			var selector = new Selector2to1_2("test");
+			var selector = new Selector2to1("test");
 
 			// act
 			selector.V.V = voltage;
@@ -57,10 +57,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void Selector2to1_2_TestOutputEventsGateOn()
+		public void Selector2to1_TestOutputEventsGateOn()
 		{
 			// arrange
-			var selector = new Selector2to1_2("test");
+			var selector = new Selector2to1("test");
 			selector.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			selector.O.Changed += _ => fired = true;

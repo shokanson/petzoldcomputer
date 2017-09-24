@@ -10,7 +10,7 @@ namespace MSTest.PetzoldComputer
 		public void Constructor()
 		{
 			// arrange, act
-			var latch = new LatchEdge8_2("test");
+			var latch = new LatchEdge8("test");
 
 			Assert.AreEqual(VoltageSignal.LOW, latch.V.V, "Constructor: Voltage");
 			Assert.AreEqual(VoltageSignal.LOW, latch.Clk.V, "Constructor: Clk");
@@ -37,14 +37,14 @@ namespace MSTest.PetzoldComputer
 		public void DataAndClock()
 		{
 			// arrange
-			var latch = new LatchEdge8_2("test");
+			var latch = new LatchEdge8("test");
 			latch.V.V = VoltageSignal.HIGH;
 
 			// act, assert
 			ushort oldData = 0;
 			for (ushort data = 0; data < 0x100; ++data)
 			{
-				LatchEdge8_2_TestHelper(latch, (byte)oldData, (byte)data);
+				LatchEdge8_TestHelper(latch, (byte)oldData, (byte)data);
 
 				oldData = data;
 			}
@@ -54,7 +54,7 @@ namespace MSTest.PetzoldComputer
 		public void Preset()
 		{
 			// arrange
-			var latch = new LatchEdge8_2("test");
+			var latch = new LatchEdge8("test");
 			latch.V.V = VoltageSignal.HIGH;
 			latch.Pre.V = VoltageSignal.HIGH;
 
@@ -67,7 +67,7 @@ namespace MSTest.PetzoldComputer
 			TestData(latch, 0xFF);
 		}
 
-		private static void LatchEdge8_2_TestHelper(LatchEdge8_2 latch, byte oldData, byte newData)
+		private static void LatchEdge8_TestHelper(LatchEdge8 latch, byte oldData, byte newData)
 		{
 			SetData(latch, newData);
 
@@ -83,7 +83,7 @@ namespace MSTest.PetzoldComputer
 		public void Clear()
 		{
 			// arrange
-			var latch = new LatchEdge8_2("test");
+			var latch = new LatchEdge8("test");
 			latch.V.V = VoltageSignal.HIGH;
 			latch.Clr.V = VoltageSignal.HIGH;
 
@@ -98,7 +98,7 @@ namespace MSTest.PetzoldComputer
 		public void OutputEvent()
 		{
 			// arrange
-			var latch = new LatchEdge8_2("test");
+			var latch = new LatchEdge8("test");
 			latch.V.V = VoltageSignal.HIGH;
 
 			latch.Dout0.Changed += _ => fired = true;
@@ -113,13 +113,13 @@ namespace MSTest.PetzoldComputer
 			ushort oldData = 0;
 			for (ushort data = 0; data < 0x100; ++data)
 			{
-				LatchEdge8_2_Event_TestHelper(latch, (byte)oldData, (byte)data);
+				LatchEdge8_Event_TestHelper(latch, (byte)oldData, (byte)data);
 
 				oldData = data;
 			}
 		}
 
-		private static void SetData(LatchEdge8_2 latch, byte data)
+		private static void SetData(LatchEdge8 latch, byte data)
 		{
 			latch.Din0.V = ((data & 0x01) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
 			latch.Din1.V = ((data & 0x02) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
@@ -131,7 +131,7 @@ namespace MSTest.PetzoldComputer
 			latch.Din7.V = ((data & 0x80) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
 		}
 
-		private static void TestData(LatchEdge8_2 latch, byte data)
+		private static void TestData(LatchEdge8 latch, byte data)
 		{
 			Assert.IsTrue((latch.Dout0.V == ((data & 0x01) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW)));
 			Assert.IsTrue((latch.Dout1.V == ((data & 0x02) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW)));
@@ -143,7 +143,7 @@ namespace MSTest.PetzoldComputer
 			Assert.IsTrue((latch.Dout7.V == ((data & 0x80) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW)));
 		}
 
-		private void LatchEdge8_2_Event_TestHelper(LatchEdge8_2 latch, byte oldData, byte newData)
+		private void LatchEdge8_Event_TestHelper(LatchEdge8 latch, byte oldData, byte newData)
 		{
 			latch.Din0.V = ((newData & 0x01) > 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
 			Assert.IsFalse(fired, "Din0; no event");
@@ -182,7 +182,7 @@ namespace MSTest.PetzoldComputer
 			TestData(latch, newData);
 		}
 
-		private static byte GetOutput(LatchEdge8_2 latch)
+		private static byte GetOutput(LatchEdge8 latch)
 		{
 			byte output = 0x00;
 

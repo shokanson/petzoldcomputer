@@ -1,12 +1,12 @@
 ﻿namespace PetzoldComputer
 {
-	public class Oscillator_2
+	public class Oscillator
 	{
-		public Oscillator_2(string name)
+		public Oscillator(string name)
 			: this(name, 0)   // a never-ending oscillator
 		{ }
 
-		public Oscillator_2(string name, uint nOscillations)
+		public Oscillator(string name, uint nOscillations)
 		{
 			_v = new ConnectionPoint($"{name}-oscillator.v");
 			Output = new ConnectionPoint($"{name}-oscillator");

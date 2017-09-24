@@ -3,26 +3,26 @@
 	/* Phase 2 computer w/ a control panel. In other words, this is the full realization
 	 * of the diagram on page 208.
 	 */
-	public class Phase3Computer_2 : Phase2Computer_2
+	public class Phase3Computer : Phase2Computer
 	{
 		#region Construction
-		public Phase3Computer_2(string name)
+		public Phase3Computer(string name)
 			: this(name, 0)
 		{ }
 
-		public Phase3Computer_2(string name, uint nIterations)
+		public Phase3Computer(string name, uint nIterations)
 			: base(name, nIterations)
 		{
-			_panel = new ControlPanel_2($"{name}-computer.panel");
+			_panel = new ControlPanel($"{name}-computer.panel");
 			DoWireUp();
 		}
 		#endregion
 
 		#region Implementation
-		private readonly ControlPanel_2 _panel;
+		private readonly ControlPanel _panel;
 		#endregion
 
-		public ControlPanel_2 Panel => _panel;
+		public ControlPanel Panel => _panel;
 
 		public override void WriteByte(ushort address, byte data)
 		{

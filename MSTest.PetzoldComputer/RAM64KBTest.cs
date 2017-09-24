@@ -7,10 +7,10 @@ namespace MSTest.PetzoldComputer
 	public class RAM64KBTest
 	{
 		[TestMethod]
-		public void RAM64KB_2_Constructor()
+		public void RAM64KB_Constructor()
 		{
 			// arrange, act
-			var ram = new RAM64KB_2("test");
+			var ram = new RAM64KB("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, ram.V.V, "Constructor: Voltage");
@@ -53,7 +53,7 @@ namespace MSTest.PetzoldComputer
 		public void RAM()
 		{
 			// arrange
-			var ram = new RAM64KB_2("test");
+			var ram = new RAM64KB("test");
 			ram.V.V = VoltageSignal.HIGH;
 			int address;
 			byte data;
@@ -82,7 +82,7 @@ namespace MSTest.PetzoldComputer
 			}
 		}
 
-		private static void WriteByte(RAM64KB_2 ram, ushort address, byte data)
+		private static void WriteByte(RAM64KB ram, ushort address, byte data)
 		{
 			SetAddress(ram, address);
 
@@ -99,7 +99,7 @@ namespace MSTest.PetzoldComputer
 			ram.Write.V = VoltageSignal.LOW;
 		}
 
-		private static void TestByte(RAM64KB_2 ram, ushort address, byte expected)
+		private static void TestByte(RAM64KB ram, ushort address, byte expected)
 		{
 			SetAddress(ram, address);
 
@@ -117,7 +117,7 @@ namespace MSTest.PetzoldComputer
 			Assert.AreEqual(expected, actual, "Data out");
 		}
 
-		private static void SetAddress(RAM64KB_2 ram, ushort address)
+		private static void SetAddress(RAM64KB ram, ushort address)
 		{
 			ram.A0.V = ((address & 0x0001) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
 			ram.A1.V = ((address & 0x0002) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);

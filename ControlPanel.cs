@@ -1,38 +1,38 @@
 ﻿namespace PetzoldComputer
 {
-	public class ControlPanel_2
+	public class ControlPanel
 	{
-		public ControlPanel_2(string name)
+		public ControlPanel(string name)
 		{
 			_v = new ConnectionPoint($"{name}-controlpanel.v");
 			_takeover = new ConnectionPoint($"{name}-controlpanel.takeover");
-			_write = new Selector2to1_2($"{name}-controlpanel.write");
+			_write = new Selector2to1($"{name}-controlpanel.write");
 
-			_d0 = new Selector2to1_2($"{name}-controlpanel.d0");
-			_d1 = new Selector2to1_2($"{name}-controlpanel.d1");
-			_d2 = new Selector2to1_2($"{name}-controlpanel.d2");
-			_d3 = new Selector2to1_2($"{name}-controlpanel.d3");
-			_d4 = new Selector2to1_2($"{name}-controlpanel.d4");
-			_d5 = new Selector2to1_2($"{name}-controlpanel.d5");
-			_d6 = new Selector2to1_2($"{name}-controlpanel.d6");
-			_d7 = new Selector2to1_2($"{name}-controlpanel.d7");
+			_d0 = new Selector2to1($"{name}-controlpanel.d0");
+			_d1 = new Selector2to1($"{name}-controlpanel.d1");
+			_d2 = new Selector2to1($"{name}-controlpanel.d2");
+			_d3 = new Selector2to1($"{name}-controlpanel.d3");
+			_d4 = new Selector2to1($"{name}-controlpanel.d4");
+			_d5 = new Selector2to1($"{name}-controlpanel.d5");
+			_d6 = new Selector2to1($"{name}-controlpanel.d6");
+			_d7 = new Selector2to1($"{name}-controlpanel.d7");
 
-			_a0 = new Selector2to1_2($"{name}-controlpanel.a0");
-			_a1 = new Selector2to1_2($"{name}-controlpanel.a1");
-			_a2 = new Selector2to1_2($"{name}-controlpanel.a2");
-			_a3 = new Selector2to1_2($"{name}-controlpanel.a3");
-			_a4 = new Selector2to1_2($"{name}-controlpanel.a4");
-			_a5 = new Selector2to1_2($"{name}-controlpanel.a5");
-			_a6 = new Selector2to1_2($"{name}-controlpanel.a6");
-			_a7 = new Selector2to1_2($"{name}-controlpanel.a7");
-			_a8 = new Selector2to1_2($"{name}-controlpanel.a8");
-			_a9 = new Selector2to1_2($"{name}-controlpanel.a9");
-			_a10 = new Selector2to1_2($"{name}-controlpanel.a10");
-			_a11 = new Selector2to1_2($"{name}-controlpanel.a11");
-			_a12 = new Selector2to1_2($"{name}-controlpanel.a12");
-			_a13 = new Selector2to1_2($"{name}-controlpanel.a13");
-			_a14 = new Selector2to1_2($"{name}-controlpanel.a14");
-			_a15 = new Selector2to1_2($"{name}-controlpanel.a15");
+			_a0 = new Selector2to1($"{name}-controlpanel.a0");
+			_a1 = new Selector2to1($"{name}-controlpanel.a1");
+			_a2 = new Selector2to1($"{name}-controlpanel.a2");
+			_a3 = new Selector2to1($"{name}-controlpanel.a3");
+			_a4 = new Selector2to1($"{name}-controlpanel.a4");
+			_a5 = new Selector2to1($"{name}-controlpanel.a5");
+			_a6 = new Selector2to1($"{name}-controlpanel.a6");
+			_a7 = new Selector2to1($"{name}-controlpanel.a7");
+			_a8 = new Selector2to1($"{name}-controlpanel.a8");
+			_a9 = new Selector2to1($"{name}-controlpanel.a9");
+			_a10 = new Selector2to1($"{name}-controlpanel.a10");
+			_a11 = new Selector2to1($"{name}-controlpanel.a11");
+			_a12 = new Selector2to1($"{name}-controlpanel.a12");
+			_a13 = new Selector2to1($"{name}-controlpanel.a13");
+			_a14 = new Selector2to1($"{name}-controlpanel.a14");
+			_a15 = new Selector2to1($"{name}-controlpanel.a15");
 
 			_b0 = new ConnectionPoint($"{name}-controlpanel.b0");
 			_b1 = new ConnectionPoint($"{name}-controlpanel.b1");
@@ -48,33 +48,33 @@
 
 		private readonly ConnectionPoint _v;
 		private readonly ConnectionPoint _takeover;
-		private readonly Selector2to1_2 _write;
+		private readonly Selector2to1 _write;
 
-		private readonly Selector2to1_2 _d0;
-		private readonly Selector2to1_2 _d1;
-		private readonly Selector2to1_2 _d2;
-		private readonly Selector2to1_2 _d3;
-		private readonly Selector2to1_2 _d4;
-		private readonly Selector2to1_2 _d5;
-		private readonly Selector2to1_2 _d6;
-		private readonly Selector2to1_2 _d7;
+		private readonly Selector2to1 _d0;
+		private readonly Selector2to1 _d1;
+		private readonly Selector2to1 _d2;
+		private readonly Selector2to1 _d3;
+		private readonly Selector2to1 _d4;
+		private readonly Selector2to1 _d5;
+		private readonly Selector2to1 _d6;
+		private readonly Selector2to1 _d7;
 
-		private readonly Selector2to1_2 _a0;
-		private readonly Selector2to1_2 _a1;
-		private readonly Selector2to1_2 _a2;
-		private readonly Selector2to1_2 _a3;
-		private readonly Selector2to1_2 _a4;
-		private readonly Selector2to1_2 _a5;
-		private readonly Selector2to1_2 _a6;
-		private readonly Selector2to1_2 _a7;
-		private readonly Selector2to1_2 _a8;
-		private readonly Selector2to1_2 _a9;
-		private readonly Selector2to1_2 _a10;
-		private readonly Selector2to1_2 _a11;
-		private readonly Selector2to1_2 _a12;
-		private readonly Selector2to1_2 _a13;
-		private readonly Selector2to1_2 _a14;
-		private readonly Selector2to1_2 _a15;
+		private readonly Selector2to1 _a0;
+		private readonly Selector2to1 _a1;
+		private readonly Selector2to1 _a2;
+		private readonly Selector2to1 _a3;
+		private readonly Selector2to1 _a4;
+		private readonly Selector2to1 _a5;
+		private readonly Selector2to1 _a6;
+		private readonly Selector2to1 _a7;
+		private readonly Selector2to1 _a8;
+		private readonly Selector2to1 _a9;
+		private readonly Selector2to1 _a10;
+		private readonly Selector2to1 _a11;
+		private readonly Selector2to1 _a12;
+		private readonly Selector2to1 _a13;
+		private readonly Selector2to1 _a14;
+		private readonly Selector2to1 _a15;
 
 		private readonly ConnectionPoint _b0;
 		private readonly ConnectionPoint _b1;

@@ -1,10 +1,10 @@
 namespace PetzoldComputer
 {
-	public class Relay_2
+	public class Relay
 	{
 		private static int Counter = 0;
 
-		public Relay_2(string name, bool inverted = false)
+		public Relay(string name, bool inverted = false)
 		{
 			_inverted = inverted;
 			_myId = ++Counter;

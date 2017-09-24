@@ -1,18 +1,18 @@
 namespace PetzoldComputer
 {
-	public class OR_2
+	public class OR
 	{
-		public OR_2(string name)
+		public OR(string name)
 		{
-			_relay1 = new Relay_2($"{name}-or.a");
-			_relay2 = new Relay_2($"{name}-or.b");
+			_relay1 = new Relay($"{name}-or.a");
+			_relay2 = new Relay($"{name}-or.b");
 			_output = new ConnectionPoint($"{name}-or.out");
 
 			DoWireUp();
 		}
 
-		private readonly Relay_2 _relay1;
-		private readonly Relay_2 _relay2;
+		private readonly Relay _relay1;
+		private readonly Relay _relay2;
 		private readonly ConnectionPoint _output;
 
 		public ConnectionPoint V => _relay1.Voltage;

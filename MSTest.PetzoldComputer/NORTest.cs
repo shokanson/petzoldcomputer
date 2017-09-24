@@ -7,10 +7,10 @@ namespace MSTest.PetzoldComputer
 	public class NORTest
 	{
 		[TestMethod]
-		public void NOR_2_Constructor()
+		public void NOR_Constructor()
 		{
 			// arrange, act
-			var nor = new NOR_2("test");
+			var nor = new NOR("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, nor.V.V, "Constructor: Voltage");
@@ -31,10 +31,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.LOW)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW)]
 		#endregion
-		public void NOR_2(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
+		public void NOR(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var nor = new NOR_2("test");
+			var nor = new NOR("test");
 
 			// act
 			nor.V.V = voltage;
@@ -46,10 +46,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void NOR_2_Events_GateOn()
+		public void NOR_Events_GateOn()
 		{
 			// arrange
-			var nor = new NOR_2("test");
+			var nor = new NOR("test");
 			nor.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			nor.O.Changed += _ => fired = true;
@@ -106,10 +106,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void NOR_2_Events_GateOff()
+		public void NOR_Events_GateOff()
 		{
 			// arrange
-			var nor = new NOR_2("test");
+			var nor = new NOR("test");
 			bool fired = false;
 			nor.O.Changed += _ => fired = true;
 
@@ -159,10 +159,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void NOR_2_Event_GateOnOff()
+		public void NOR_Event_GateOnOff()
 		{
 			// arrange
-			var nor = new NOR_2("test");
+			var nor = new NOR("test");
 			bool fired = false;
 			nor.O.Changed += _ => fired = true;
 

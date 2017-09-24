@@ -2,15 +2,15 @@
 
 namespace PetzoldComputer
 {
-	public class PetzoldComputer_2
+	public class PetzoldComputer
 	{
-		public PetzoldComputer_2(string name)
+		public PetzoldComputer(string name)
 			: this(name, 0)
 		{ }
 
-		public PetzoldComputer_2(string name, uint nIterations)
+		public PetzoldComputer(string name, uint nIterations)
 		{
-			_computer = new Phase3Computer_2($"{name}-computer", nIterations);
+			_computer = new Phase3Computer($"{name}-computer", nIterations);
 			_prevClockVoltage = _computer.Clr.V;
 
 			// transitioning Clr from HIGH to LOW starts the computer
@@ -28,12 +28,12 @@ namespace PetzoldComputer
 			DoWireUp();
 		}
 
-		private readonly Phase3Computer_2 _computer;
+		private readonly Phase3Computer _computer;
 		private VoltageSignal _prevClockVoltage;
 
 		public ConnectionPoint Voltage => _computer.V;
 		public ConnectionPoint Clr => _computer.Clr;
-		public ControlPanel_2 Panel => _computer.Panel;
+		public ControlPanel Panel => _computer.Panel;
 
 		public VoltageSignal B0 => _computer.D0.V;
 		public VoltageSignal B1 => _computer.D1.V;

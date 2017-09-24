@@ -1,17 +1,17 @@
 namespace PetzoldComputer
 {
-	public class HalfAdder_2
+	public class HalfAdder
 	{
-		public HalfAdder_2(string name)
+		public HalfAdder(string name)
 		{
-			_xor = new XOR_2($"{name}-halfadder.sum");
-			_and = new AND_2($"{name}-halfadder.carry");
+			_xor = new XOR($"{name}-halfadder.sum");
+			_and = new AND($"{name}-halfadder.carry");
 
 			DoWireUp();
 		}
 
-		private readonly XOR_2 _xor;
-		private readonly AND_2 _and;
+		private readonly XOR _xor;
+		private readonly AND _and;
 
 		public ConnectionPoint V => _xor.V;
 		public ConnectionPoint A => _xor.A;

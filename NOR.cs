@@ -1,17 +1,17 @@
 namespace PetzoldComputer
 {
-	public class NOR_2
+	public class NOR
 	{
-		public NOR_2(string name)
+		public NOR(string name)
 		{
-			_not1 = new NOT_2($"{name}-nor.a");
-			_not2 = new NOT_2($"{name}-nor.b");
+			_not1 = new NOT($"{name}-nor.a");
+			_not2 = new NOT($"{name}-nor.b");
 
 			DoWireUp();
 		}
 
-		private readonly NOT_2 _not1;
-		private readonly NOT_2 _not2;
+		private readonly NOT _not1;
+		private readonly NOT _not2;
 
 		public ConnectionPoint V { get => _not1.V; }
 		public ConnectionPoint A { get => _not1.Input; }

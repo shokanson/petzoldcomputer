@@ -1,17 +1,17 @@
 namespace PetzoldComputer
 {
-	public class RippleAdder8_2
+	public class RippleAdder8
 	{
-		public RippleAdder8_2(string name)
+		public RippleAdder8(string name)
 		{
-			_adder0 = new FullAdder_2($"{name}_adder8.0");
-			_adder1 = new FullAdder_2($"{name}_adder8.1");
-			_adder2 = new FullAdder_2($"{name}_adder8.2");
-			_adder3 = new FullAdder_2($"{name}_adder8.3");
-			_adder4 = new FullAdder_2($"{name}_adder8.4");
-			_adder5 = new FullAdder_2($"{name}_adder8.5");
-			_adder6 = new FullAdder_2($"{name}_adder8.6");
-			_adder7 = new FullAdder_2($"{name}_adder8.7");
+			_adder0 = new FullAdder($"{name}_adder8.0");
+			_adder1 = new FullAdder($"{name}_adder8.1");
+			_adder2 = new FullAdder($"{name}_adder8.2");
+			_adder3 = new FullAdder($"{name}_adder8.3");
+			_adder4 = new FullAdder($"{name}_adder8.4");
+			_adder5 = new FullAdder($"{name}_adder8.5");
+			_adder6 = new FullAdder($"{name}_adder8.6");
+			_adder7 = new FullAdder($"{name}_adder8.7");
 
 			_adder0.V.ConnectTo(_adder1.V)
 						.ConnectTo(_adder2.V)
@@ -29,14 +29,14 @@ namespace PetzoldComputer
 			_adder6.Carry.ConnectTo(_adder7.CarryIn);
 		}
 
-		private readonly FullAdder_2 _adder0;
-		private readonly FullAdder_2 _adder1;
-		private readonly FullAdder_2 _adder2;
-		private readonly FullAdder_2 _adder3;
-		private readonly FullAdder_2 _adder4;
-		private readonly FullAdder_2 _adder5;
-		private readonly FullAdder_2 _adder6;
-		private readonly FullAdder_2 _adder7;
+		private readonly FullAdder _adder0;
+		private readonly FullAdder _adder1;
+		private readonly FullAdder _adder2;
+		private readonly FullAdder _adder3;
+		private readonly FullAdder _adder4;
+		private readonly FullAdder _adder5;
+		private readonly FullAdder _adder6;
+		private readonly FullAdder _adder7;
 
 		public ConnectionPoint V => _adder0.V;
 

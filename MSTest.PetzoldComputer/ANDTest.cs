@@ -7,10 +7,10 @@ namespace MSTest.PetzoldComputer
 	public class ANDTest
 	{
 		[TestMethod]
-		public void AND_2_Constructor()
+		public void AND_Constructor()
 		{
 			// arrange, act
-			var and = new AND_2("test");
+			var and = new AND("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, and.V.V, "AND Constructor: Voltage");
@@ -31,10 +31,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.LOW)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH)]
 		#endregion
-		public void AND_2(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
+		public void AND(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var and = new AND_2("test");
+			var and = new AND("test");
 
 			// act
 			and.V.V = voltage;
@@ -46,10 +46,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void AND_2_Events_GateOn()
+		public void AND_Events_GateOn()
 		{
 			// arrange
-			var and = new AND_2("test");
+			var and = new AND("test");
 			and.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			and.O.Changed += _ => fired = true;
@@ -106,10 +106,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void AND_2_Events_GateOff()
+		public void AND_Events_GateOff()
 		{
 			// arrange
-			var and = new AND_2("test");
+			var and = new AND("test");
 			bool fired = false;
 			and.O.Changed += _ => fired = true;
 
@@ -159,10 +159,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void AND_2_Event_GateOnOff()
+		public void AND_Event_GateOnOff()
 		{
 			// arrange
-			var and = new AND_2("test");
+			var and = new AND("test");
 			bool fired = false;
 			and.O.Changed += _ => fired = true;
 

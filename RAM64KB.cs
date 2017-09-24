@@ -4,10 +4,10 @@ namespace PetzoldComputer
 	// it isn't implemented internally with the circuitry described there.  Rather, it's a simple
 	// C# array of bytes.  An exercise for a future day to implement it as a collection of latches,
 	// selectors, and decoders...
-	public class RAM64KB_2
+	public class RAM64KB
 	{
 		#region Construction
-		public RAM64KB_2(string name)
+		public RAM64KB(string name)
 		{
 			_voltage = new ConnectionPoint($"{name}-ram64.v");
 			_clk = new ConnectionPoint($"{name}-ram64.clk");

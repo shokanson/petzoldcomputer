@@ -7,9 +7,9 @@ namespace MSTest.PetzoldComputer
 	public class XORTest
 	{
 		[TestMethod]
-		public void XOR_2_Constructor()
+		public void XOR_Constructor()
 		{
-			var xor = new XOR_2("test");
+			var xor = new XOR("test");
 
 			Assert.AreEqual(VoltageSignal.LOW, xor.V.V, "Constructor: Voltage");
 			Assert.AreEqual(VoltageSignal.LOW, xor.A.V, "Constructor: A");
@@ -29,10 +29,10 @@ namespace MSTest.PetzoldComputer
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW, VoltageSignal.HIGH)]
 		[DataRow(VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.HIGH, VoltageSignal.LOW)]
 		#endregion
-		public void XOR_2(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
+		public void XOR(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var xor = new XOR_2("test");
+			var xor = new XOR("test");
 
 			// act
 			xor.V.V = voltage;
@@ -44,10 +44,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void XOR_2_Events_GateOn()
+		public void XOR_Events_GateOn()
 		{
 			// arrange
-			var xor = new XOR_2("test");
+			var xor = new XOR("test");
 			xor.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			xor.O.Changed += _ => fired = true;
@@ -108,10 +108,10 @@ namespace MSTest.PetzoldComputer
 		}
 
 		[TestMethod]
-		public void XOR_2_Events_GateOff()
+		public void XOR_Events_GateOff()
 		{
 			// arrange
-			var xor = new XOR_2("test");
+			var xor = new XOR("test");
 			bool fired = false;
 			xor.O.Changed += _ => fired = true;
 

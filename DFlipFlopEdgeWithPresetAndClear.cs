@@ -1,17 +1,17 @@
 namespace PetzoldComputer
 {
-	public class DFlipFlopEdgeWithPresetAndClear_2
+	public class DFlipFlopEdgeWithPresetAndClear
 	{
 		#region Construction
-		public DFlipFlopEdgeWithPresetAndClear_2(string name)
+		public DFlipFlopEdgeWithPresetAndClear(string name)
 		{
-			_not = new NOT_2($"{name}-flop.clk");
-			_nor3Clr = new NOR3_2($"{name}-flop.clr");
-			_nor3Pre = new NOR3_2($"{name}-flop.pre");
-			_nor3Clk = new NOR3_2($"{name}-flop.clk");
-			_nor3D = new NOR3_2($"{name}-flop.d");
-			_nor3Q = new NOR3_2($"{name}-flop.q");
-			_nor3Qnot = new NOR3_2($"{name}-flop.qnot");
+			_not = new NOT($"{name}-flop.clk");
+			_nor3Clr = new NOR3($"{name}-flop.clr");
+			_nor3Pre = new NOR3($"{name}-flop.pre");
+			_nor3Clk = new NOR3($"{name}-flop.clk");
+			_nor3D = new NOR3($"{name}-flop.d");
+			_nor3Q = new NOR3($"{name}-flop.q");
+			_nor3Qnot = new NOR3($"{name}-flop.qnot");
 
 			_v = new ConnectionPoint($"{name}-flop.v");
 			_clr = new ConnectionPoint($"{name}-flop.clr");
@@ -22,13 +22,13 @@ namespace PetzoldComputer
 		#endregion
 
 		#region Implementation
-		private readonly NOT_2 _not;
-		private readonly NOR3_2 _nor3Clr;
-		private readonly NOR3_2 _nor3Pre;
-		private readonly NOR3_2 _nor3Clk;
-		private readonly NOR3_2 _nor3D;
-		private readonly NOR3_2 _nor3Q;
-		private readonly NOR3_2 _nor3Qnot;
+		private readonly NOT _not;
+		private readonly NOR3 _nor3Clr;
+		private readonly NOR3 _nor3Pre;
+		private readonly NOR3 _nor3Clk;
+		private readonly NOR3 _nor3D;
+		private readonly NOR3 _nor3Q;
+		private readonly NOR3 _nor3Qnot;
 
 		private readonly ConnectionPoint _v;
 		private readonly ConnectionPoint _clr;
