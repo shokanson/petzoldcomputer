@@ -95,14 +95,18 @@ namespace PetzoldComputer
 
 	public class NAND_2
 	{
-		public NAND_2()
+		public NAND_2(string name)
 		{
+			_not1 = new NOT_2($"{name}-nand.a");
+			_not2 = new NOT_2($"{name}-nand.b");
+			_output = new ConnectionPoint($"{name}-nand.out");
+
 			DoWireUp();
 		}
 
-		private readonly NOT_2 _not1 = new NOT_2();
-		private readonly NOT_2 _not2 = new NOT_2();
-		private readonly ConnectionPoint _output = new ConnectionPoint();
+		private readonly NOT_2 _not1;
+		private readonly NOT_2 _not2;
+		private readonly ConnectionPoint _output;
 
 		public ConnectionPoint V => _not1.V;
 		public ConnectionPoint A => _not1.Input;

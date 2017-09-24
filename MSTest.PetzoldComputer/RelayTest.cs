@@ -97,7 +97,7 @@ namespace MSTest.PetzoldComputer
 		public void Relay_2_Constructor()
 		{
 			// arrage, act
-			var relay = new Relay_2();
+			var relay = new Relay_2("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, relay.Voltage.V, "Coil Voltage");
@@ -110,7 +110,7 @@ namespace MSTest.PetzoldComputer
 		public void Relay_2_Constructor_Inverted()
 		{
 			// arrage, act
-			var relay = new Relay_2(true);
+			var relay = new Relay_2("test", true);
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, relay.Voltage.V, "Coil Voltage");
@@ -127,7 +127,7 @@ namespace MSTest.PetzoldComputer
 		public void Relay_2(VoltageSignal voltage, VoltageSignal input, VoltageSignal expected)
 		{
 			// arrage
-			var relay = new Relay_2();
+			var relay = new Relay_2("test");
 
 			// act
 			relay.Voltage.V = voltage;
@@ -145,7 +145,7 @@ namespace MSTest.PetzoldComputer
 		public void Relay_2_Inverted(VoltageSignal voltage, VoltageSignal input, VoltageSignal expected)
 		{
 			// arrage
-			var relay = new Relay_2(true);
+			var relay = new Relay_2("test", true);
 
 			// act
 			relay.Voltage.V = voltage;
@@ -159,7 +159,7 @@ namespace MSTest.PetzoldComputer
 		public void Relay_2_Events()
 		{
 			// arrage
-			var relay = new Relay_2();
+			var relay = new Relay_2("test");
 
 			// act,assert
 			bool fired = false;
@@ -216,7 +216,7 @@ namespace MSTest.PetzoldComputer
 		public void Relay_2_Inverted_Events()
 		{
 			// arrage
-			var relay = new Relay_2(true);
+			var relay = new Relay_2("test", true);
 			bool fired = false;
 			relay.Output.Changed += _ => fired = true;
 

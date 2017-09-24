@@ -162,7 +162,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void NAND_2_Constructor()
 		{
-			var nand = new NAND_2();
+			var nand = new NAND_2("test");
 
 			Assert.AreEqual(VoltageSignal.LOW, nand.V.V, "NAND Constructor: Voltage");
 			Assert.AreEqual(VoltageSignal.LOW, nand.A.V, "NAND Constructor: A");
@@ -185,7 +185,7 @@ namespace MSTest.PetzoldComputer
 		public void NAND_2(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var nand = new NAND_2();
+			var nand = new NAND_2("test");
 
 			// act
 			nand.V.V = voltage;
@@ -200,7 +200,7 @@ namespace MSTest.PetzoldComputer
 		public void NAND_2_Events_GateOn()
 		{
 			// arrange
-			var nand = new NAND_2();
+			var nand = new NAND_2("test");
 			nand.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			nand.O.Changed += _ => fired = true;
@@ -260,7 +260,7 @@ namespace MSTest.PetzoldComputer
 		public void AND_2_Events_GateOff()
 		{
 			// arrange
-			var nand = new NAND_2();
+			var nand = new NAND_2("test");
 			bool fired = false;
 			nand.O.Changed += _ => fired = true;
 
@@ -313,7 +313,7 @@ namespace MSTest.PetzoldComputer
 		public void NAND_2_Event_GateOnOff()
 		{
 			// arrange
-			var nand = new NAND_2();
+			var nand = new NAND_2("test");
 			bool fired = false;
 			nand.O.Changed += _ => fired = true;
 

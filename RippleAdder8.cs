@@ -443,16 +443,16 @@ namespace PetzoldComputer
 
 	public class RippleAdder8_2
 	{
-		public RippleAdder8_2()
+		public RippleAdder8_2(string name)
 		{
-			_adder0 = new FullAdder_2();
-			_adder1 = new FullAdder_2();
-			_adder2 = new FullAdder_2();
-			_adder3 = new FullAdder_2();
-			_adder4 = new FullAdder_2();
-			_adder5 = new FullAdder_2();
-			_adder6 = new FullAdder_2();
-			_adder7 = new FullAdder_2();
+			_adder0 = new FullAdder_2($"{name}_adder8.0");
+			_adder1 = new FullAdder_2($"{name}_adder8.1");
+			_adder2 = new FullAdder_2($"{name}_adder8.2");
+			_adder3 = new FullAdder_2($"{name}_adder8.3");
+			_adder4 = new FullAdder_2($"{name}_adder8.4");
+			_adder5 = new FullAdder_2($"{name}_adder8.5");
+			_adder6 = new FullAdder_2($"{name}_adder8.6");
+			_adder7 = new FullAdder_2($"{name}_adder8.7");
 
 			_adder0.V.ConnectTo(_adder1.V)
 						.ConnectTo(_adder2.V)

@@ -165,7 +165,7 @@ namespace MSTest.PetzoldComputer
 		public void AND_2_Constructor()
 		{
 			// arrange, act
-			var and = new AND_2();
+			var and = new AND_2("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, and.V.V, "AND Constructor: Voltage");
@@ -189,7 +189,7 @@ namespace MSTest.PetzoldComputer
 		public void AND_2(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var and = new AND_2();
+			var and = new AND_2("test");
 
 			// act
 			and.V.V = voltage;
@@ -204,7 +204,7 @@ namespace MSTest.PetzoldComputer
 		public void AND_2_Events_GateOn()
 		{
 			// arrange
-			var and = new AND_2();
+			var and = new AND_2("test");
 			and.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			and.O.Changed += _ => fired = true;
@@ -264,7 +264,7 @@ namespace MSTest.PetzoldComputer
 		public void AND_2_Events_GateOff()
 		{
 			// arrange
-			var and = new AND_2();
+			var and = new AND_2("test");
 			bool fired = false;
 			and.O.Changed += _ => fired = true;
 
@@ -317,7 +317,7 @@ namespace MSTest.PetzoldComputer
 		public void AND_2_Event_GateOnOff()
 		{
 			// arrange
-			var and = new AND_2();
+			var and = new AND_2("test");
 			bool fired = false;
 			and.O.Changed += _ => fired = true;
 

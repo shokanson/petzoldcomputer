@@ -66,14 +66,18 @@ namespace PetzoldComputer
 
 	public class XOR_2
 	{
-		public XOR_2()
+		public XOR_2(string name)
 		{
+			_or = new OR_2($"{name}-xor.in");
+			_nand = new NAND_2($"{name}-xor.in");
+			_and = new AND_2($"{name}-xor.o");
+
 			DoWireUp();
 		}
 
-		private readonly OR_2 _or = new OR_2();
-		private readonly NAND_2 _nand = new NAND_2();
-		private readonly AND_2 _and = new AND_2();
+		private readonly OR_2 _or;
+		private readonly NAND_2 _nand;
+		private readonly AND_2 _and;
 
 		public ConnectionPoint V => _or.V;
 		public ConnectionPoint A => _or.A;

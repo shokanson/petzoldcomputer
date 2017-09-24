@@ -72,7 +72,7 @@ namespace MSTest.PetzoldComputer
 		public void OnesComplement8_2_Constructor()
 		{
 			// arrange, act
-			var ones = new OnesComplement8_2();
+			var ones = new OnesComplement8_2("test");
 			               
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, ones.V.V, "Constructor: Voltage");
@@ -100,7 +100,7 @@ namespace MSTest.PetzoldComputer
 		public void OnesComplement8_2()
 		{
 			// arrange
-			var ones = new OnesComplement8_2();
+			var ones = new OnesComplement8_2("test");
 			ones.V.V = VoltageSignal.HIGH;
 			for (ushort input = 0; input < 0x100; ++input)
 			{

@@ -97,7 +97,7 @@ namespace MSTest.PetzoldComputer
 		public void Not2_Constructor()
 		{
 			// arrage, act
-			var not = new NOT_2();
+			var not = new NOT_2("test");
 
 			// Assert
 			Assert.AreEqual(VoltageSignal.LOW, not.V.V, "Voltage");
@@ -114,7 +114,7 @@ namespace MSTest.PetzoldComputer
 		public void Not2(VoltageSignal voltage, VoltageSignal input, VoltageSignal expected)
 		{
 			// arrange
-			var not = new NOT_2();
+			var not = new NOT_2("test");
 
 			// act
 			not.V.V = voltage;
@@ -128,7 +128,7 @@ namespace MSTest.PetzoldComputer
 		public void Not2_Events()
 		{
 			// arrage
-			var not = new NOT_2();
+			var not = new NOT_2("test");
 			bool fired = false;
 			not.Output.Changed += _ => fired = true;
 

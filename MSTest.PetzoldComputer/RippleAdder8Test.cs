@@ -95,7 +95,7 @@ namespace MSTest.PetzoldComputer
 		public void RippleAdder8_2_Constructor()
 		{
 			// arrage, act
-			var adder = new RippleAdder8_2();
+			var adder = new RippleAdder8_2("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, adder.V.V, "Constructor: Voltage");
@@ -132,7 +132,7 @@ namespace MSTest.PetzoldComputer
 		public void RippleAdder8_2_SumAndCarry()
 		{
 			// arrange
-			var adder = new RippleAdder8_2();
+			var adder = new RippleAdder8_2("test");
 			adder.V.V = VoltageSignal.HIGH;
 			for (ushort a = 0; a < 0x100; ++a)
 			{

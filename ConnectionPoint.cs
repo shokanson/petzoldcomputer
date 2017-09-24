@@ -4,9 +4,12 @@ namespace PetzoldComputer
 {
 	public class ConnectionPoint
 	{
+		public ConnectionPoint(string name) => _name = name;
+
+		private readonly string _name;
 		private VoltageSignal _voltage;
 
-		public Action<ConnectionPoint> Changed;
+		public event Action<ConnectionPoint> Changed;
 
 		public VoltageSignal V
 		{

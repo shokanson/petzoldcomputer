@@ -159,7 +159,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void OR_2_Constructor()
 		{
-			var or = new OR_2();
+			var or = new OR_2("test");
 
 			Assert.AreEqual(VoltageSignal.LOW, or.V.V, "Constructor: Voltage");
 			Assert.AreEqual(VoltageSignal.LOW, or.A.V, "Constructor: A");
@@ -182,7 +182,7 @@ namespace MSTest.PetzoldComputer
 		public void OR_2(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var or = new OR_2();
+			var or = new OR_2("test");
 
 			// act
 			or.V.V = voltage;
@@ -197,7 +197,7 @@ namespace MSTest.PetzoldComputer
 		public void OR_2_Events_GateOn()
 		{
 			// arrage
-			var or = new OR_2();
+			var or = new OR_2("test");
 			or.V.V = VoltageSignal.HIGH;	// turn on the gate
 			bool fired = false;
 			or.O.Changed += _ => fired = true;
@@ -257,7 +257,7 @@ namespace MSTest.PetzoldComputer
 		public void OR_2_Events_GateOff()
 		{
 			// arrange
-			var or = new OR_2();
+			var or = new OR_2("test");
 			bool fired = false;
 			or.O.Changed += _ => fired = true;
 
@@ -310,7 +310,7 @@ namespace MSTest.PetzoldComputer
 		public void OR_2_Event_GateOnOff()
 		{
 			// arrange
-			var or = new OR_2();
+			var or = new OR_2("test");
 			bool fired = false;
 			or.O.Changed += _ => fired = true;
 

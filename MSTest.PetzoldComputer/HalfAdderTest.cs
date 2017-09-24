@@ -173,7 +173,7 @@ namespace MSTest.PetzoldComputer
 		[TestMethod]
 		public void HalfAdder_2_Constructor()
 		{
-			var halfAdder = new HalfAdder_2();
+			var halfAdder = new HalfAdder_2("test");
 
 			Assert.AreEqual(VoltageSignal.LOW, halfAdder.V.V, "Constructor: V");
 			Assert.AreEqual(VoltageSignal.LOW, halfAdder.A.V, "Constructor: A");
@@ -197,7 +197,7 @@ namespace MSTest.PetzoldComputer
 		public void XOR_2_Sum(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var halfAdder = new HalfAdder_2();
+			var halfAdder = new HalfAdder_2("test");
 
 			// act
 			halfAdder.V.V = voltage;
@@ -222,7 +222,7 @@ namespace MSTest.PetzoldComputer
 		public void HalfAdder_2_Carry(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal expected)
 		{
 			// arrage
-			var halfAdder = new HalfAdder_2();
+			var halfAdder = new HalfAdder_2("test");
 
 			// act
 			halfAdder.V.V = voltage;
@@ -237,7 +237,7 @@ namespace MSTest.PetzoldComputer
 		public void HalfAdder_2_Sum_Event()
 		{
 			// arrange
-			var halfAdder = new HalfAdder_2();
+			var halfAdder = new HalfAdder_2("test");
 			halfAdder.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			halfAdder.Sum.Changed += _ => fired = true;
@@ -301,7 +301,7 @@ namespace MSTest.PetzoldComputer
 		public void HalfAdder_2_Carry_Event()
 		{
 			// arrange
-			var halfAdder = new HalfAdder_2();
+			var halfAdder = new HalfAdder_2("test");
 			halfAdder.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			halfAdder.Carry.Changed += _ => fired = true;

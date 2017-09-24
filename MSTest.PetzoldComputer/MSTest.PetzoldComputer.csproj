@@ -83,6 +83,7 @@
     <Compile Include="ControlPanelTest.cs" />
     <Compile Include="Phase3ComputerTest.cs" />
     <Compile Include="PetzoldComputerTest.cs" />
+    <Compile Include="CounterRipple16Test.cs" />
     <Compile Include="XORTest.cs" />
   </ItemGroup>
   <ItemGroup>

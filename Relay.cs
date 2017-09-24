@@ -98,19 +98,25 @@ namespace PetzoldComputer
 	{
 		private static int Counter = 0;
 
-		public Relay_2(bool inverted = false)
+		public Relay_2(string name, bool inverted = false)
 		{
 			_inverted = inverted;
 			_myId = ++Counter;
+			_name = name;
+
+			_v = new ConnectionPoint($"{name}-relay.v");
+			_in = new ConnectionPoint($"{name}-relay.in");
+			_out = new ConnectionPoint($"{name}-relay.out");
 
 			DoWireUp();
 		}
 
 		private readonly int _myId;
+		private readonly string _name;
 		private bool _inverted;
-		private readonly ConnectionPoint _v = new ConnectionPoint();
-		private readonly ConnectionPoint _in = new ConnectionPoint();
-		private readonly ConnectionPoint _out = new ConnectionPoint();
+		private readonly ConnectionPoint _v;
+		private readonly ConnectionPoint _in;
+		private readonly ConnectionPoint _out;
 
 		public ConnectionPoint Voltage => _v;
 		public ConnectionPoint Input => _in;

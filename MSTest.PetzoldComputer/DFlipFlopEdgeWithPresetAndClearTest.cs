@@ -160,7 +160,7 @@ namespace MSTest.PetzoldComputer
 		public void DFlipFlopEdgeWithPresetAndClear_2_Constructor()
 		{
 			// arrange, act
-			var flip = new DFlipFlopEdgeWithPresetAndClear_2();
+			var flip = new DFlipFlopEdgeWithPresetAndClear_2("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, flip.V.V, "Constructor: Voltage");
@@ -177,7 +177,7 @@ namespace MSTest.PetzoldComputer
 		public void ClockAndData()
 		{
 			// arrange
-			var flip = new DFlipFlopEdgeWithPresetAndClear_2();
+			var flip = new DFlipFlopEdgeWithPresetAndClear_2("test");
 
 			// act, assert
 			flip.V.V = VoltageSignal.HIGH;
@@ -224,7 +224,7 @@ namespace MSTest.PetzoldComputer
 		public void Preset()
 		{
 			// arrange
-			var flip = new DFlipFlopEdgeWithPresetAndClear_2();
+			var flip = new DFlipFlopEdgeWithPresetAndClear_2("test");
 			flip.V.V = VoltageSignal.HIGH;
 			flip.Pre.V = VoltageSignal.HIGH;
 			// at this point, nothing we do should change Q or Qnot			
@@ -267,7 +267,7 @@ namespace MSTest.PetzoldComputer
 		public void Clear()
 		{
 			// arrange
-			var flip = new DFlipFlopEdgeWithPresetAndClear_2();
+			var flip = new DFlipFlopEdgeWithPresetAndClear_2("test");
 			flip.V.V = VoltageSignal.HIGH;
 			flip.Clr.V = VoltageSignal.HIGH;
 			// at this point, nothing we do should change Q or Qnot			

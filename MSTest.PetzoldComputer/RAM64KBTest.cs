@@ -136,7 +136,7 @@ namespace MSTest.PetzoldComputer
 		public void RAM64KB_2_Constructor()
 		{
 			// arrange, act
-			var ram = new RAM64KB_2();
+			var ram = new RAM64KB_2("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, ram.V.V, "Constructor: Voltage");
@@ -179,7 +179,7 @@ namespace MSTest.PetzoldComputer
 		public void RAM()
 		{
 			// arrange
-			var ram = new RAM64KB_2();
+			var ram = new RAM64KB_2("test");
 			ram.V.V = VoltageSignal.HIGH;
 			int address;
 			byte data;

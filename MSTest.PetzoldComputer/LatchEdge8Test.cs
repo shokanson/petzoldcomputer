@@ -182,7 +182,7 @@ namespace MSTest.PetzoldComputer
 		public void Constructor()
 		{
 			// arrange, act
-			var latch = new LatchEdge8_2();
+			var latch = new LatchEdge8_2("test");
 
 			Assert.AreEqual(VoltageSignal.LOW, latch.V.V, "Constructor: Voltage");
 			Assert.AreEqual(VoltageSignal.LOW, latch.Clk.V, "Constructor: Clk");
@@ -209,7 +209,7 @@ namespace MSTest.PetzoldComputer
 		public void DataAndClock()
 		{
 			// arrange
-			var latch = new LatchEdge8_2();
+			var latch = new LatchEdge8_2("test");
 			latch.V.V = VoltageSignal.HIGH;
 
 			// act, assert
@@ -226,7 +226,7 @@ namespace MSTest.PetzoldComputer
 		public void Preset()
 		{
 			// arrange
-			var latch = new LatchEdge8_2();
+			var latch = new LatchEdge8_2("test");
 			latch.V.V = VoltageSignal.HIGH;
 			latch.Pre.V = VoltageSignal.HIGH;
 
@@ -255,7 +255,7 @@ namespace MSTest.PetzoldComputer
 		public void Clear()
 		{
 			// arrange
-			var latch = new LatchEdge8_2();
+			var latch = new LatchEdge8_2("test");
 			latch.V.V = VoltageSignal.HIGH;
 			latch.Clr.V = VoltageSignal.HIGH;
 
@@ -270,7 +270,7 @@ namespace MSTest.PetzoldComputer
 		public void OutputEvent()
 		{
 			// arrange
-			var latch = new LatchEdge8_2();
+			var latch = new LatchEdge8_2("test");
 			latch.V.V = VoltageSignal.HIGH;
 
 			latch.Dout0.Changed += _ => fired = true;

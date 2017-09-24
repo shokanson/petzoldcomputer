@@ -253,7 +253,7 @@ namespace MSTest.PetzoldComputer
 		public void NOR3_2_Constructor()
 		{
 			// arrange, act
-			var nor3 = new NOR3_2();
+			var nor3 = new NOR3_2("test");
 
 			// assert
 			Assert.AreEqual(VoltageSignal.LOW, nor3.V.V, "Constructor: Voltage");
@@ -286,7 +286,7 @@ namespace MSTest.PetzoldComputer
 		public void NOR3_2(VoltageSignal voltage, VoltageSignal a, VoltageSignal b, VoltageSignal c, VoltageSignal expected)
 		{
 			// arrage
-			var nor3 = new NOR3_2();
+			var nor3 = new NOR3_2("test");
 
 			// act
 			nor3.V.V = voltage;
@@ -302,7 +302,7 @@ namespace MSTest.PetzoldComputer
 		public void NOR3_2_Events_GateOn()
 		{
 			// arrange
-			var nor3 = new NOR3_2();
+			var nor3 = new NOR3_2("test");
 			nor3.V.V = VoltageSignal.HIGH;
 			bool fired = false;
 			nor3.O.Changed += _ => fired = true;

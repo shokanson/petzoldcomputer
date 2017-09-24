@@ -249,21 +249,32 @@ namespace PetzoldComputer
 
 	public class OnesComplement8_2
 	{
-		public OnesComplement8_2()
+		public OnesComplement8_2(string name)
 		{
+			_v = new ConnectionPoint($"{name}-onescomplement8.v");
+			_invert = new ConnectionPoint($"{name}-onescomplement8.invert");
+			_xor0 = new XOR_2($"{name}-onescomplement8.0");
+			_xor1 = new XOR_2($"{name}-onescomplement8.1");
+			_xor2 = new XOR_2($"{name}-onescomplement8.2");
+			_xor3 = new XOR_2($"{name}-onescomplement8.3");
+			_xor4 = new XOR_2($"{name}-onescomplement8.4");
+			_xor5 = new XOR_2($"{name}-onescomplement8.5");
+			_xor6 = new XOR_2($"{name}-onescomplement8.6");
+			_xor7 = new XOR_2($"{name}-onescomplement8.7");
+
 			DoWireUp();
 		}
 
-		private readonly ConnectionPoint _v = new ConnectionPoint();
-		private readonly ConnectionPoint _invert = new ConnectionPoint();
-		private readonly XOR_2 _xor0 = new XOR_2();
-		private readonly XOR_2 _xor1 = new XOR_2();
-		private readonly XOR_2 _xor2 = new XOR_2();
-		private readonly XOR_2 _xor3 = new XOR_2();
-		private readonly XOR_2 _xor4 = new XOR_2();
-		private readonly XOR_2 _xor5 = new XOR_2();
-		private readonly XOR_2 _xor6 = new XOR_2();
-		private readonly XOR_2 _xor7 = new XOR_2();
+		private readonly ConnectionPoint _v;
+		private readonly ConnectionPoint _invert;
+		private readonly XOR_2 _xor0;
+		private readonly XOR_2 _xor1;
+		private readonly XOR_2 _xor2;
+		private readonly XOR_2 _xor3;
+		private readonly XOR_2 _xor4;
+		private readonly XOR_2 _xor5;
+		private readonly XOR_2 _xor6;
+		private readonly XOR_2 _xor7;
 
 		public ConnectionPoint V => _v;
 		public ConnectionPoint Invert => _invert;

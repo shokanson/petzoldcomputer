@@ -582,8 +582,46 @@ namespace PetzoldComputer
 	public class RAM64KB_2
 	{
 		#region Construction
-		public RAM64KB_2()
+		public RAM64KB_2(string name)
 		{
+			_voltage = new ConnectionPoint($"{name}-ram64.v");
+			_clk = new ConnectionPoint($"{name}-ram64.clk");
+
+			_a0 = new ConnectionPoint($"{name}-ram64.a0");
+			_a1 = new ConnectionPoint($"{name}-ram64.a1");
+			_a2 = new ConnectionPoint($"{name}-ram64.a2");
+			_a3 = new ConnectionPoint($"{name}-ram64.a3");
+			_a4 = new ConnectionPoint($"{name}-ram64.a4");
+			_a5 = new ConnectionPoint($"{name}-ram64.a5");
+			_a6 = new ConnectionPoint($"{name}-ram64.a6");
+			_a7 = new ConnectionPoint($"{name}-ram64.a7");
+			_a8 = new ConnectionPoint($"{name}-ram64.a8");
+			_a9 = new ConnectionPoint($"{name}-ram64.a9");
+			_a10 = new ConnectionPoint($"{name}-ram64.a10");
+			_a11 = new ConnectionPoint($"{name}-ram64.a11");
+			_a12 = new ConnectionPoint($"{name}-ram64.a12");
+			_a13 = new ConnectionPoint($"{name}-ram64.a13");
+			_a14 = new ConnectionPoint($"{name}-ram64.a14");
+			_a15 = new ConnectionPoint($"{name}-ram64.a15");
+
+			_din0 = new ConnectionPoint($"{name}-ram64.din0");
+			_din1 = new ConnectionPoint($"{name}-ram64.din1");
+			_din2 = new ConnectionPoint($"{name}-ram64.din2");
+			_din3 = new ConnectionPoint($"{name}-ram64.din3");
+			_din4 = new ConnectionPoint($"{name}-ram64.din4");
+			_din5 = new ConnectionPoint($"{name}-ram64.din5");
+			_din6 = new ConnectionPoint($"{name}-ram64.din6");
+			_din7 = new ConnectionPoint($"{name}-ram64.din7");
+
+			_dout0 = new ConnectionPoint($"{name}-ram64.dout0");
+			_dout1 = new ConnectionPoint($"{name}-ram64.dout1");
+			_dout2 = new ConnectionPoint($"{name}-ram64.dout2");
+			_dout3 = new ConnectionPoint($"{name}-ram64.dout3");
+			_dout4 = new ConnectionPoint($"{name}-ram64.dout4");
+			_dout5 = new ConnectionPoint($"{name}-ram64.dout5");
+			_dout6 = new ConnectionPoint($"{name}-ram64.dout6");
+			_dout7 = new ConnectionPoint($"{name}-ram64.dout7");
+
 			DoWireUp();
 			Reset();
 		}
@@ -591,40 +629,40 @@ namespace PetzoldComputer
 
 		#region Implementation
 		private byte[] _array = new byte[65536];
-		private readonly ConnectionPoint _voltage = new ConnectionPoint();
-		private readonly ConnectionPoint _a0 = new ConnectionPoint();
-		private readonly ConnectionPoint _a1 = new ConnectionPoint();
-		private readonly ConnectionPoint _a2 = new ConnectionPoint();
-		private readonly ConnectionPoint _a3 = new ConnectionPoint();
-		private readonly ConnectionPoint _a4 = new ConnectionPoint();
-		private readonly ConnectionPoint _a5 = new ConnectionPoint();
-		private readonly ConnectionPoint _a6 = new ConnectionPoint();
-		private readonly ConnectionPoint _a7 = new ConnectionPoint();
-		private readonly ConnectionPoint _a8 = new ConnectionPoint();
-		private readonly ConnectionPoint _a9 = new ConnectionPoint();
-		private readonly ConnectionPoint _a10 = new ConnectionPoint();
-		private readonly ConnectionPoint _a11 = new ConnectionPoint();
-		private readonly ConnectionPoint _a12 = new ConnectionPoint();
-		private readonly ConnectionPoint _a13 = new ConnectionPoint();
-		private readonly ConnectionPoint _a14 = new ConnectionPoint();
-		private readonly ConnectionPoint _a15 = new ConnectionPoint();
-		private readonly ConnectionPoint _dout0 = new ConnectionPoint();
-		private readonly ConnectionPoint _dout1 = new ConnectionPoint();
-		private readonly ConnectionPoint _dout2 = new ConnectionPoint();
-		private readonly ConnectionPoint _dout3 = new ConnectionPoint();
-		private readonly ConnectionPoint _dout4 = new ConnectionPoint();
-		private readonly ConnectionPoint _dout5 = new ConnectionPoint();
-		private readonly ConnectionPoint _dout6 = new ConnectionPoint();
-		private readonly ConnectionPoint _dout7 = new ConnectionPoint();
-		private readonly ConnectionPoint _clk = new ConnectionPoint();
-		private readonly ConnectionPoint _din0 = new ConnectionPoint();
-		private readonly ConnectionPoint _din1 = new ConnectionPoint();
-		private readonly ConnectionPoint _din2 = new ConnectionPoint();
-		private readonly ConnectionPoint _din3 = new ConnectionPoint();
-		private readonly ConnectionPoint _din4 = new ConnectionPoint();
-		private readonly ConnectionPoint _din5 = new ConnectionPoint();
-		private readonly ConnectionPoint _din6 = new ConnectionPoint();
-		private readonly ConnectionPoint _din7 = new ConnectionPoint();
+		private readonly ConnectionPoint _voltage;
+		private readonly ConnectionPoint _clk;
+		private readonly ConnectionPoint _a0;
+		private readonly ConnectionPoint _a1;
+		private readonly ConnectionPoint _a2;
+		private readonly ConnectionPoint _a3;
+		private readonly ConnectionPoint _a4;
+		private readonly ConnectionPoint _a5;
+		private readonly ConnectionPoint _a6;
+		private readonly ConnectionPoint _a7;
+		private readonly ConnectionPoint _a8;
+		private readonly ConnectionPoint _a9;
+		private readonly ConnectionPoint _a10;
+		private readonly ConnectionPoint _a11;
+		private readonly ConnectionPoint _a12;
+		private readonly ConnectionPoint _a13;
+		private readonly ConnectionPoint _a14;
+		private readonly ConnectionPoint _a15;
+		private readonly ConnectionPoint _din0;
+		private readonly ConnectionPoint _din1;
+		private readonly ConnectionPoint _din2;
+		private readonly ConnectionPoint _din3;
+		private readonly ConnectionPoint _din4;
+		private readonly ConnectionPoint _din5;
+		private readonly ConnectionPoint _din6;
+		private readonly ConnectionPoint _din7;
+		private readonly ConnectionPoint _dout0;
+		private readonly ConnectionPoint _dout1;
+		private readonly ConnectionPoint _dout2;
+		private readonly ConnectionPoint _dout3;
+		private readonly ConnectionPoint _dout4;
+		private readonly ConnectionPoint _dout5;
+		private readonly ConnectionPoint _dout6;
+		private readonly ConnectionPoint _dout7;
 		#endregion
 
 		#region IRam64KB Members
