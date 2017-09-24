@@ -20,20 +20,54 @@ namespace MSTest.PetzoldComputer
 				Clr = VoltageSignal.HIGH
 			};
 
-			computer.AddOutputHandler(_ => Trace.TraceInformation($"PC: {computer.PC}; Output: {computer.ToString()}"));
+			computer.AddOutputHandler(_ => Trace.TraceInformation($"PC: {computer.PC}; Output: {computer}"));
 
 			LoadComputerRAM(computer, nBytes);
 
 			// allow the oscillator to drive the computer
 			computer.Clr = VoltageSignal.LOW;
 
-			Trace.TraceInformation($"PC: {computer.PC}; Output: {computer.ToString()}");
+			Trace.TraceInformation($"PC: {computer.PC}; Output: {computer}");
 			// and...go!
 			computer.Oscillator.Start();	// synchronous--doesn't return until done
 		}
 
 		// This mimics operating the control panel on page 204, which Phase2Computer doesn't have
 		private static void LoadComputerRAM(IPhase1Computer computer, uint nBytes)
+		{
+			for (uint i = 0; i < nBytes; ++i)
+			{
+				computer.WriteByte((ushort)i, (byte)(i + 1));
+			}
+		}
+
+		[TestMethod]
+		public void Computer()
+		{
+			uint nBytes = 0x100;   // do not set higher than 0x10000 (64K)
+
+			var computer = new Phase2Computer_2("test", nBytes);
+			// turn on the computer
+			computer.V.V = VoltageSignal.HIGH;
+			// get ready to load data
+			computer.Clr.V = VoltageSignal.HIGH;
+
+			LoadComputerRAM(computer, nBytes);
+
+			// allow the oscillator to drive the computer
+			computer.Clr.V = VoltageSignal.LOW;
+
+			// at the end of a clock cycle, show computer output
+			computer.Clk.Changed += clk => { if (clk.V == VoltageSignal.LOW) Trace.TraceInformation($"PC: {computer.PC}; Output: {computer}"); };
+
+			// show starting state
+			Trace.TraceInformation($"PC: {computer.PC}; Output: {computer}");
+			// and...go!
+			computer.Oscillator.Start();  // synchronous--doesn't return until done
+		}
+
+		// This mimics operating the control panel on page 204, which Phase2Computer doesn't have
+		private static void LoadComputerRAM(Phase2Computer_2 computer, uint nBytes)
 		{
 			for (uint i = 0; i < nBytes; ++i)
 			{

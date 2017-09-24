@@ -41,17 +41,20 @@ namespace PetzoldComputer
 
 		public Oscillator_2(string name, uint nOscillations)
 		{
+			_v = new ConnectionPoint($"{name}-oscillator.v");
 			Output = new ConnectionPoint($"{name}-oscillator");
 			NOscillations = nOscillations;
 		}
 
+		private readonly ConnectionPoint _v;
+
 		public uint NOscillations { get; private set; }
-		public VoltageSignal V { get; set; }
+		public ConnectionPoint V => _v;
 		public readonly ConnectionPoint Output;
 
 		public void Start()
 		{
-			if (V == VoltageSignal.LOW) return;
+			if (_v.V == VoltageSignal.LOW) return;
 
 			uint nOscillations = 0;
 			do

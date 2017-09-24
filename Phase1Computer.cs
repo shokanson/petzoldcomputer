@@ -228,6 +228,8 @@ namespace PetzoldComputer
 		public ConnectionPoint Clr => _clr;
 		public ConnectionPoint Clk => _clk;
 
+		public string PC => _counter.ToString();
+
 		public ConnectionPoint D0 => _latch.Dout0;
 		public ConnectionPoint D1 => _latch.Dout1;
 		public ConnectionPoint D2 => _latch.Dout2;

@@ -58,7 +58,7 @@ namespace MSTest.PetzoldComputer
 		{
 			var counter = new CounterRipple16("test");
 			var oscillator = new Oscillator_2("test", 0x10000);
-			counter.V.V = oscillator.V = VoltageSignal.HIGH;
+			counter.V.V = oscillator.V.V = VoltageSignal.HIGH;
 
 			oscillator.Output.ConnectTo(counter.Clk);
 			//oscillator.Output.Changed += output => { if (output.V == VoltageSignal.LOW) Trace.TraceInformation(counter.ToString()); };
