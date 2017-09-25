@@ -1,61 +1,47 @@
 namespace PetzoldComputer
 {
+	// This class models the fundamental building block for all other
+	// components in the system.  It consists of the three connection
+	// points of all relays: Voltage, Input, and Output.  I could have
+	// modeled the internal switch-and-coil structure of relays, a la
+	// Peter Jones' https://github.com/hiptopjones/Logic project, but
+	// have chosen to focus on the Relay rather than its constituent parts.
 	public class Relay
 	{
-		private static int Counter = 0;
+		private static int NumInstances = 0;
 
 		public Relay(string name, bool inverted = false)
 		{
-			_inverted = inverted;
-			_myId = ++Counter;
 			_name = name;
+			_inverted = inverted;
+			_myId = ++NumInstances;
 
-			_voltage = new ConnectionPoint($"{name}-relay.v");
-			_input = new ConnectionPoint($"{name}-relay.in");
-			_output = new ConnectionPoint($"{name}-relay.out");
+			Voltage = new ConnectionPoint($"{name}-relay.v");
+			Input = new ConnectionPoint($"{name}-relay.in");
+			Output = new ConnectionPoint($"{name}-relay.out");
 
 			DoWireUp();
 		}
 
-		private readonly int _myId;
 		private readonly string _name;
 		private bool _inverted;
-		private readonly ConnectionPoint _voltage;
-		private readonly ConnectionPoint _input;
-		private readonly ConnectionPoint _output;
+		private readonly int _myId;
 
-		public ConnectionPoint Voltage => _voltage;
-		public ConnectionPoint Input => _input;
-		public ConnectionPoint Output => _output;
+		public ConnectionPoint Voltage { get; private set; }
+		public ConnectionPoint Input { get; private set; }
+		public ConnectionPoint Output { get; private set; }
 
-		public override string ToString() => _output.ToString();
+		public override string ToString() => Output.ToString();
 
 		private void DoWireUp()
 		{
-			// when the input voltage changes, (de)activate the switch
-			_input.Changed += input => IsSwitchActivated = input.V == VoltageSignal.HIGH;
-
-			_voltage.Changed += voltage => UpdateOutput(voltage.V);
+			Voltage.Changed += _ => SetOutput();
+			Input.Changed += _ => SetOutput();
 		}
 
-		// internal switch details
-		private bool _switchActive;
-		private bool IsSwitchActivated
-		{
-			get => _switchActive;
-			set
-			{
-				bool originalValue = _switchActive;
-				_switchActive = value;
-				if (originalValue != value) UpdateOutput(_voltage.V);
-			}
-		}
-
-		private void UpdateOutput(VoltageSignal voltage)
-		{
-			_output.V = _inverted
-				? _switchActive ? VoltageSignal.LOW : voltage
-				: _switchActive ? voltage : VoltageSignal.LOW;
-		}
+		private void SetOutput() =>
+			Output.V = _inverted
+				? Input.V == VoltageSignal.HIGH ? VoltageSignal.LOW : Voltage.V
+				: Input.V == VoltageSignal.HIGH ? Voltage.V : VoltageSignal.LOW;
 	}
 }

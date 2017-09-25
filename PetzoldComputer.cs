@@ -19,7 +19,7 @@ namespace PetzoldComputer
 				_computer.Clr.V = clr.V;
 				if (_prevClockVoltage == VoltageSignal.HIGH && clr.V == VoltageSignal.LOW)
 				{
-					// synchrous call--returns only if oscillator has finite # iterations
+					// synchronous call--returns only if oscillator has finite # iterations
 					_computer.Oscillator.Start();
 				}
 				_prevClockVoltage = _computer.Clr.V;

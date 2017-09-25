@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace PetzoldComputer
+﻿namespace PetzoldComputer
 {
+	// This class is closely modeled on Peter Jones' Node class
+	// from his https://github.com/hiptopjones/Logic project.
 	public class ConnectionPoint
 	{
 		public ConnectionPoint(string name) => _name = name;
@@ -9,7 +9,7 @@ namespace PetzoldComputer
 		private readonly string _name;
 		private VoltageSignal _voltage;
 
-		public Action<ConnectionPoint> Changed;
+		public System.Action<ConnectionPoint> Changed;
 
 		public VoltageSignal V
 		{
@@ -22,11 +22,12 @@ namespace PetzoldComputer
 			}
 		}
 
+		// Clients can attach directly to the Changed event.
+		// This method is a convenience for doing that, and also provides
+		// a chaining mechanism for making multiple connections.
 		public ConnectionPoint ConnectTo(ConnectionPoint sink)
 		{
 			Changed += source => sink.V = source.V;
-
-			sink.V = V;
 
 			return this;
 		}
