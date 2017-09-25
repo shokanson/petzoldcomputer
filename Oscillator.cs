@@ -13,7 +13,8 @@
 			NOscillations = nOscillations;
 		}
 
-		public uint NOscillations { get; private set; }
+		private readonly uint NOscillations;
+
 		public readonly ConnectionPoint V;
 		public readonly ConnectionPoint Output;
 
