@@ -21,6 +21,8 @@ namespace PetzoldComputer
 			Output = new ConnectionPoint($"{name}-relay.out");
 
 			DoWireUp();
+
+			Components.Record(nameof(Relay));
 		}
 
 		private readonly string _name;

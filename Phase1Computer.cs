@@ -17,6 +17,8 @@ namespace PetzoldComputer
 			_latch = new LatchEdge8($"{name}-phase1computer.register");
 
 			DoWireUp();
+
+			Components.Record(nameof(Phase1Computer));
 		}
 
 		private readonly ConnectionPoint _v;

@@ -5,6 +5,8 @@ namespace PetzoldComputer
 		public NOT(string name)
 		{
 			_relay = new Relay($"{name}-not", inverted: true);
+
+			Components.Record(nameof(NOT));
 		}
 
 		private readonly Relay _relay;

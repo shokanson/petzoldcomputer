@@ -11,6 +11,8 @@
 			V = new ConnectionPoint($"{name}-oscillator.v");
 			Output = new ConnectionPoint($"{name}-oscillator.output");
 			NOscillations = nOscillations;
+
+			Components.Record(nameof(Oscillator));
 		}
 
 		private readonly uint NOscillations;

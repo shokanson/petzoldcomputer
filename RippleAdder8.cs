@@ -13,20 +13,9 @@ namespace PetzoldComputer
 			_adder6 = new FullAdder($"{name}_adder8.6");
 			_adder7 = new FullAdder($"{name}_adder8.7");
 
-			_adder0.V.ConnectTo(_adder1.V)
-						.ConnectTo(_adder2.V)
-						.ConnectTo(_adder3.V)
-						.ConnectTo(_adder4.V)
-						.ConnectTo(_adder5.V)
-						.ConnectTo(_adder6.V)
-						.ConnectTo(_adder7.V);
-			_adder0.Carry.ConnectTo(_adder1.CarryIn);
-			_adder1.Carry.ConnectTo(_adder2.CarryIn);
-			_adder2.Carry.ConnectTo(_adder3.CarryIn);
-			_adder3.Carry.ConnectTo(_adder4.CarryIn);
-			_adder4.Carry.ConnectTo(_adder5.CarryIn);
-			_adder5.Carry.ConnectTo(_adder6.CarryIn);
-			_adder6.Carry.ConnectTo(_adder7.CarryIn);
+			DoWireUp();
+
+			Components.Record(nameof(RippleAdder8));
 		}
 
 		private readonly FullAdder _adder0;
@@ -83,5 +72,23 @@ namespace PetzoldComputer
 					S2.V == VoltageSignal.HIGH ? 1 : 0,
 					S1.V == VoltageSignal.HIGH ? 1 : 0,
 					S0.V == VoltageSignal.HIGH ? 1 : 0);
+
+		private void DoWireUp()
+		{
+			_adder0.V.ConnectTo(_adder1.V)
+						.ConnectTo(_adder2.V)
+						.ConnectTo(_adder3.V)
+						.ConnectTo(_adder4.V)
+						.ConnectTo(_adder5.V)
+						.ConnectTo(_adder6.V)
+						.ConnectTo(_adder7.V);
+			_adder0.Carry.ConnectTo(_adder1.CarryIn);
+			_adder1.Carry.ConnectTo(_adder2.CarryIn);
+			_adder2.Carry.ConnectTo(_adder3.CarryIn);
+			_adder3.Carry.ConnectTo(_adder4.CarryIn);
+			_adder4.Carry.ConnectTo(_adder5.CarryIn);
+			_adder5.Carry.ConnectTo(_adder6.CarryIn);
+			_adder6.Carry.ConnectTo(_adder7.CarryIn);
+		}
 	}
 }

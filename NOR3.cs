@@ -9,6 +9,8 @@ namespace PetzoldComputer
 			_not3 = new NOT($"{name}-nor3.c");
 
 			DoWireUp();
+
+			Components.Record(nameof(NOR3));
 		}
 
 		private readonly NOT _not1;

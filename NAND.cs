@@ -9,6 +9,8 @@ namespace PetzoldComputer
 			_output = new ConnectionPoint($"{name}-nand.out");
 
 			DoWireUp();
+
+			Components.Record(nameof(NAND));
 		}
 
 		private readonly NOT _not1;

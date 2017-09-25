@@ -12,6 +12,8 @@
 			_or = new OR($"{name}-selector.out");
 
 			DoWireUp();
+
+			Components.Record(nameof(Selector2to1));
 		}
 
 		private readonly ConnectionPoint _v;

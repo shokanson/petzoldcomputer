@@ -16,6 +16,8 @@ namespace PetzoldComputer
 			_xor7 = new XOR($"{name}-onescomplement8.7");
 
 			DoWireUp();
+
+			Components.Record(nameof(OnesComplement8));
 		}
 
 		private readonly ConnectionPoint _v;

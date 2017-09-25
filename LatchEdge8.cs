@@ -19,6 +19,8 @@ namespace PetzoldComputer
 			_flop7 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.7");
 
 			DoWireUp();
+
+			Components.Record(nameof(LatchEdge8));
 		}
 
 		private readonly ConnectionPoint _v;

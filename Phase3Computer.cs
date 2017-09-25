@@ -15,6 +15,8 @@
 		{
 			_panel = new ControlPanel($"{name}-computer.panel");
 			DoWireUp();
+
+			Components.Record(nameof(Phase3Computer));
 		}
 		#endregion
 

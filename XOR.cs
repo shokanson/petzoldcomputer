@@ -9,6 +9,8 @@ namespace PetzoldComputer
 			_and = new AND($"{name}-xor.o");
 
 			DoWireUp();
+
+			Components.Record(nameof(XOR));
 		}
 
 		private readonly OR _or;

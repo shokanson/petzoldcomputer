@@ -26,6 +26,8 @@ namespace PetzoldComputer
 			};
 
 			DoWireUp();
+
+			Components.Record(nameof(PetzoldComputer));
 		}
 
 		private readonly Phase3Computer _computer;

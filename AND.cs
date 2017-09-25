@@ -8,6 +8,8 @@ namespace PetzoldComputer
 			_relay2 = new Relay($"{name}-and.b");
 
 			DoWireUp();
+
+			Components.Record(nameof(AND));
 		}
 
 		private readonly Relay _relay1;

@@ -9,6 +9,8 @@ namespace PetzoldComputer
 			_output = new ConnectionPoint($"{name}-or.out");
 
 			DoWireUp();
+
+			Components.Record(nameof(OR));
 		}
 
 		private readonly Relay _relay1;

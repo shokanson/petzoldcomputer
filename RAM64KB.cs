@@ -49,6 +49,8 @@ namespace PetzoldComputer
 
 			DoWireUp();
 			Reset();
+
+			Components.Record(nameof(RAM64KB));
 		}
 		#endregion
 

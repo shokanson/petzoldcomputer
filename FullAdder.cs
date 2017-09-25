@@ -9,6 +9,8 @@ namespace PetzoldComputer
 			_or = new OR($"{name}-fulladder.carry");
 
 			DoWireUp();
+
+			Components.Record(nameof(FullAdder));
 		}
 
 		private readonly HalfAdder _halfAdder1;

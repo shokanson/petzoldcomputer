@@ -8,6 +8,8 @@ namespace PetzoldComputer
 			_and = new AND($"{name}-halfadder.carry");
 
 			DoWireUp();
+
+			Components.Record(nameof(HalfAdder));
 		}
 
 		private readonly XOR _xor;

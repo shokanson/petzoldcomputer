@@ -44,6 +44,8 @@
 			_b7 = new ConnectionPoint($"{name}-controlpanel.b7");
 
 			DoWireUp();
+
+			Components.Record(nameof(ControlPanel));
 		}
 
 		private readonly ConnectionPoint _v;

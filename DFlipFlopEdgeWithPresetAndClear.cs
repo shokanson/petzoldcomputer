@@ -18,6 +18,8 @@ namespace PetzoldComputer
 			_pre = new ConnectionPoint($"{name}-flop.pre");
 
 			DoWireUp();
+
+			Components.Record(nameof(DFlipFlopEdgeWithPresetAndClear));
 		}
 		#endregion
 

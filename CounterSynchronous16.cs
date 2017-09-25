@@ -25,6 +25,8 @@ namespace PetzoldComputer
 			_flop15 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q15");
 
 			DoWireUp();
+
+			Components.Record(nameof(CounterRipple16));
 		}
 
 		private readonly ConnectionPoint _v;

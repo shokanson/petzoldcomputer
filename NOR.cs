@@ -8,6 +8,8 @@ namespace PetzoldComputer
 			_not2 = new NOT($"{name}-nor.b");
 
 			DoWireUp();
+
+			Components.Record(nameof(NOR));
 		}
 
 		private readonly NOT _not1;
