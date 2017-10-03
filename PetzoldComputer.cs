@@ -16,7 +16,6 @@ namespace PetzoldComputer
 			// transitioning Clr from HIGH to LOW starts the computer
 			_computer.Clr.Changed += clr =>
 			{
-				_computer.Clr.V = clr.V;
 				if (_prevClockVoltage == VoltageSignal.HIGH && clr.V == VoltageSignal.LOW)
 				{
 					// synchronous call--returns only if oscillator has finite # iterations
