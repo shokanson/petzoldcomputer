@@ -13,9 +13,9 @@ namespace PetzoldComputer
 			_nor3Q = new NOR3($"{name}-flop.q");
 			_nor3Qnot = new NOR3($"{name}-flop.qnot");
 
-			_v = new ConnectionPoint($"{name}-flop.v");
-			_clr = new ConnectionPoint($"{name}-flop.clr");
-			_pre = new ConnectionPoint($"{name}-flop.pre");
+			V = new ConnectionPoint($"{name}-flop.v");
+			Clr = new ConnectionPoint($"{name}-flop.clr");
+			Pre = new ConnectionPoint($"{name}-flop.pre");
 
 			DoWireUp();
 
@@ -31,17 +31,13 @@ namespace PetzoldComputer
 		private readonly NOR3 _nor3D;
 		private readonly NOR3 _nor3Q;
 		private readonly NOR3 _nor3Qnot;
+        #endregion
 
-		private readonly ConnectionPoint _v;
-		private readonly ConnectionPoint _clr;
-		private readonly ConnectionPoint _pre;
-		#endregion
-
-		#region Public Properties
-		public ConnectionPoint V => _v;
-		public ConnectionPoint Clr => _clr;
-		public ConnectionPoint Pre => _pre;
-		public ConnectionPoint Clk => _not.Input;
+        #region Public Properties
+        public ConnectionPoint V { get; }
+        public ConnectionPoint Clr { get; }
+        public ConnectionPoint Pre { get; }
+        public ConnectionPoint Clk => _not.Input;
 		public ConnectionPoint D => _nor3D.C;
 		public ConnectionPoint Q => _nor3Q.O;
 		public ConnectionPoint Qnot => _nor3Qnot.O;
@@ -55,15 +51,15 @@ namespace PetzoldComputer
 		private void DoWireUp()
 		{
 			// inputs
-			_v.ConnectTo(_nor3Qnot.V)
+			V.ConnectTo(_nor3Qnot.V)
 			  .ConnectTo(_nor3Q.V)
 			  .ConnectTo(_nor3D.V)
 			  .ConnectTo(_nor3Clk.V)
 			  .ConnectTo(_nor3Pre.V)
 			  .ConnectTo(_nor3Clr.V)
 			  .ConnectTo(_not.V);
-			_clr.ConnectTo(_nor3Q.A).ConnectTo(_nor3Clr.A);
-			_pre.ConnectTo(_nor3Qnot.B).ConnectTo(_nor3D.B).ConnectTo(_nor3Pre.B);
+			Clr.ConnectTo(_nor3Q.A).ConnectTo(_nor3Clr.A);
+			Pre.ConnectTo(_nor3Qnot.B).ConnectTo(_nor3D.B).ConnectTo(_nor3Pre.B);
 			_not.Output.ConnectTo(_nor3Pre.C).ConnectTo(_nor3Clk.B);
 			_nor3D.O.ConnectTo(_nor3Clr.B).ConnectTo(_nor3Clk.C);
 

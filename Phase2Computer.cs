@@ -7,22 +7,20 @@
 		public Phase2Computer(string name, uint nIterations)
 			: base(name)
 		{
-			_oscillator = new Oscillator($"{name}-oscillator", nIterations);
+			Oscillator = new Oscillator($"{name}-oscillator", nIterations);
 
 			DoWireUp();
 
 			Components.Record(nameof(Phase2Computer));
 		}
 
-		private readonly Oscillator _oscillator;
+        public Oscillator Oscillator { get; }
 
-		public Oscillator Oscillator => _oscillator;
-
-		private void DoWireUp()
+        private void DoWireUp()
 		{
-			V.ConnectTo(_oscillator.V);
+			V.ConnectTo(Oscillator.V);
 			// tie the computer's clock input to the oscillator's output
-			_oscillator.Output.ConnectTo(Clk);
+			Oscillator.Output.ConnectTo(Clk);
 		}
 	}
 }

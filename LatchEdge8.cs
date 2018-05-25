@@ -4,10 +4,10 @@ namespace PetzoldComputer
 	{
 		public LatchEdge8(string name)
 		{
-			_v = new ConnectionPoint($"{name}-latch8.v");
-			_clr = new ConnectionPoint($"{name}-latch8.clr");
-			_clk = new ConnectionPoint($"{name}-latch8.clk");
-			_pre = new ConnectionPoint($"{name}-latch8.pre");
+			V = new ConnectionPoint($"{name}-latch8.v");
+			Clr = new ConnectionPoint($"{name}-latch8.clr");
+			Clk = new ConnectionPoint($"{name}-latch8.clk");
+			Pre = new ConnectionPoint($"{name}-latch8.pre");
 
 			_flop0 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.0");
 			_flop1 = new DFlipFlopEdgeWithPresetAndClear($"{name}-latch8.1");
@@ -23,12 +23,7 @@ namespace PetzoldComputer
 			Components.Record(nameof(LatchEdge8));
 		}
 
-		private readonly ConnectionPoint _v;
-		private readonly ConnectionPoint _clr;
-		private readonly ConnectionPoint _clk;
-		private readonly ConnectionPoint _pre;
-
-		private readonly DFlipFlopEdgeWithPresetAndClear _flop0;
+        private readonly DFlipFlopEdgeWithPresetAndClear _flop0;
 		private readonly DFlipFlopEdgeWithPresetAndClear _flop1;
 		private readonly DFlipFlopEdgeWithPresetAndClear _flop2;
 		private readonly DFlipFlopEdgeWithPresetAndClear _flop3;
@@ -37,12 +32,11 @@ namespace PetzoldComputer
 		private readonly DFlipFlopEdgeWithPresetAndClear _flop6;
 		private readonly DFlipFlopEdgeWithPresetAndClear _flop7;
 
-		public ConnectionPoint V => _v;
-		public ConnectionPoint Clr => _clr;
-		public ConnectionPoint Clk => _clk;
-		public ConnectionPoint Pre => _pre;
-
-		public ConnectionPoint Din0 => _flop0.D;
+        public ConnectionPoint V { get; }
+        public ConnectionPoint Clr { get; }
+        public ConnectionPoint Clk { get; }
+        public ConnectionPoint Pre { get; }
+        public ConnectionPoint Din0 => _flop0.D;
 		public ConnectionPoint Din1 => _flop1.D;
 		public ConnectionPoint Din2 => _flop2.D;
 		public ConnectionPoint Din3 => _flop3.D;
@@ -74,7 +68,7 @@ namespace PetzoldComputer
 
 		private void DoWireUp()
 		{
-			_v.ConnectTo(_flop7.V)
+			V.ConnectTo(_flop7.V)
 			  .ConnectTo(_flop6.V)
 			  .ConnectTo(_flop5.V)
 			  .ConnectTo(_flop4.V)
@@ -82,7 +76,7 @@ namespace PetzoldComputer
 			  .ConnectTo(_flop2.V)
 			  .ConnectTo(_flop1.V)
 			  .ConnectTo(_flop0.V);
-			_clr.ConnectTo(_flop7.Clr)
+			Clr.ConnectTo(_flop7.Clr)
 				 .ConnectTo(_flop6.Clr)
 				 .ConnectTo(_flop5.Clr)
 				 .ConnectTo(_flop4.Clr)
@@ -90,7 +84,7 @@ namespace PetzoldComputer
 				 .ConnectTo(_flop2.Clr)
 				 .ConnectTo(_flop1.Clr)
 				 .ConnectTo(_flop0.Clr);
-			_clk.ConnectTo(_flop7.Clk)
+			Clk.ConnectTo(_flop7.Clk)
 				 .ConnectTo(_flop6.Clk)
 				 .ConnectTo(_flop5.Clk)
 				 .ConnectTo(_flop4.Clk)
@@ -98,7 +92,7 @@ namespace PetzoldComputer
 				 .ConnectTo(_flop2.Clk)
 				 .ConnectTo(_flop1.Clk)
 				 .ConnectTo(_flop0.Clk);
-			_pre.ConnectTo(_flop7.Pre)
+			Pre.ConnectTo(_flop7.Pre)
 				 .ConnectTo(_flop6.Pre)
 				 .ConnectTo(_flop5.Pre)
 				 .ConnectTo(_flop4.Pre)

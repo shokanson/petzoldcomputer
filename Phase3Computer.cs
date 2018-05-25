@@ -13,104 +13,100 @@
 		public Phase3Computer(string name, uint nIterations)
 			: base(name, nIterations)
 		{
-			_panel = new ControlPanel($"{name}-computer.panel");
+			Panel = new ControlPanel($"{name}-computer.panel");
 			DoWireUp();
 
 			Components.Record(nameof(Phase3Computer));
 		}
-		#endregion
+        #endregion
 
-		#region Implementation
-		private readonly ControlPanel _panel;
-		#endregion
+        public ControlPanel Panel { get; }
 
-		public ControlPanel Panel => _panel;
-
-		public override void WriteByte(ushort address, byte data)
+        public override void WriteByte(ushort address, byte data)
 		{
-			_panel.Takeover.V = VoltageSignal.HIGH;
+			Panel.Takeover.V = VoltageSignal.HIGH;
 
-			_panel.A0_sw.V = ((address & 0x0001) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A1_sw.V = ((address & 0x0002) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A2_sw.V = ((address & 0x0004) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A3_sw.V = ((address & 0x0008) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A4_sw.V = ((address & 0x0010) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A5_sw.V = ((address & 0x0020) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A6_sw.V = ((address & 0x0040) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A7_sw.V = ((address & 0x0080) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A8_sw.V = ((address & 0x0100) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A9_sw.V = ((address & 0x0200) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A10_sw.V = ((address & 0x0400) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A11_sw.V = ((address & 0x0800) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A12_sw.V = ((address & 0x1000) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A13_sw.V = ((address & 0x2000) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A14_sw.V = ((address & 0x4000) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.A15_sw.V = ((address & 0x8000) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A0_sw.V = ((address & 0x0001) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A1_sw.V = ((address & 0x0002) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A2_sw.V = ((address & 0x0004) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A3_sw.V = ((address & 0x0008) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A4_sw.V = ((address & 0x0010) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A5_sw.V = ((address & 0x0020) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A6_sw.V = ((address & 0x0040) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A7_sw.V = ((address & 0x0080) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A8_sw.V = ((address & 0x0100) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A9_sw.V = ((address & 0x0200) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A10_sw.V = ((address & 0x0400) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A11_sw.V = ((address & 0x0800) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A12_sw.V = ((address & 0x1000) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A13_sw.V = ((address & 0x2000) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A14_sw.V = ((address & 0x4000) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.A15_sw.V = ((address & 0x8000) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
 
-			_panel.D0_sw.V = ((data & 0x01) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.D1_sw.V = ((data & 0x02) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.D2_sw.V = ((data & 0x04) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.D3_sw.V = ((data & 0x08) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.D4_sw.V = ((data & 0x10) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.D5_sw.V = ((data & 0x20) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.D6_sw.V = ((data & 0x40) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
-			_panel.D7_sw.V = ((data & 0x80) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.D0_sw.V = ((data & 0x01) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.D1_sw.V = ((data & 0x02) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.D2_sw.V = ((data & 0x04) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.D3_sw.V = ((data & 0x08) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.D4_sw.V = ((data & 0x10) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.D5_sw.V = ((data & 0x20) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.D6_sw.V = ((data & 0x40) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
+			Panel.D7_sw.V = ((data & 0x80) != 0 ? VoltageSignal.HIGH : VoltageSignal.LOW);
 
-			_panel.Write_sw.V = VoltageSignal.HIGH;
-			_panel.Write_sw.V = VoltageSignal.LOW;
+			Panel.Write_sw.V = VoltageSignal.HIGH;
+			Panel.Write_sw.V = VoltageSignal.LOW;
 
-			_panel.Takeover.V = VoltageSignal.LOW;
+			Panel.Takeover.V = VoltageSignal.LOW;
 		}
 
 		private void DoWireUp()
 		{
-			V.ConnectTo(_panel.V);
+			V.ConnectTo(Panel.V);
 			WireUpPanelOutput();
 			WireUpPanelBulbs();
 		}
 
 		private void WireUpPanelOutput()
 		{
-			_panel.A0.ConnectTo(_ram.A0);
-			_panel.A1.ConnectTo(_ram.A1);
-			_panel.A2.ConnectTo(_ram.A2);
-			_panel.A3.ConnectTo(_ram.A3);
-			_panel.A4.ConnectTo(_ram.A4);
-			_panel.A5.ConnectTo(_ram.A5);
-			_panel.A6.ConnectTo(_ram.A6);
-			_panel.A7.ConnectTo(_ram.A7);
-			_panel.A8.ConnectTo(_ram.A8);
-			_panel.A9.ConnectTo(_ram.A9);
-			_panel.A10.ConnectTo(_ram.A10);
-			_panel.A11.ConnectTo(_ram.A11);
-			_panel.A12.ConnectTo(_ram.A12);
-			_panel.A13.ConnectTo(_ram.A13);
-			_panel.A14.ConnectTo(_ram.A14);
-			_panel.A15.ConnectTo(_ram.A15);
+			Panel.A0.ConnectTo(_ram.A0);
+			Panel.A1.ConnectTo(_ram.A1);
+			Panel.A2.ConnectTo(_ram.A2);
+			Panel.A3.ConnectTo(_ram.A3);
+			Panel.A4.ConnectTo(_ram.A4);
+			Panel.A5.ConnectTo(_ram.A5);
+			Panel.A6.ConnectTo(_ram.A6);
+			Panel.A7.ConnectTo(_ram.A7);
+			Panel.A8.ConnectTo(_ram.A8);
+			Panel.A9.ConnectTo(_ram.A9);
+			Panel.A10.ConnectTo(_ram.A10);
+			Panel.A11.ConnectTo(_ram.A11);
+			Panel.A12.ConnectTo(_ram.A12);
+			Panel.A13.ConnectTo(_ram.A13);
+			Panel.A14.ConnectTo(_ram.A14);
+			Panel.A15.ConnectTo(_ram.A15);
 
-			_panel.D0.ConnectTo(_ram.Din0);
-			_panel.D1.ConnectTo(_ram.Din1);
-			_panel.D2.ConnectTo(_ram.Din2);
-			_panel.D3.ConnectTo(_ram.Din3);
-			_panel.D4.ConnectTo(_ram.Din4);
-			_panel.D5.ConnectTo(_ram.Din5);
-			_panel.D6.ConnectTo(_ram.Din6);
-			_panel.D7.ConnectTo(_ram.Din7);
+			Panel.D0.ConnectTo(_ram.Din0);
+			Panel.D1.ConnectTo(_ram.Din1);
+			Panel.D2.ConnectTo(_ram.Din2);
+			Panel.D3.ConnectTo(_ram.Din3);
+			Panel.D4.ConnectTo(_ram.Din4);
+			Panel.D5.ConnectTo(_ram.Din5);
+			Panel.D6.ConnectTo(_ram.Din6);
+			Panel.D7.ConnectTo(_ram.Din7);
 
-			_panel.Write.ConnectTo(_ram.Write);
+			Panel.Write.ConnectTo(_ram.Write);
 		}
 
 		private void WireUpPanelBulbs()
 		{
 			// show on the panel whatever's in RAM
-			_ram.Dout0.ConnectTo(_panel.B0);
-			_ram.Dout1.ConnectTo(_panel.B1);
-			_ram.Dout2.ConnectTo(_panel.B2);
-			_ram.Dout3.ConnectTo(_panel.B3);
-			_ram.Dout4.ConnectTo(_panel.B4);
-			_ram.Dout5.ConnectTo(_panel.B5);
-			_ram.Dout6.ConnectTo(_panel.B6);
-			_ram.Dout7.ConnectTo(_panel.B7);
+			_ram.Dout0.ConnectTo(Panel.B0);
+			_ram.Dout1.ConnectTo(Panel.B1);
+			_ram.Dout2.ConnectTo(Panel.B2);
+			_ram.Dout3.ConnectTo(Panel.B3);
+			_ram.Dout4.ConnectTo(Panel.B4);
+			_ram.Dout5.ConnectTo(Panel.B5);
+			_ram.Dout6.ConnectTo(Panel.B6);
+			_ram.Dout7.ConnectTo(Panel.B7);
 		}
 	}
 }

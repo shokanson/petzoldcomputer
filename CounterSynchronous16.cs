@@ -4,8 +4,8 @@ namespace PetzoldComputer
 	{
 		public CounterRipple16(string name)
 		{
-			_v = new ConnectionPoint($"{name}-counter16.v");
-			_clr = new ConnectionPoint($"{name}-counter16.clr");
+			V = new ConnectionPoint($"{name}-counter16.v");
+			Clr = new ConnectionPoint($"{name}-counter16.clr");
 
 			_flop0 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q0");
 			_flop1 = new DFlipFlopEdgeWithPresetAndClear($"{name}-counter16.q1");
@@ -29,10 +29,7 @@ namespace PetzoldComputer
 			Components.Record(nameof(CounterRipple16));
 		}
 
-		private readonly ConnectionPoint _v;
-		private readonly ConnectionPoint _clr;
-
-		private readonly DFlipFlopEdgeWithPresetAndClear _flop0;
+        private readonly DFlipFlopEdgeWithPresetAndClear _flop0;
 		private readonly DFlipFlopEdgeWithPresetAndClear _flop1;
 		private readonly DFlipFlopEdgeWithPresetAndClear _flop2;
 		private readonly DFlipFlopEdgeWithPresetAndClear _flop3;
@@ -49,9 +46,9 @@ namespace PetzoldComputer
 		private readonly DFlipFlopEdgeWithPresetAndClear _flop14;
 		private readonly DFlipFlopEdgeWithPresetAndClear _flop15;
 
-		public ConnectionPoint V => _v;
-		public ConnectionPoint Clr => _clr;
-		public ConnectionPoint Clk => _flop0.Clk;
+        public ConnectionPoint V { get; }
+        public ConnectionPoint Clr { get; }
+        public ConnectionPoint Clk => _flop0.Clk;
 
 		public ConnectionPoint Q0 => _flop0.Q;
 		public ConnectionPoint Q1 => _flop1.Q;
@@ -92,7 +89,7 @@ namespace PetzoldComputer
 
 		private void DoWireUp()
 		{
-			_v.ConnectTo(_flop15.V)
+			V.ConnectTo(_flop15.V)
 				.ConnectTo(_flop14.V)
 				.ConnectTo(_flop13.V)
 				.ConnectTo(_flop12.V)
@@ -109,18 +106,18 @@ namespace PetzoldComputer
 				.ConnectTo(_flop1.V)
 				.ConnectTo(_flop0.V);
 
-			_v.Changed += v =>
+			V.Changed += v =>
 			{
 				// a little bump to get things started
 				if (v.V == VoltageSignal.HIGH)
 				{
-					_clr.V = VoltageSignal.HIGH;
-					_clr.V = VoltageSignal.LOW;
+					Clr.V = VoltageSignal.HIGH;
+					Clr.V = VoltageSignal.LOW;
 					_flop0.D.V = _flop0.Qnot.V;
 				}
 			};
 
-			_clr.ConnectTo(_flop15.Clr)
+			Clr.ConnectTo(_flop15.Clr)
 				 .ConnectTo(_flop14.Clr)
 				 .ConnectTo(_flop13.Clr)
 				 .ConnectTo(_flop12.Clr)

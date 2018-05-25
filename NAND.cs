@@ -6,7 +6,7 @@ namespace PetzoldComputer
 		{
 			_not1 = new NOT($"{name}-nand.a");
 			_not2 = new NOT($"{name}-nand.b");
-			_output = new ConnectionPoint($"{name}-nand.out");
+			O = new ConnectionPoint($"{name}-nand.out");
 
 			DoWireUp();
 
@@ -15,14 +15,13 @@ namespace PetzoldComputer
 
 		private readonly NOT _not1;
 		private readonly NOT _not2;
-		private readonly ConnectionPoint _output;
 
-		public ConnectionPoint V => _not1.V;
+        public ConnectionPoint V => _not1.V;
 		public ConnectionPoint A => _not1.Input;
 		public ConnectionPoint B => _not2.Input;
-		public ConnectionPoint O => _output;
+        public ConnectionPoint O { get; }
 
-		public override string ToString() => O.ToString();
+        public override string ToString() => O.ToString();
 
 		private void DoWireUp()
 		{
@@ -37,7 +36,7 @@ namespace PetzoldComputer
 
 		private void OnNotOutputChanged(ConnectionPoint cp)
 		{
-			_output.V = _not1.Output.V == VoltageSignal.HIGH || _not2.Output.V == VoltageSignal.HIGH
+			O.V = _not1.Output.V == VoltageSignal.HIGH || _not2.Output.V == VoltageSignal.HIGH
 				? VoltageSignal.HIGH
 				: VoltageSignal.LOW;
 		}

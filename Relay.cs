@@ -26,7 +26,7 @@ namespace PetzoldComputer
 		}
 
 		private readonly string _name;
-		private bool _inverted;
+		private readonly bool _inverted;
 		private readonly int _myId;
 
 		public ConnectionPoint Voltage { get; private set; }

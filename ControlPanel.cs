@@ -4,8 +4,8 @@
 	{
 		public ControlPanel(string name)
 		{
-			_v = new ConnectionPoint($"{name}-controlpanel.v");
-			_takeover = new ConnectionPoint($"{name}-controlpanel.takeover");
+			V = new ConnectionPoint($"{name}-controlpanel.v");
+			Takeover = new ConnectionPoint($"{name}-controlpanel.takeover");
 			_write = new Selector2to1($"{name}-controlpanel.write");
 
 			_d0 = new Selector2to1($"{name}-controlpanel.d0");
@@ -34,23 +34,21 @@
 			_a14 = new Selector2to1($"{name}-controlpanel.a14");
 			_a15 = new Selector2to1($"{name}-controlpanel.a15");
 
-			_b0 = new ConnectionPoint($"{name}-controlpanel.b0");
-			_b1 = new ConnectionPoint($"{name}-controlpanel.b1");
-			_b2 = new ConnectionPoint($"{name}-controlpanel.b2");
-			_b3 = new ConnectionPoint($"{name}-controlpanel.b3");
-			_b4 = new ConnectionPoint($"{name}-controlpanel.b4");
-			_b5 = new ConnectionPoint($"{name}-controlpanel.b5");
-			_b6 = new ConnectionPoint($"{name}-controlpanel.b6");
-			_b7 = new ConnectionPoint($"{name}-controlpanel.b7");
+			B0 = new ConnectionPoint($"{name}-controlpanel.b0");
+			B1 = new ConnectionPoint($"{name}-controlpanel.b1");
+			B2 = new ConnectionPoint($"{name}-controlpanel.b2");
+			B3 = new ConnectionPoint($"{name}-controlpanel.b3");
+			B4 = new ConnectionPoint($"{name}-controlpanel.b4");
+			B5 = new ConnectionPoint($"{name}-controlpanel.b5");
+			B6 = new ConnectionPoint($"{name}-controlpanel.b6");
+			B7 = new ConnectionPoint($"{name}-controlpanel.b7");
 
 			DoWireUp();
 
 			Components.Record(nameof(ControlPanel));
 		}
 
-		private readonly ConnectionPoint _v;
-		private readonly ConnectionPoint _takeover;
-		private readonly Selector2to1 _write;
+        private readonly Selector2to1 _write;
 
 		private readonly Selector2to1 _d0;
 		private readonly Selector2to1 _d1;
@@ -78,19 +76,11 @@
 		private readonly Selector2to1 _a14;
 		private readonly Selector2to1 _a15;
 
-		private readonly ConnectionPoint _b0;
-		private readonly ConnectionPoint _b1;
-		private readonly ConnectionPoint _b2;
-		private readonly ConnectionPoint _b3;
-		private readonly ConnectionPoint _b4;
-		private readonly ConnectionPoint _b5;
-		private readonly ConnectionPoint _b6;
-		private readonly ConnectionPoint _b7;
+        public ConnectionPoint V { get; }
 
-		public ConnectionPoint V => _v;
-		public ConnectionPoint Takeover => _takeover;
+        public ConnectionPoint Takeover { get; }
 
-		public ConnectionPoint D0_in => _d0.A;
+        public ConnectionPoint D0_in => _d0.A;
 		public ConnectionPoint D1_in => _d1.A;
 		public ConnectionPoint D2_in => _d2.A;
 		public ConnectionPoint D3_in => _d3.A;
@@ -174,17 +164,17 @@
 
 		public ConnectionPoint Write => _write.O;
 
-		public ConnectionPoint B0 => _b0;
-		public ConnectionPoint B1 => _b1;
-		public ConnectionPoint B2 => _b2;
-		public ConnectionPoint B3 => _b3;
-		public ConnectionPoint B4 => _b4;
-		public ConnectionPoint B5 => _b5;
-		public ConnectionPoint B6 => _b6;
-		public ConnectionPoint B7 => _b7;
+        public ConnectionPoint B0 { get; }
+        public ConnectionPoint B1 { get; }
+        public ConnectionPoint B2 { get; }
+        public ConnectionPoint B3 { get; }
+        public ConnectionPoint B4 { get; }
+        public ConnectionPoint B5 { get; }
+        public ConnectionPoint B6 { get; }
+        public ConnectionPoint B7 { get; }
 
-		public string Bulbs => $"{bulb(B7)}{bulb(B6)}{bulb(B5)}{bulb(B4)}{bulb(B3)}{bulb(B2)}{bulb(B1)}{bulb(B0)}";
-		private char bulb(ConnectionPoint voltage) => voltage.V == VoltageSignal.HIGH ? 'Ȳ' : '.';
+        public string Bulbs => $"{Bulb(B7)}{Bulb(B6)}{Bulb(B5)}{Bulb(B4)}{Bulb(B3)}{Bulb(B2)}{Bulb(B1)}{Bulb(B0)}";
+		private char Bulb(ConnectionPoint voltage) => voltage.V == VoltageSignal.HIGH ? 'Ȳ' : '.';
 
 		// this is a case where string.Format is clearer than an interpolated string
 		public override string ToString() => string.Format(
@@ -218,7 +208,7 @@
 
 		private void DoWireUp()
 		{
-			_v.ConnectTo(_d0.V).ConnectTo(_d1.V).ConnectTo(_d2.V).ConnectTo(_d3.V)
+			V.ConnectTo(_d0.V).ConnectTo(_d1.V).ConnectTo(_d2.V).ConnectTo(_d3.V)
 			  .ConnectTo(_d4.V).ConnectTo(_d5.V).ConnectTo(_d6.V).ConnectTo(_d7.V)
 			  .ConnectTo(_a0.V).ConnectTo(_a1.V).ConnectTo(_a2.V).ConnectTo(_a3.V)
 			  .ConnectTo(_a4.V).ConnectTo(_a5.V).ConnectTo(_a6.V).ConnectTo(_a7.V)
@@ -226,7 +216,7 @@
 			  .ConnectTo(_a12.V).ConnectTo(_a13.V).ConnectTo(_a14.V).ConnectTo(_a15.V)
 			  .ConnectTo(_write.V);
 
-			_takeover.ConnectTo(_d0.Select).ConnectTo(_d1.Select).ConnectTo(_d2.Select).ConnectTo(_d3.Select)
+			Takeover.ConnectTo(_d0.Select).ConnectTo(_d1.Select).ConnectTo(_d2.Select).ConnectTo(_d3.Select)
 						.ConnectTo(_d4.Select).ConnectTo(_d5.Select).ConnectTo(_d6.Select).ConnectTo(_d7.Select)
 						.ConnectTo(_a0.Select).ConnectTo(_a1.Select).ConnectTo(_a2.Select).ConnectTo(_a3.Select)
 						.ConnectTo(_a4.Select).ConnectTo(_a5.Select).ConnectTo(_a6.Select).ConnectTo(_a7.Select)

@@ -8,9 +8,9 @@ namespace PetzoldComputer
 	{
 		public Phase1Computer(string name)
 		{
-			_v = new ConnectionPoint($"{name}-phase1computer.v");
-			_clk = new ConnectionPoint($"{name}-phase1computer.clk");
-			_clr= new ConnectionPoint($"{name}-phase1computer.clr");
+			V = new ConnectionPoint($"{name}-phase1computer.v");
+			Clk = new ConnectionPoint($"{name}-phase1computer.clk");
+			Clr= new ConnectionPoint($"{name}-phase1computer.clr");
 			_counter = new CounterRipple16($"{name}-phase1computer.counter");
 			_ram = new RAM64KB($"{name}-phase1computer.ram");
 			_adder = new RippleAdder8($"{name}-phase1computer.accumulator");	// _adder.CarryIn is LOW
@@ -21,19 +21,17 @@ namespace PetzoldComputer
 			Components.Record(nameof(Phase1Computer));
 		}
 
-		private readonly ConnectionPoint _v;
-		private readonly ConnectionPoint _clk;
-		private readonly ConnectionPoint _clr;
-		private readonly CounterRipple16 _counter;
+        private readonly CounterRipple16 _counter;
 		protected readonly RAM64KB _ram;   // make it available to subclasses
 		private RippleAdder8 _adder;
 		private LatchEdge8 _latch;
 
-		public ConnectionPoint V => _v;
-		public ConnectionPoint Clr => _clr;
-		public ConnectionPoint Clk => _clk;
+        public ConnectionPoint V { get; }
 
-		public string PC => _counter.ToString();
+        public ConnectionPoint Clr { get; }
+        public ConnectionPoint Clk { get; }
+
+        public string PC => _counter.ToString();
 
 		public ConnectionPoint D0 => _latch.Dout0;
 		public ConnectionPoint D1 => _latch.Dout1;
@@ -112,11 +110,11 @@ namespace PetzoldComputer
 
 		private void DoWireUp()
 		{
-			_v.ConnectTo(_latch.V).ConnectTo(_adder.V).ConnectTo(_ram.V).ConnectTo(_counter.V);
+			V.ConnectTo(_latch.V).ConnectTo(_adder.V).ConnectTo(_ram.V).ConnectTo(_counter.V);
 			// Clk is done in this order on purpose; otherwise, the latch input
 			// gets changed before it's done its job.  This mimics propagation delay.
-			_clk.ConnectTo(_latch.Clk).ConnectTo(_counter.Clk);
-			_clr.ConnectTo(_latch.Clr).ConnectTo(_counter.Clr);
+			Clk.ConnectTo(_latch.Clk).ConnectTo(_counter.Clk);
+			Clr.ConnectTo(_latch.Clr).ConnectTo(_counter.Clr);
 			WireUpCounterOutToRAMAddress();
 			WireUpRAMOuttoAdderA();
 			WireUpAdderOutToLatchIn();

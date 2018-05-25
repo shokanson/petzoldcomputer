@@ -6,7 +6,7 @@ namespace PetzoldComputer
 		{
 			_relay1 = new Relay($"{name}-or.a");
 			_relay2 = new Relay($"{name}-or.b");
-			_output = new ConnectionPoint($"{name}-or.out");
+			O = new ConnectionPoint($"{name}-or.out");
 
 			DoWireUp();
 
@@ -15,14 +15,13 @@ namespace PetzoldComputer
 
 		private readonly Relay _relay1;
 		private readonly Relay _relay2;
-		private readonly ConnectionPoint _output;
 
-		public ConnectionPoint V => _relay1.Voltage;
+        public ConnectionPoint V => _relay1.Voltage;
 		public ConnectionPoint A => _relay1.Input;
 		public ConnectionPoint B => _relay2.Input;
-		public ConnectionPoint O => _output;
+        public ConnectionPoint O { get; }
 
-		public override string ToString() => O.ToString();
+        public override string ToString() => O.ToString();
 
 		private void DoWireUp()
 		{
@@ -37,7 +36,7 @@ namespace PetzoldComputer
 
 		private void OnRelayOutputChanged(ConnectionPoint cp)
 		{
-			_output.V = _relay1.Output.V == VoltageSignal.HIGH || _relay2.Output.V == VoltageSignal.HIGH
+			O.V = _relay1.Output.V == VoltageSignal.HIGH || _relay2.Output.V == VoltageSignal.HIGH
 				? VoltageSignal.HIGH
 				: VoltageSignal.LOW;
 		}
