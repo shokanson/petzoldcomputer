@@ -4,7 +4,7 @@ namespace PetzoldComputer
 	// components in the system.  It consists of the three connection
 	// points of all relays: Voltage, Input, and Output.  I could have
 	// modeled the internal switch-and-coil structure of relays, a la
-	// Peter Jones' https://github.com/hiptopjones/Logic project, but
+	// Peter James' https://github.com/hiptopjones/Logic project, but
 	// have chosen to focus on the Relay rather than its constituent parts.
 	public class Relay
 	{

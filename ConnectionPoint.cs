@@ -1,6 +1,6 @@
 ﻿namespace PetzoldComputer
 {
-	// This class is closely modeled on Peter Jones' Node class
+	// This class is closely modeled on Peter James' Node class
 	// from his https://github.com/hiptopjones/Logic project.
 	public class ConnectionPoint
 	{
