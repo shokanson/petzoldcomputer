@@ -4,8 +4,8 @@
     {
         public OnesComplement8(string name)
         {
-            _v = new ConnectionPoint($"{name}-onescomplement8.v");
-            _invert = new ConnectionPoint($"{name}-onescomplement8.invert");
+            V = new ConnectionPoint($"{name}-onescomplement8.v");
+            Invert = new ConnectionPoint($"{name}-onescomplement8.invert");
             _xor0 = new XOR($"{name}-onescomplement8.0");
             _xor1 = new XOR($"{name}-onescomplement8.1");
             _xor2 = new XOR($"{name}-onescomplement8.2");
@@ -20,8 +20,6 @@
             Components.Record(nameof(OnesComplement8));
         }
 
-        private readonly ConnectionPoint _v;
-        private readonly ConnectionPoint _invert;
         private readonly XOR _xor0;
         private readonly XOR _xor1;
         private readonly XOR _xor2;
@@ -31,8 +29,8 @@
         private readonly XOR _xor6;
         private readonly XOR _xor7;
 
-        public ConnectionPoint V => _v;
-        public ConnectionPoint Invert => _invert;
+        public ConnectionPoint V { get; }
+        public ConnectionPoint Invert { get; }
 
         public ConnectionPoint I0 => _xor0.B;
         public ConnectionPoint I1 => _xor1.B;
@@ -66,7 +64,7 @@
 
         private void DoWireUp()
         {
-            _v.ConnectTo(_xor7.V)
+            V.ConnectTo(_xor7.V)
               .ConnectTo(_xor6.V)
               .ConnectTo(_xor5.V)
               .ConnectTo(_xor4.V)
@@ -74,7 +72,7 @@
               .ConnectTo(_xor2.V)
               .ConnectTo(_xor1.V)
               .ConnectTo(_xor0.V);
-            _invert.ConnectTo(_xor7.A)
+            Invert.ConnectTo(_xor7.A)
                      .ConnectTo(_xor6.A)
                      .ConnectTo(_xor5.A)
                      .ConnectTo(_xor4.A)
