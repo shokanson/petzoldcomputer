@@ -1,35 +1,35 @@
 ﻿namespace PetzoldComputer
 {
-	public class Oscillator
-	{
-		public Oscillator(string name)
-			: this(name, 0)   // a never-ending oscillator
-		{ }
+    public class Oscillator
+    {
+        public Oscillator(string name)
+            : this(name, 0)   // a never-ending oscillator
+        { }
 
-		public Oscillator(string name, uint nOscillations)
-		{
-			V = new ConnectionPoint($"{name}-oscillator.v");
-			Output = new ConnectionPoint($"{name}-oscillator.output");
-			NOscillations = nOscillations;
+        public Oscillator(string name, uint nOscillations)
+        {
+            V = new ConnectionPoint($"{name}-oscillator.v");
+            Output = new ConnectionPoint($"{name}-oscillator.output");
+            NOscillations = nOscillations;
 
-			Components.Record(nameof(Oscillator));
-		}
+            Components.Record(nameof(Oscillator));
+        }
 
-		private readonly uint NOscillations;
+        private readonly uint NOscillations;
 
-		public readonly ConnectionPoint V;
-		public readonly ConnectionPoint Output;
+        public readonly ConnectionPoint V;
+        public readonly ConnectionPoint Output;
 
-		public void Start()
-		{
-			if (V.V == VoltageSignal.LOW) return;
+        public void Start()
+        {
+            if (V.V == VoltageSignal.LOW) return;
 
-			uint nOscillations = 0;
-			do
-			{
-				Output.V = VoltageSignal.HIGH;
-				Output.V = VoltageSignal.LOW;
-			} while (NOscillations == 0 || ++nOscillations < NOscillations);
-		}
-	}
+            uint nOscillations = 0;
+            do
+            {
+                Output.V = VoltageSignal.HIGH;
+                Output.V = VoltageSignal.LOW;
+            } while (NOscillations == 0 || ++nOscillations < NOscillations);
+        }
+    }
 }
