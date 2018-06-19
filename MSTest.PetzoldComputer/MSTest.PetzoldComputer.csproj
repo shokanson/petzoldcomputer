@@ -83,7 +83,7 @@
     <Compile Include="XORTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PetzoldComputer.csproj">
+    <ProjectReference Include="..\PetzoldComputer\PetzoldComputer.csproj">
       <Project>{19909F7C-0F98-47FF-B380-00A2BC7011ED}</Project>
       <Name>PetzoldComputer</Name>
     </ProjectReference>
