@@ -1,4 +1,6 @@
-﻿namespace PetzoldComputer
+﻿using System;
+
+namespace PetzoldComputer
 {
     public class ControlPanel
     {
@@ -174,10 +176,10 @@
         public ConnectionPoint B7 { get; }
 
         public string Bulbs => $"{Bulb(B7)}{Bulb(B6)}{Bulb(B5)}{Bulb(B4)}{Bulb(B3)}{Bulb(B2)}{Bulb(B1)}{Bulb(B0)}";
-        private char Bulb(ConnectionPoint voltage) => voltage.V == VoltageSignal.HIGH ? 'Ȳ' : '.';
+        private static char Bulb(ConnectionPoint voltage) => voltage.V == VoltageSignal.HIGH ? 'Ȳ' : '.';
 
-        // this is a case where string.Format is clearer than an interpolated string
-        public override string ToString() => string.Format(
+        // this is a case where String.Format is clearer than an interpolated string
+        public override string ToString() => String.Format(
                     //         W   A15 ---------------------------------------------- A0   D7 ------------------------ D0
                     "{0}:{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}{12}{13}{14}{15}{16}:{17}{18}{19}{20}{21}{22}{23}{24}",
                     _write.O.V == VoltageSignal.HIGH ? 1 : 0,
@@ -209,20 +211,20 @@
         private void DoWireUp()
         {
             V.ConnectTo(_d0.V).ConnectTo(_d1.V).ConnectTo(_d2.V).ConnectTo(_d3.V)
-              .ConnectTo(_d4.V).ConnectTo(_d5.V).ConnectTo(_d6.V).ConnectTo(_d7.V)
-              .ConnectTo(_a0.V).ConnectTo(_a1.V).ConnectTo(_a2.V).ConnectTo(_a3.V)
-              .ConnectTo(_a4.V).ConnectTo(_a5.V).ConnectTo(_a6.V).ConnectTo(_a7.V)
-              .ConnectTo(_a8.V).ConnectTo(_a9.V).ConnectTo(_a10.V).ConnectTo(_a11.V)
-              .ConnectTo(_a12.V).ConnectTo(_a13.V).ConnectTo(_a14.V).ConnectTo(_a15.V)
-              .ConnectTo(_write.V);
+             .ConnectTo(_d4.V).ConnectTo(_d5.V).ConnectTo(_d6.V).ConnectTo(_d7.V)
+             .ConnectTo(_a0.V).ConnectTo(_a1.V).ConnectTo(_a2.V).ConnectTo(_a3.V)
+             .ConnectTo(_a4.V).ConnectTo(_a5.V).ConnectTo(_a6.V).ConnectTo(_a7.V)
+             .ConnectTo(_a8.V).ConnectTo(_a9.V).ConnectTo(_a10.V).ConnectTo(_a11.V)
+             .ConnectTo(_a12.V).ConnectTo(_a13.V).ConnectTo(_a14.V).ConnectTo(_a15.V)
+             .ConnectTo(_write.V);
 
             Takeover.ConnectTo(_d0.Select).ConnectTo(_d1.Select).ConnectTo(_d2.Select).ConnectTo(_d3.Select)
-                        .ConnectTo(_d4.Select).ConnectTo(_d5.Select).ConnectTo(_d6.Select).ConnectTo(_d7.Select)
-                        .ConnectTo(_a0.Select).ConnectTo(_a1.Select).ConnectTo(_a2.Select).ConnectTo(_a3.Select)
-                        .ConnectTo(_a4.Select).ConnectTo(_a5.Select).ConnectTo(_a6.Select).ConnectTo(_a7.Select)
-                        .ConnectTo(_a8.Select).ConnectTo(_a9.Select).ConnectTo(_a10.Select).ConnectTo(_a11.Select)
-                        .ConnectTo(_a12.Select).ConnectTo(_a13.Select).ConnectTo(_a14.Select).ConnectTo(_a15.Select)
-                        .ConnectTo(_write.Select);
+                    .ConnectTo(_d4.Select).ConnectTo(_d5.Select).ConnectTo(_d6.Select).ConnectTo(_d7.Select)
+                    .ConnectTo(_a0.Select).ConnectTo(_a1.Select).ConnectTo(_a2.Select).ConnectTo(_a3.Select)
+                    .ConnectTo(_a4.Select).ConnectTo(_a5.Select).ConnectTo(_a6.Select).ConnectTo(_a7.Select)
+                    .ConnectTo(_a8.Select).ConnectTo(_a9.Select).ConnectTo(_a10.Select).ConnectTo(_a11.Select)
+                    .ConnectTo(_a12.Select).ConnectTo(_a13.Select).ConnectTo(_a14.Select).ConnectTo(_a15.Select)
+                    .ConnectTo(_write.Select);
         }
     }
 }

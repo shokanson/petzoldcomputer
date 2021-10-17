@@ -6,7 +6,9 @@
     {
         public ConnectionPoint(string name) => _name = name;
 
+#pragma warning disable IDE0052 // Remove unread private members
         private readonly string _name;
+#pragma warning restore IDE0052 // Remove unread private members
         private VoltageSignal _voltage;
 
         public System.Action<ConnectionPoint> Changed;

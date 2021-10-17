@@ -15,10 +15,10 @@
         private readonly Relay _relay1;
         private readonly Relay _relay2;
 
-        public ConnectionPoint V { get => _relay1.Voltage; }
-        public ConnectionPoint A { get => _relay1.Input; }
-        public ConnectionPoint B { get => _relay2.Input; }
-        public ConnectionPoint O { get => _relay2.Output; }
+        public ConnectionPoint V => _relay1.Voltage;
+        public ConnectionPoint A => _relay1.Input;
+        public ConnectionPoint B => _relay2.Input;
+        public ConnectionPoint O => _relay2.Output;
 
         public override string ToString() => O.ToString();
 

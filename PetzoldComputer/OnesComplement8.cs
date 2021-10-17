@@ -1,4 +1,6 @@
-﻿namespace PetzoldComputer
+﻿using System;
+
+namespace PetzoldComputer
 {
     public class OnesComplement8
     {
@@ -50,8 +52,8 @@
         public ConnectionPoint O6 => _xor6.O;
         public ConnectionPoint O7 => _xor7.O;
 
-        // this is a case where string.Format is clearer than an interpolated string
-        public override string ToString() => string.Format(
+        // this is a case where String.Format is clearer than an interpolated string
+        public override string ToString() => String.Format(
                     "{0}{1}{2}{3}{4}{5}{6}{7}",
                     _xor7.O.V == VoltageSignal.HIGH ? 1 : 0,
                     _xor6.O.V == VoltageSignal.HIGH ? 1 : 0,
@@ -65,21 +67,21 @@
         private void DoWireUp()
         {
             V.ConnectTo(_xor7.V)
-              .ConnectTo(_xor6.V)
-              .ConnectTo(_xor5.V)
-              .ConnectTo(_xor4.V)
-              .ConnectTo(_xor3.V)
-              .ConnectTo(_xor2.V)
-              .ConnectTo(_xor1.V)
-              .ConnectTo(_xor0.V);
+             .ConnectTo(_xor6.V)
+             .ConnectTo(_xor5.V)
+             .ConnectTo(_xor4.V)
+             .ConnectTo(_xor3.V)
+             .ConnectTo(_xor2.V)
+             .ConnectTo(_xor1.V)
+             .ConnectTo(_xor0.V);
             Invert.ConnectTo(_xor7.A)
-                     .ConnectTo(_xor6.A)
-                     .ConnectTo(_xor5.A)
-                     .ConnectTo(_xor4.A)
-                     .ConnectTo(_xor3.A)
-                     .ConnectTo(_xor2.A)
-                     .ConnectTo(_xor1.A)
-                     .ConnectTo(_xor0.A);
+                  .ConnectTo(_xor6.A)
+                  .ConnectTo(_xor5.A)
+                  .ConnectTo(_xor4.A)
+                  .ConnectTo(_xor3.A)
+                  .ConnectTo(_xor2.A)
+                  .ConnectTo(_xor1.A)
+                  .ConnectTo(_xor0.A);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace PetzoldComputer
+﻿using System;
+
+namespace PetzoldComputer
 {
     public class RippleAdder8
     {
@@ -60,8 +62,8 @@
 
         public ConnectionPoint Carry => _adder7.Carry;
 
-        // this is a case where string.Format is clearer than an interpolated string
-        public override string ToString() => string.Format(
+        // this is a case where String.Format is clearer than an interpolated string
+        public override string ToString() => String.Format(
                     "{0}:{1}{2}{3}{4}{5}{6}{7}{8}",
                     Carry.V == VoltageSignal.HIGH ? 1 : 0,
                     S7.V == VoltageSignal.HIGH ? 1 : 0,
@@ -76,12 +78,12 @@
         private void DoWireUp()
         {
             _adder0.V.ConnectTo(_adder1.V)
-                        .ConnectTo(_adder2.V)
-                        .ConnectTo(_adder3.V)
-                        .ConnectTo(_adder4.V)
-                        .ConnectTo(_adder5.V)
-                        .ConnectTo(_adder6.V)
-                        .ConnectTo(_adder7.V);
+                     .ConnectTo(_adder2.V)
+                     .ConnectTo(_adder3.V)
+                     .ConnectTo(_adder4.V)
+                     .ConnectTo(_adder5.V)
+                     .ConnectTo(_adder6.V)
+                     .ConnectTo(_adder7.V);
             _adder0.Carry.ConnectTo(_adder1.CarryIn);
             _adder1.Carry.ConnectTo(_adder2.CarryIn);
             _adder2.Carry.ConnectTo(_adder3.CarryIn);

@@ -1,4 +1,6 @@
-﻿namespace PetzoldComputer
+﻿using System;
+
+namespace PetzoldComputer
 {
     public class LatchEdge8
     {
@@ -54,8 +56,8 @@
         public ConnectionPoint Dout6 => _flop6.Q;
         public ConnectionPoint Dout7 => _flop7.Q;
 
-        // this is a case where string.Format is clearer than an interpolated string
-        public override string ToString() => string.Format(
+        // this is a case where String.Format is clearer than an interpolated string
+        public override string ToString() => String.Format(
                     "{0}{1}{2}{3}{4}{5}{6}{7}",
                     _flop7.Q.V == VoltageSignal.HIGH ? 1 : 0,
                     _flop6.Q.V == VoltageSignal.HIGH ? 1 : 0,
@@ -69,37 +71,37 @@
         private void DoWireUp()
         {
             V.ConnectTo(_flop7.V)
-              .ConnectTo(_flop6.V)
-              .ConnectTo(_flop5.V)
-              .ConnectTo(_flop4.V)
-              .ConnectTo(_flop3.V)
-              .ConnectTo(_flop2.V)
-              .ConnectTo(_flop1.V)
-              .ConnectTo(_flop0.V);
+             .ConnectTo(_flop6.V)
+             .ConnectTo(_flop5.V)
+             .ConnectTo(_flop4.V)
+             .ConnectTo(_flop3.V)
+             .ConnectTo(_flop2.V)
+             .ConnectTo(_flop1.V)
+             .ConnectTo(_flop0.V);
             Clr.ConnectTo(_flop7.Clr)
-                 .ConnectTo(_flop6.Clr)
-                 .ConnectTo(_flop5.Clr)
-                 .ConnectTo(_flop4.Clr)
-                 .ConnectTo(_flop3.Clr)
-                 .ConnectTo(_flop2.Clr)
-                 .ConnectTo(_flop1.Clr)
-                 .ConnectTo(_flop0.Clr);
+               .ConnectTo(_flop6.Clr)
+               .ConnectTo(_flop5.Clr)
+               .ConnectTo(_flop4.Clr)
+               .ConnectTo(_flop3.Clr)
+               .ConnectTo(_flop2.Clr)
+               .ConnectTo(_flop1.Clr)
+               .ConnectTo(_flop0.Clr);
             Clk.ConnectTo(_flop7.Clk)
-                 .ConnectTo(_flop6.Clk)
-                 .ConnectTo(_flop5.Clk)
-                 .ConnectTo(_flop4.Clk)
-                 .ConnectTo(_flop3.Clk)
-                 .ConnectTo(_flop2.Clk)
-                 .ConnectTo(_flop1.Clk)
-                 .ConnectTo(_flop0.Clk);
+               .ConnectTo(_flop6.Clk)
+               .ConnectTo(_flop5.Clk)
+               .ConnectTo(_flop4.Clk)
+               .ConnectTo(_flop3.Clk)
+               .ConnectTo(_flop2.Clk)
+               .ConnectTo(_flop1.Clk)
+               .ConnectTo(_flop0.Clk);
             Pre.ConnectTo(_flop7.Pre)
-                 .ConnectTo(_flop6.Pre)
-                 .ConnectTo(_flop5.Pre)
-                 .ConnectTo(_flop4.Pre)
-                 .ConnectTo(_flop3.Pre)
-                 .ConnectTo(_flop2.Pre)
-                 .ConnectTo(_flop1.Pre)
-                 .ConnectTo(_flop0.Pre);
+               .ConnectTo(_flop6.Pre)
+               .ConnectTo(_flop5.Pre)
+               .ConnectTo(_flop4.Pre)
+               .ConnectTo(_flop3.Pre)
+               .ConnectTo(_flop2.Pre)
+               .ConnectTo(_flop1.Pre)
+               .ConnectTo(_flop0.Pre);
         }
     }
 }

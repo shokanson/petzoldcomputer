@@ -52,12 +52,12 @@
         {
             // inputs
             V.ConnectTo(_nor3Qnot.V)
-              .ConnectTo(_nor3Q.V)
-              .ConnectTo(_nor3D.V)
-              .ConnectTo(_nor3Clk.V)
-              .ConnectTo(_nor3Pre.V)
-              .ConnectTo(_nor3Clr.V)
-              .ConnectTo(_not.V);
+             .ConnectTo(_nor3Q.V)
+             .ConnectTo(_nor3D.V)
+             .ConnectTo(_nor3Clk.V)
+             .ConnectTo(_nor3Pre.V)
+             .ConnectTo(_nor3Clr.V)
+             .ConnectTo(_not.V);
             Clr.ConnectTo(_nor3Q.A).ConnectTo(_nor3Clr.A);
             Pre.ConnectTo(_nor3Qnot.B).ConnectTo(_nor3D.B).ConnectTo(_nor3Pre.B);
             _not.Output.ConnectTo(_nor3Pre.C).ConnectTo(_nor3Clk.B);

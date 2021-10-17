@@ -60,7 +60,7 @@ namespace MSTest.PetzoldComputer
             counter.V.V = oscillator.V.V = VoltageSignal.HIGH;
 
             oscillator.Output.ConnectTo(counter.Clk);
-            //oscillator.Output.Changed += output => { if (output.V == VoltageSignal.LOW) Trace.TraceInformation(counter.ToString()); };
+            //oscillator.Output.Changed += output => { if (output.V == VoltageSignal.LOW) System.Diagnostics.Trace.TraceInformation(counter.ToString()); };
 
             oscillator.Start();
         }

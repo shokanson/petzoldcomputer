@@ -1,4 +1,6 @@
-﻿namespace PetzoldComputer
+﻿using System;
+
+namespace PetzoldComputer
 {
     /* Phase1Computer represents the computer as diagrammed on page 208, sans oscillator and control panel.
 	 * The MSTest.PetzoldComputer.Phase1Test class exercises the computer as described starting with "Here's
@@ -23,8 +25,8 @@
 
         private readonly CounterRipple16 _counter;
         protected readonly RAM64KB _ram;   // make it available to subclasses
-        private RippleAdder8 _adder;
-        private LatchEdge8 _latch;
+        private readonly RippleAdder8 _adder;
+        private readonly LatchEdge8 _latch;
 
         public ConnectionPoint V { get; }
 
@@ -42,8 +44,8 @@
         public ConnectionPoint D6 => _latch.Dout6;
         public ConnectionPoint D7 => _latch.Dout7;
 
-        // this is a case where string.Format is clearer than an interpolated string
-        public override string ToString() => string.Format(
+        // this is a case where String.Format is clearer than an interpolated string
+        public override string ToString() => String.Format(
                     "{0}{1}{2}{3}{4}{5}{6}{7}",
                     D7.V == VoltageSignal.HIGH ? 1 : 0,
                     D6.V == VoltageSignal.HIGH ? 1 : 0,

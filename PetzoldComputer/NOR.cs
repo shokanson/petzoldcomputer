@@ -15,10 +15,10 @@
         private readonly NOT _not1;
         private readonly NOT _not2;
 
-        public ConnectionPoint V { get => _not1.V; }
-        public ConnectionPoint A { get => _not1.Input; }
-        public ConnectionPoint B { get => _not2.Input; }
-        public ConnectionPoint O { get => _not2.Output; }
+        public ConnectionPoint V => _not1.V;
+        public ConnectionPoint A => _not1.Input;
+        public ConnectionPoint B => _not2.Input;
+        public ConnectionPoint O => _not2.Output;
 
         public override string ToString() => O.ToString();
 

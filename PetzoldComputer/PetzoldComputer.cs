@@ -47,8 +47,8 @@ namespace PetzoldComputer
 
         public Action OutputChanged;
 
-        public string Bulbs => $"{bulb(B7)}{bulb(B6)}{bulb(B5)}{bulb(B4)}{bulb(B3)}{bulb(B2)}{bulb(B1)}{bulb(B0)}";
-        private char bulb(VoltageSignal voltage) => voltage == VoltageSignal.HIGH ? 'Ȳ' : '.';
+        public string Bulbs => $"{Bulb(B7)}{Bulb(B6)}{Bulb(B5)}{Bulb(B4)}{Bulb(B3)}{Bulb(B2)}{Bulb(B1)}{Bulb(B0)}";
+        private static char Bulb(VoltageSignal voltage) => voltage == VoltageSignal.HIGH ? 'Ȳ' : '.';
 
         private void DoWireUp()
         {
