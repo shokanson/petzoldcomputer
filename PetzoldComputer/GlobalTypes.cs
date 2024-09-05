@@ -8,11 +8,11 @@ namespace PetzoldComputer
 
     public static class Components
     {
-        private static Dictionary<string, uint> ComponentCount = new Dictionary<string, uint>();
+        private static readonly Dictionary<string, uint> ComponentCount = new Dictionary<string, uint>();
 
         public static void Record(string typeName)
         {
-            if (ComponentCount.ContainsKey(typeName)) ComponentCount[typeName]++;
+            if (ComponentCount.TryGetValue(typeName, out uint value)) ComponentCount[typeName] = ++value;
             else ComponentCount[typeName] = 1;
         }
 

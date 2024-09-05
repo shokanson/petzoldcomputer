@@ -1,7 +1,7 @@
 ﻿namespace PetzoldComputer
 {
     // This RAM, while it has the interface as described in Chapter 16 "An Assemblage of Memory",
-    // it isn't implemented internally with the circuitry described there.  Rather, it's a simple
+    // isn't implemented internally with the circuitry described there.  Rather, it's a simple
     // C# array of bytes.  An exercise for a future day to implement it as a collection of latches,
     // selectors, and decoders...
     public class RAM64KB
@@ -58,7 +58,7 @@
         private readonly byte[] _array = new byte[65536];
         #endregion
 
-        #region IRam64KB Members
+        #region Ram64KB Members
         public ConnectionPoint V { get; }
         public ConnectionPoint Write { get; }
 
